@@ -27,7 +27,7 @@ main(int argc, char *argv[])
 */
 
 
-//#include "types.h"
+#include "types.h"
 //#include "stat.h"
 //#include "user.h"
 #include "defs.h"
