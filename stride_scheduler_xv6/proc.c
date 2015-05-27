@@ -47,12 +47,13 @@ allocproc(void)
 found:
   p->state = EMBRYO;
   p->pid = nextpid++;
-
-//#stride
-  p->tickets = 1;
-  p->pass = 0;
-  p->stride = 10000 / p->tickets;
-//#stride end
+    if (!isRoundRobin) {
+        //#stride
+        p->tickets = 1;
+        p->pass = 0;
+        p->stride = 10000 / p->tickets;
+        //#stride end
+    }
     
   release(&ptable.lock);
 
@@ -276,74 +277,78 @@ wait(void)
 //void //#stride ##OLD STRUCTURE OF SCHEDULER METHOD##
 //scheduler(void)
 //{
-//  struct proc *p;
-//
-//  for(;;){
-//    // Enable interrupts on this processor.
-//    sti();
-//
-//    // Loop over process table looking for process to run.
-//    acquire(&ptable.lock);
-//    for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
-//      if(p->state != RUNNABLE)
-//        continue;
-//
-//      // Switch to chosen process.  It is the process's job
-//      // to release ptable.lock and then reacquire it
-//      // before jumping back to us.
-//      proc = p;
-//      switchuvm(p);
-//      p->state = RUNNING;
-//      swtch(&cpu->scheduler, proc->context);
-//      switchkvm();
-//
-//      // Process is done running for now.
-//      // It should have changed its p->state before coming back.
-//      proc = 0;
-//    }
-//    release(&ptable.lock);
-//
-//  }
 //}
 
 void
 scheduler(void) //#stride
 {
-    struct proc *p;
-    struct proc *current;
-    
-    for(;;){
-        // Enable interrupts on this processor.
-        sti();
-        int minPass = -1;
-        // Loop over process table looking for process to run.
-        acquire(&ptable.lock);
-        for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
-            if(p->state != RUNNABLE)
+    if (isRoundRobin) {
+          struct proc *p;
+        
+          for(;;){
+            // Enable interrupts on this processor.
+            sti();
+        
+            // Loop over process table looking for process to run.
+            acquire(&ptable.lock);
+            for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+              if(p->state != RUNNABLE)
                 continue;
-            if (minPass < 0 || p->pass < minPass){
-                current = p;
-                minPass = p->pass;
+        
+              // Switch to chosen process.  It is the process's job
+              // to release ptable.lock and then reacquire it
+              // before jumping back to us.
+              proc = p;
+              switchuvm(p);
+              p->state = RUNNING;
+              swtch(&cpu->scheduler, proc->context);
+              switchkvm();
+        
+              // Process is done running for now.
+              // It should have changed its p->state before coming back.
+              proc = 0;
             }
-            // Switch to chosen process.  It is the process's job
-            // to release ptable.lock and then reacquire it
-            // before jumping back to us.
+            release(&ptable.lock);
+        
+          }
+
+    }else{
+        struct proc *p;
+        struct proc *current;
+        
+        for(;;){
+            // Enable interrupts on this processor.
+            sti();
+            int minPass = -1;
+            // Loop over process table looking for process to run.
+            acquire(&ptable.lock);
+            for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+                if(p->state != RUNNABLE)
+                    continue;
+                if (minPass < 0 || p->pass < minPass){
+                    current = p;
+                    minPass = p->pass;
+                }
+                // Switch to chosen process.  It is the process's job
+                // to release ptable.lock and then reacquire it
+                // before jumping back to us.
+                
+            }
+            proc = current;
+            current->pass += current->stride;
+            switchuvm(current);
+            current->state = RUNNING;
+            current->usage = current->usage+1;
+            swtch(&cpu->scheduler, proc->context);
+            switchkvm();
+            
+            // Process is done running for now.
+            // It should have changed its p->state before coming back.
+            proc = 0;
+            
+            release(&ptable.lock);
             
         }
-        proc = current;
-        current->pass += current->stride;
-        switchuvm(current);
-        current->state = RUNNING;
-        current->usage = current->usage+1;
-        swtch(&cpu->scheduler, proc->context);
-        switchkvm();
-        
-        // Process is done running for now.
-        // It should have changed its p->state before coming back.
-        proc = 0;
-        
-        release(&ptable.lock);
-        
     }
 }
 
@@ -383,27 +388,32 @@ yield(void)
 //void
 //forkret(void) //#stride ##OLD FORKRET STRUCTURE##
 //{
-//  static int first = 1;
-//  // Still holding ptable.lock from scheduler.
-//  release(&ptable.lock);
-//
-//  if (first) {
-//    // Some initialization functions must be run in the context
-//    // of a regular process (e.g., they call sleep), and thus cannot 
-//    // be run from main().
-//    first = 0;
-//    initlog();
-//  }
-//  
-//  // Return to "caller", actually trapret (see allocproc).
 //}
 
 
 void
 forkret(void) //#stride
 {
-    // Still holding ptable.lock from scheduler.
-    release(&ptable.lock);
+    if (isRoundRobin) {
+          static int first = 1;
+          // Still holding ptable.lock from scheduler.
+          release(&ptable.lock);
+        
+          if (first) {
+            // Some initialization functions must be run in the context
+            // of a regular process (e.g., they call sleep), and thus cannot
+            // be run from main().
+            first = 0;
+            initlog();
+          }
+        
+          // Return to "caller", actually trapret (see allocproc).
+
+    }else{
+        // Still holding ptable.lock from scheduler.
+        release(&ptable.lock);
+        
+    }
     
     // Return to "caller", actually trapret (see allocproc).
 }

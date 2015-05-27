@@ -1,5 +1,4 @@
 // Segments in proc->gdt.
-#define NSEGS     7
 
 //#stride
 // Also known to bootasm.S and trapasm.S

@@ -63,7 +63,7 @@
 		3049818D1B16765600A1CE18 /* wc.c in Sources */ = {isa = PBXBuildFile; fileRef = 304981551B16765600A1CE18 /* wc.c */; };
 		3049818E1B16765600A1CE18 /* zombie.c in Sources */ = {isa = PBXBuildFile; fileRef = 304981571B16765600A1CE18 /* zombie.c */; };
 		304981901B1677F700A1CE18 /* hello.c in Sources */ = {isa = PBXBuildFile; fileRef = 3049818F1B1677F700A1CE18 /* hello.c */; };
-		304981931B16790E00A1CE18 /* philosofer.c in Sources */ = {isa = PBXBuildFile; fileRef = 304981911B16790E00A1CE18 /* philosofer.c */; };
+		304981971B16848F00A1CE18 /* switchScheduler.c in Sources */ = {isa = PBXBuildFile; fileRef = 304981961B16848F00A1CE18 /* switchScheduler.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -179,8 +179,7 @@
 		304981561B16765600A1CE18 /* x86.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x86.h; sourceTree = "<group>"; };
 		304981571B16765600A1CE18 /* zombie.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zombie.c; sourceTree = "<group>"; };
 		3049818F1B1677F700A1CE18 /* hello.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hello.c; sourceTree = "<group>"; };
-		304981911B16790E00A1CE18 /* philosofer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = philosofer.c; sourceTree = "<group>"; };
-		304981921B16790E00A1CE18 /* philosofer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = philosofer.h; sourceTree = "<group>"; };
+		304981961B16848F00A1CE18 /* switchScheduler.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = switchScheduler.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,8 +263,6 @@
 				304981251B16765500A1CE18 /* mp.h */,
 				304981261B16765500A1CE18 /* Notes */,
 				304981271B16765500A1CE18 /* param.h */,
-				304981911B16790E00A1CE18 /* philosofer.c */,
-				304981921B16790E00A1CE18 /* philosofer.h */,
 				304981281B16765500A1CE18 /* picirq.c */,
 				304981291B16765500A1CE18 /* pipe.c */,
 				3049812A1B16765500A1CE18 /* pr.pl */,
@@ -295,6 +292,7 @@
 				304981421B16765600A1CE18 /* syscall.h */,
 				304981431B16765600A1CE18 /* sysfile.c */,
 				304981441B16765600A1CE18 /* sysproc.c */,
+				304981961B16848F00A1CE18 /* switchScheduler.c */,
 				304981451B16765600A1CE18 /* timer.c */,
 				304981461B16765600A1CE18 /* toc.ftr */,
 				304981471B16765600A1CE18 /* toc.hdr */,
@@ -392,6 +390,7 @@
 				3049815A1B16765600A1CE18 /* bootmain.c in Sources */,
 				3049817D1B16765600A1CE18 /* spinlock.c in Sources */,
 				3049815D1B16765600A1CE18 /* echo.c in Sources */,
+				304981971B16848F00A1CE18 /* switchScheduler.c in Sources */,
 				304981681B16765600A1CE18 /* ioapic.c in Sources */,
 				3049817B1B16765600A1CE18 /* sh.c in Sources */,
 				304981871B16765600A1CE18 /* uart.c in Sources */,
@@ -423,7 +422,6 @@
 				304981591B16765600A1CE18 /* bootasm.S in Sources */,
 				3049815E1B16765600A1CE18 /* entry.S in Sources */,
 				304981891B16765600A1CE18 /* umalloc.c in Sources */,
-				304981931B16790E00A1CE18 /* philosofer.c in Sources */,
 				3049818A1B16765600A1CE18 /* usertests.c in Sources */,
 				3049816E1B16765600A1CE18 /* log.c in Sources */,
 				304981791B16765600A1CE18 /* proc.c in Sources */,
