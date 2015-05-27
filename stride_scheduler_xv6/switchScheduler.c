@@ -28,15 +28,12 @@ main(int argc, char *argv[])
 
 
 #include "types.h"
-//#include "stat.h"
-//#include "user.h"
 #include "defs.h"
+#include "user.h"
 int
 main(int argc, char *argv[])
 {
-    cprintf("\nHELLO WORLD xv6 0\n");
-//    printf(0, "\nHELLO WORLD xv6 0\n");
-//    printf(1, "\nHELLO WORLD xv6 1\n");
+    printf(0, "\nHELLO WORLD xv6 0\n");
+    printf(1, "\nHELLO WORLD xv6 1\n");
     exit();
-    return 0;
 }
