@@ -7,7 +7,7 @@
 //
 
 #include "defs.h"
-//#include "types.h"
+#include "types.h"
 //#include "stat.h"
 #include "user.h"
 
