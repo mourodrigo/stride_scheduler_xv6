@@ -38,4 +38,5 @@ main(int argc, char *argv[])
 //    printf(0, "\nHELLO WORLD xv6 0\n");
 //    printf(1, "\nHELLO WORLD xv6 1\n");
     exit();
+    return 0;
 }
