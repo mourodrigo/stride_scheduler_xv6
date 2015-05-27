@@ -26,10 +26,7 @@ main(int argc, char *argv[])
 }
 */
 
-
-#include "types.h"
-#include "defs.h"
-#include "user.h"
+#include "switchScheduler.h"
 int
 main(int argc, char *argv[])
 {

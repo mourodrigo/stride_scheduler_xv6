@@ -180,6 +180,7 @@
 		304981571B16765600A1CE18 /* zombie.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zombie.c; sourceTree = "<group>"; };
 		3049818F1B1677F700A1CE18 /* hello.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hello.c; sourceTree = "<group>"; };
 		304981961B16848F00A1CE18 /* switchScheduler.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = switchScheduler.c; sourceTree = "<group>"; };
+		304981981B168E5700A1CE18 /* switchScheduler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = switchScheduler.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,6 +293,7 @@
 				304981421B16765600A1CE18 /* syscall.h */,
 				304981431B16765600A1CE18 /* sysfile.c */,
 				304981441B16765600A1CE18 /* sysproc.c */,
+				304981981B168E5700A1CE18 /* switchScheduler.h */,
 				304981961B16848F00A1CE18 /* switchScheduler.c */,
 				304981451B16765600A1CE18 /* timer.c */,
 				304981461B16765600A1CE18 /* toc.ftr */,
