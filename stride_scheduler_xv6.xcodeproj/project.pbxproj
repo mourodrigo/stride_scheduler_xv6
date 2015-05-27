@@ -62,6 +62,8 @@
 		3049818C1B16765600A1CE18 /* vm.c in Sources */ = {isa = PBXBuildFile; fileRef = 304981541B16765600A1CE18 /* vm.c */; };
 		3049818D1B16765600A1CE18 /* wc.c in Sources */ = {isa = PBXBuildFile; fileRef = 304981551B16765600A1CE18 /* wc.c */; };
 		3049818E1B16765600A1CE18 /* zombie.c in Sources */ = {isa = PBXBuildFile; fileRef = 304981571B16765600A1CE18 /* zombie.c */; };
+		304981901B1677F700A1CE18 /* hello.c in Sources */ = {isa = PBXBuildFile; fileRef = 3049818F1B1677F700A1CE18 /* hello.c */; };
+		304981931B16790E00A1CE18 /* philosofer.c in Sources */ = {isa = PBXBuildFile; fileRef = 304981911B16790E00A1CE18 /* philosofer.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -176,6 +178,9 @@
 		304981551B16765600A1CE18 /* wc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wc.c; sourceTree = "<group>"; };
 		304981561B16765600A1CE18 /* x86.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x86.h; sourceTree = "<group>"; };
 		304981571B16765600A1CE18 /* zombie.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zombie.c; sourceTree = "<group>"; };
+		3049818F1B1677F700A1CE18 /* hello.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hello.c; sourceTree = "<group>"; };
+		304981911B16790E00A1CE18 /* philosofer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = philosofer.c; sourceTree = "<group>"; };
+		304981921B16790E00A1CE18 /* philosofer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = philosofer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +238,7 @@
 				3049810C1B16765500A1CE18 /* fs.h */,
 				3049810D1B16765500A1CE18 /* gdbutil */,
 				3049810E1B16765500A1CE18 /* grep.c */,
+				3049818F1B1677F700A1CE18 /* hello.c */,
 				3049810F1B16765500A1CE18 /* ide.c */,
 				304981101B16765500A1CE18 /* init.c */,
 				304981111B16765500A1CE18 /* initcode.S */,
@@ -258,6 +264,8 @@
 				304981251B16765500A1CE18 /* mp.h */,
 				304981261B16765500A1CE18 /* Notes */,
 				304981271B16765500A1CE18 /* param.h */,
+				304981911B16790E00A1CE18 /* philosofer.c */,
+				304981921B16790E00A1CE18 /* philosofer.h */,
 				304981281B16765500A1CE18 /* picirq.c */,
 				304981291B16765500A1CE18 /* pipe.c */,
 				3049812A1B16765500A1CE18 /* pr.pl */,
@@ -394,6 +402,7 @@
 				304981631B16765600A1CE18 /* fs.c in Sources */,
 				304981781B16765600A1CE18 /* printf.c in Sources */,
 				3049815B1B16765600A1CE18 /* cat.c in Sources */,
+				304981901B1677F700A1CE18 /* hello.c in Sources */,
 				3049817A1B16765600A1CE18 /* rm.c in Sources */,
 				304981721B16765600A1CE18 /* memide.c in Sources */,
 				3049816F1B16765600A1CE18 /* ls.c in Sources */,
@@ -414,6 +423,7 @@
 				304981591B16765600A1CE18 /* bootasm.S in Sources */,
 				3049815E1B16765600A1CE18 /* entry.S in Sources */,
 				304981891B16765600A1CE18 /* umalloc.c in Sources */,
+				304981931B16790E00A1CE18 /* philosofer.c in Sources */,
 				3049818A1B16765600A1CE18 /* usertests.c in Sources */,
 				3049816E1B16765600A1CE18 /* log.c in Sources */,
 				304981791B16765600A1CE18 /* proc.c in Sources */,

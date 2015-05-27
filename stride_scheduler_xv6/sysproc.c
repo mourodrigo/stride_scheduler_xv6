@@ -89,3 +89,20 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+//#stride
+
+int
+sys_settickets(void) {
+    int tix;
+    if(argint(0, &tix) < 0)
+        return -1;
+    proc->tickets = tix;
+    proc->stride = 10000 / tix;
+    return 0;
+}
+
+int
+sys_getusage(void) {
+    return proc->usage;
+}
