@@ -8,6 +8,7 @@
 int
 main(void)
 {
+  switchScheduler();
   if(fork() > 0)
     sleep(5);  // Let child exit before parent.
   exit();
