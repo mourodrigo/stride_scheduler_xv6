@@ -9,7 +9,8 @@
 #ifndef stride_scheduler_xv6_switchScheduler_h
 #define stride_scheduler_xv6_switchScheduler_h
 
-#include "defs.h"
-#include "ulib.c"
+#include "types.h"
+#include "stat.h"
+#include "user.h"
 
 #endif
