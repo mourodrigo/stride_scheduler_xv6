@@ -13,7 +13,14 @@ main(int argc, char *argv[])
 {
     
     printf(0, "\nAlternando escalonador...\n");
-    switchScheduler();
+    int s = switchScheduler();
+    if (s) {
+        printf(0, "\nRound Robin...\n");
+        
+    }else{
+        printf(0, "\nStride Scheduler...\n");
+        
+    }
     exit();
 }
 
