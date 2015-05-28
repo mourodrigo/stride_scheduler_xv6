@@ -11,14 +11,9 @@
 int
 main(int argc, char *argv[])
 {
-    printf(0, "\nAlternando escalonador...\n");
-    isRoundRobin=!isRoundRobin;
-    if (isRoundRobin) {
-        printf(1, "\nModo RoundRobin ativado!\n");
-    }else{
-        printf(1, "\nModo Passo Largo ativado!\n");
-    }
     
+    printf(0, "\nAlternando escalonador...\n");
+    switchScheduler();
     exit();
 }
 

@@ -20,6 +20,12 @@ sys_exit(void)
   return 0;  // not reached
 }
 
+int sys_switchScheduler(void){ //#stride
+    switchScheduler();
+    return 0;
+}
+
+
 int
 sys_wait(void)
 {

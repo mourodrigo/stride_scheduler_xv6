@@ -101,6 +101,7 @@ extern int sys_uptime(void);
 
 extern int sys_settickets(void); //#stride
 extern int sys_getusage(void); //#stride
+extern int sys_switchScheduler(void);//#stride
 
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,

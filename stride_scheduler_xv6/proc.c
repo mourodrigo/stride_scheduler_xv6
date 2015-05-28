@@ -15,6 +15,7 @@ struct {
 static struct proc *initproc;
 
 int nextpid = 1;
+int isRoundRobin=0; //#stride
 extern void forkret(void);
 extern void trapret(void);
 
@@ -536,4 +537,14 @@ procdump(void)
     }
     cprintf("\n");
   }
+}
+
+int switchScheduler(void){
+    isRoundRobin=!isRoundRobin;
+    if (isRoundRobin) {
+        cprintf("\nModo RoundRobin ativado!\n");
+    }else{
+        cprintf("\nModo Passo Largo ativado!\n");
+    }
+    return isRoundRobin;
 }
