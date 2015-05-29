@@ -33,7 +33,7 @@ pinit(void)
 // state required to run in the kernel.
 // Otherwise return 0.
 static struct proc*
-allocproc(void)
+allocproc(int tickets)
 {
   struct proc *p;
   char *sp;
@@ -50,9 +50,11 @@ found:
   p->pid = nextpid++;
     if (!isRoundRobin) {
         //#stride
-        p->tickets = 1;
+        p->tickets = tickets;
         p->pass = 0;
         p->stride = 10000 / p->tickets;
+	cprintf("Process id: %d",p->pid);
+	cprintf("Process tickets: %d",p->tickets);
         //#stride end
     }
     
@@ -90,7 +92,7 @@ userinit(void)
   struct proc *p;
   extern char _binary_initcode_start[], _binary_initcode_size[];
   
-  p = allocproc();
+  p = allocproc(100);
   initproc = p;
   if((p->pgdir = setupkvm()) == 0)
     panic("userinit: out of memory?");
@@ -135,13 +137,13 @@ growproc(int n)
 // Sets up stack to return as if from system call.
 // Caller must set state of returned proc to RUNNABLE.
 int
-fork(void)
+fork(int tickets)
 {
   int i, pid;
   struct proc *np;
 
   // Allocate process.
-  if((np = allocproc()) == 0)
+  if((np = allocproc(tickets)) == 0)
     return -1;
 
   // Copy process state from p.
@@ -340,6 +342,8 @@ scheduler(void) //#stride
             switchuvm(current);
             current->state = RUNNING;
             current->usage = current->usage+1;
+
+	    //cprintf("Passo: %d",current->stride);
             swtch(&cpu->scheduler, proc->context);
             switchkvm();
             
