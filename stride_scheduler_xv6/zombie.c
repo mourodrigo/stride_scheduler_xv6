@@ -32,12 +32,14 @@ void zombie(int pi,int tickets){
 			for(y=x;y!=1;y--){
 				result = result*y;
 			}
-			printf(0, "\nturn %d pid %d tickets %d usage %d Fatorial %d = %d",turn,getpid(),tickets,getusage(),x,result);
-			sleep(100);
+			
 		}
+	printf(0, "\nturn %d indice %d pid %d tickets %d tempoCPU %d Fatorial %d = %d",turn,pi,getpid(),tickets,getusage(),x,result);	
+	sleep(100);
 	}
 //	if(getpid()!=0){
-	printf(0, "\nturn %d pid %d tickets %d Fatorial %d = %d",turn,getpid(),tickets,x,result);		
+	printf(0, "\nturn %d indice %d pid %d tickets %d tempoCPU %d Fatorial %d = %d",turn,pi,getpid(),tickets,getusage(),x,result);
+sleep(100);		
 	exit();
 //	}
 }
@@ -72,10 +74,10 @@ main(void)
 	int forks=5;
 	int childIndex;
 	forkTest(2,2);
-	forkTest(500,500);
-	//forkTest(800,800);
-	forkTest(700,700);
-	
+	forkTest(3,2);
+	forkTest(4,2);
+	forkTest(5,2);
+	forkTest(6,2);
 	//for(childIndex = 0;childIndex!=forks;childIndex++){
 	//	forkTest(childIndex);
   	//}
