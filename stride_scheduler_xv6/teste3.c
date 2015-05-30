@@ -15,7 +15,7 @@
 //OBS: Há um sleep de 100ms para melhor acompanhamento
 void zombie(int pi,int tickets){
     printf(0, "\nIniciando pid %d\n",getpid());
-    uint x=0; uint y=0; uint turn = 20;
+    uint x=0; uint y=0; uint turn = 200;
     uint limit = 12;
     uint result = 0;
     for(turn=turn;turn!=1;turn--){
