@@ -52,9 +52,9 @@ found:
         //#stride
         p->tickets = tickets; //processo recebe o numero de tickets passado
         p->pass = 0; //processo inicia zerado
-        p->stride = tickets; // calculo do tamanho do passo
+        p->stride = 10000 / p->tickets; // calculo do tamanho do passo
 #ifdef DEBUGSTRIDE
-        cprintf("Processo pid %d criado com %d tickets e passo %d ",p->pid,p->tickets, p->stride);
+        cprintf("Processo pid %d criado com %d tickets e passo %d ",p->pid,tickets, 10000/tickets);
 #endif
         //#stride end
     }
