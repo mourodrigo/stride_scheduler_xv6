@@ -2,7 +2,7 @@
 //  teste1.h
 //  stride_scheduler_xv6
 //
-//  Created by Rodrigo on 30/05/15.
+//  Created by Rodrigo Bueno Tomiosso.
 //  Copyright (c) 2015 mourodrigo. All rights reserved.
 //
 
