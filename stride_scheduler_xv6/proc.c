@@ -348,7 +348,9 @@ scheduler(void) //#stride
             
             // Process is done running for now.
             // It should have changed its p->state before coming back.
-            cprintf("Passo: %d",current->pass);
+            if (current->pass!=0) {
+                cprintf("Passo: %d",current->pass);
+            }
             
             proc = 0;
             
