@@ -11,12 +11,6 @@
 #define N  1000
 
 void
-printf(int fd, char *s, ...)
-{
-    write(fd, s, strlen(s));
-}
-
-void
 forktest(void)
 {
     int n, pid;
