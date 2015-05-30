@@ -173,6 +173,8 @@ UPROGS=\
     _switchScheduler\
     _teste1\
     _teste2\
+    _teste3\
+    _teste4\
 	_usertests\
 	_wc\
 	_zombie\

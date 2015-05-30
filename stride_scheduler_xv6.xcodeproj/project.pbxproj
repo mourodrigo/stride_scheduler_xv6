@@ -66,6 +66,8 @@
 		3049819B1B169B3F00A1CE18 /* switchScheduler.c in Sources */ = {isa = PBXBuildFile; fileRef = 304981991B169B3F00A1CE18 /* switchScheduler.c */; };
 		BBAC8CAE1B19DFC000F6CC66 /* teste1.c in Sources */ = {isa = PBXBuildFile; fileRef = BBAC8CAC1B19DFC000F6CC66 /* teste1.c */; };
 		BBAC8CB11B19E39D00F6CC66 /* teste2.c in Sources */ = {isa = PBXBuildFile; fileRef = BBAC8CAF1B19E39D00F6CC66 /* teste2.c */; };
+		BBAC8CB41B19E66400F6CC66 /* teste3.c in Sources */ = {isa = PBXBuildFile; fileRef = BBAC8CB21B19E66400F6CC66 /* teste3.c */; };
+		BBAC8CB71B19E6EE00F6CC66 /* teste4.c in Sources */ = {isa = PBXBuildFile; fileRef = BBAC8CB51B19E6EE00F6CC66 /* teste4.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -187,6 +189,10 @@
 		BBAC8CAD1B19DFC000F6CC66 /* teste1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = teste1.h; sourceTree = "<group>"; };
 		BBAC8CAF1B19E39D00F6CC66 /* teste2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = teste2.c; sourceTree = "<group>"; };
 		BBAC8CB01B19E39D00F6CC66 /* teste2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = teste2.h; sourceTree = "<group>"; };
+		BBAC8CB21B19E66400F6CC66 /* teste3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = teste3.c; sourceTree = "<group>"; };
+		BBAC8CB31B19E66400F6CC66 /* teste3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = teste3.h; sourceTree = "<group>"; };
+		BBAC8CB51B19E6EE00F6CC66 /* teste4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = teste4.c; sourceTree = "<group>"; };
+		BBAC8CB61B19E6EE00F6CC66 /* teste4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = teste4.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +324,10 @@
 				BBAC8CAD1B19DFC000F6CC66 /* teste1.h */,
 				BBAC8CAF1B19E39D00F6CC66 /* teste2.c */,
 				BBAC8CB01B19E39D00F6CC66 /* teste2.h */,
+				BBAC8CB21B19E66400F6CC66 /* teste3.c */,
+				BBAC8CB31B19E66400F6CC66 /* teste3.h */,
+				BBAC8CB51B19E6EE00F6CC66 /* teste4.c */,
+				BBAC8CB61B19E6EE00F6CC66 /* teste4.h */,
 				304981521B16765600A1CE18 /* usys.S */,
 				304981531B16765600A1CE18 /* vectors.pl */,
 				304981541B16765600A1CE18 /* vm.c */,
@@ -390,6 +400,7 @@
 				3049817E1B16765600A1CE18 /* stressfs.c in Sources */,
 				304981641B16765600A1CE18 /* grep.c in Sources */,
 				304981851B16765600A1CE18 /* trap.c in Sources */,
+				BBAC8CB71B19E6EE00F6CC66 /* teste4.c in Sources */,
 				304981581B16765600A1CE18 /* bio.c in Sources */,
 				304981731B16765600A1CE18 /* mkdir.c in Sources */,
 				3049815F1B16765600A1CE18 /* entryother.S in Sources */,
@@ -433,6 +444,7 @@
 				304981651B16765600A1CE18 /* ide.c in Sources */,
 				3049818E1B16765600A1CE18 /* zombie.c in Sources */,
 				3049816B1B16765600A1CE18 /* kill.c in Sources */,
+				BBAC8CB41B19E66400F6CC66 /* teste3.c in Sources */,
 				304981591B16765600A1CE18 /* bootasm.S in Sources */,
 				3049815E1B16765600A1CE18 /* entry.S in Sources */,
 				304981891B16765600A1CE18 /* umalloc.c in Sources */,

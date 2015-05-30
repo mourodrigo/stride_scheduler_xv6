@@ -53,7 +53,7 @@ found:
         p->tickets = tickets;
         p->pass = 0;
         p->stride = 10000 / p->tickets;
-        cprintf("Processo id criado: %d",p->pid);
+        cprintf("Processo pid %d criado",p->pid);
         //#stride end
     }
     

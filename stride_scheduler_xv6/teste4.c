@@ -1,5 +1,5 @@
 //
-//  teste2.c
+//  teste4.c
 //  stride_scheduler_xv6
 //
 //  Created by Rodrigo Bueno Tomiosso
@@ -62,10 +62,11 @@ int forkTest(int i,int tickets){
 int
 main(void)
 {
-    printf(0, "\nEste teste criara 3 processos com o mesmo numero de tickets que calcularao o fatorial de 0 ate 12 por 20 vezes com um intervalo de 100ms");
+    printf(0, "\nEste teste criara 1000 processos percorendo um for atribuindo tickets de 1 a 1000 que calcularao o fatorial de 0 ate 12 por 20 vezes com um intervalo de 100ms");
     sleep(SLEEP*10);
-    forkTest(1,200);
-    forkTest(2,200);
-    forkTest(3,200);
+    int proc = 0;
+    for (proc=proc; proc<=1000; proc++) {
+        forkTest(proc, proc);
+    }
     exit();
 }
