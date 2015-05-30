@@ -65,7 +65,7 @@ main(void)
     printf(0, "\nEste teste criara 10 processos com  tickets de 1 a 10 que calcularao o fatorial de 0 ate 12 por 10 a 1 vezes respectivamente com um intervalo de 100ms");
     int round = 10;
     int x=0;
-    for (x = x; x<=round; x++) {
+    for (x = x; x<round; x++) {
         forkTest(x,x,round-x);
     }
     
