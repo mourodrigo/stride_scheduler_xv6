@@ -15,7 +15,7 @@ struct {
 static struct proc *initproc;
 
 int nextpid = 1;
-int isRoundRobin=0; //#stride
+int isRoundRobin=0; //#stride //parametro para alternar entre escalonadores, se for 0 o escalonador sera o stride scheduler
 extern void forkret(void);
 extern void trapret(void);
 
@@ -50,10 +50,12 @@ found:
   p->pid = nextpid++;
     if (!isRoundRobin) {
         //#stride
-        p->tickets = tickets;
-        p->pass = 0;
-        p->stride = 10000 / p->tickets;
+        p->tickets = tickets; //processo recebe o numero de tickets passado
+        p->pass = 0; //processo inicia zerado
+        p->stride = 10000 / p->tickets; // calculo do tamanho do passo
+#ifdef DEBUGSTRIDE
         cprintf("Processo pid %d criado",p->pid);
+#endif
         //#stride end
     }
     
@@ -164,17 +166,19 @@ fork(int tickets)
       np->ofile[i] = filedup(proc->ofile[i]);
   np->cwd = idup(proc->cwd);
 
-//  safestrcpy(np->name, proc->name, sizeof(proc->name)); //#stride
- 
   pid = np->pid;
 
   // lock to force the compiler to emit the np->state write last.
-//  acquire(&ptable.lock); //#stride
-  np->state = RUNNABLE;
+    if (isRoundRobin) {//#stride
+        acquire(&ptable.lock);
+    }
 
-  safestrcpy(np->name, proc->name, sizeof(proc->name)); //#stride //teletar?
+    np->state = RUNNABLE;
 
-//  release(&ptable.lock); //#stride
+  safestrcpy(np->name, proc->name, sizeof(proc->name));
+    if (isRoundRobin) {//#stride
+        release(&ptable.lock);
+    }
   
   return pid;
 }
@@ -199,9 +203,13 @@ exit(void)
     }
   }
 
-//  begin_op(); //#stride
-  iput(proc->cwd);
-//  end_op(); //#stride
+    if (isRoundRobin) { //#stride
+        begin_op();
+    }
+    iput(proc->cwd);
+    if (isRoundRobin) { //#stride
+          end_op();
+    }
   proc->cwd = 0;
 
   acquire(&ptable.lock);
@@ -276,10 +284,6 @@ wait(void)
 //  - eventually that process transfers control
 //      via swtch back to the scheduler.
 
-//void //#stride ##OLD STRUCTURE OF SCHEDULER METHOD##
-//scheduler(void)
-//{
-//}
 
 void
 scheduler(void) //#stride
@@ -316,54 +320,40 @@ scheduler(void) //#stride
 
     }else{
         struct proc *p;
-        struct proc *current;
+        struct proc *current = 0;
         
         for(;;){
-            // Enable interrupts on this processor.
+            // Habilita interrrupções no processador.
             sti();
             int minPass = -1;
-            // Loop over process table looking for process to run.
             acquire(&ptable.lock);
-            for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+            for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){// Passa pelos processos procurando o próximo à executar.
+                
                 if(p->state != RUNNABLE)
                   continue;
-                if (minPass < 0 || p->pass < minPass){
+                if (minPass < 0 || p->pass < minPass){//se o processo atual esta em executando e ainda nao chegou no passo total
                     current = p;
                     minPass = p->pass;
-                    if (current->pass!=0 && current->tickets>1) {
-                        cprintf("PID %d Passo: %d  Tickets %d",current->pid,current->pass,current->tickets);
-                    }
                 }
-                // Switch to chosen process.  It is the process's job
-                // to release ptable.lock and then reacquire it
-                // before jumping back to us.
-                if (p->pass!=0 && p->tickets>1) {
-                    cprintf("PID %d Passo: %d Tickets %d",p->pid,p->pass,p->tickets);
-                }
-                
             }
-            if (current->pass!=0 && current->tickets>1) {
-                cprintf("PID %d Passo: %d  Tickets %d",current->pid,current->pass,current->tickets);
-            }
-            proc = current;
-            current->pass += current->stride;
-            switchuvm(current);
-            current->state = RUNNING;
-            current->usage = current->usage+1;
+//            if (current->pass!=0 && current->tickets>1) {#stride faz com que imprima na tela as informações do processo percorrido
+//                cprintf("PID %d Passo: %d  Tickets %d",current->pid,current->pass,current->tickets);
+//            }
+            proc = current; //define o processo atual para execução
+            current->pass += current->stride; // define a passada do processo
+            switchuvm(current);//Alterna registradores para o processo current
+            current->state = RUNNING;//define o processo como RUNNING
+            current->usage = current->usage+1;//aumenta o passo do processo
 
-	    //cprintf("Passo: %d",current->stride);
-            swtch(&cpu->scheduler, proc->context);
+            //cprintf("Passo: %d",current->stride);
+            swtch(&cpu->scheduler, proc->context);//passa para o contexto do processo
             switchkvm();
             
-            // Process is done running for now.
-            // It should have changed its p->state before coming back.
+            //Quando terminar a execução e voltar para o contexto imprime o passo do processo
             if (current->pass!=0 && current->tickets>1) {
                 cprintf("PID %d Passo: %d  Tickets %d",current->pid,current->pass,current->tickets);
             }
-            
-            
             proc = 0;
-            
             release(&ptable.lock);
             
         }
@@ -403,36 +393,31 @@ yield(void)
 // A fork child's very first scheduling by scheduler()
 // will swtch here.  "Return" to user space.
 
-//void
-//forkret(void) //#stride ##OLD FORKRET STRUCTURE##
-//{
-//}
-
 
 void
-forkret(void) //#stride
+forkret(void)
 {
-    if (isRoundRobin) {
-          static int first = 1;
-          // Still holding ptable.lock from scheduler.
-          release(&ptable.lock);
-        
-          if (first) {
-            // Some initialization functions must be run in the context
-            // of a regular process (e.g., they call sleep), and thus cannot
-            // be run from main().
-            first = 0;
-            initlog();
-          }
-        
-          // Return to "caller", actually trapret (see allocproc).
-
-    }else{
-        // Still holding ptable.lock from scheduler.
-        release(&ptable.lock);
-        
-    }
-    
+//    if (isRoundRobin) { //#stride
+//          static int first = 1;
+//          // Still holding ptable.lock from scheduler.
+//          release(&ptable.lock);
+//        
+//          if (first) {
+//            // Some initialization functions must be run in the context
+//            // of a regular process (e.g., they call sleep), and thus cannot
+//            // be run from main().
+//            first = 0;
+//            initlog();
+//          }
+//        
+//          // Return to "caller", actually trapret (see allocproc).
+//
+//    }else{
+//        // Still holding ptable.lock from scheduler.
+//        release(&ptable.lock);
+//        
+//    }
+    release(&ptable.lock);
     // Return to "caller", actually trapret (see allocproc).
 }
 

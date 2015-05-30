@@ -9,7 +9,7 @@
 #define SEG_UDATA 5  // user data+stack
 #define SEG_TSS   6  // this process's task state
 #define NSEGS     7
-#define TICKET_NUMERATOR 100000;
+#define TICKET_NUMERATOR 100000; //#stride constante para os tickets
 
 
 // Per-CPU state
@@ -82,10 +82,10 @@ struct proc {
     struct inode *cwd;           // Current directory
     char name[16];               // Process name (debugging)
    
-    int tickets;                 //#stride Number of tickets
-    int usage;                   //#stride Tickets in usage
-    int stride;                  //#stride Stride to do
-    int pass;                    //#stride Passes done
+    int tickets;                 //#stride Numero de tickets
+    int usage;                   //#stride Uso da CPU
+    int stride;                  //#stride Tamanho do passo
+    int pass;                    //#stride Passos efetuados
 };
 
 // ## Old round robin structure of proc ##

@@ -30,7 +30,4 @@ SYSCALL(sbrk)
 SYSCALL(sleep)
 SYSCALL(uptime)
 SYSCALL(getusage)
-SYSCALL(getpass)
 SYSCALL(settickets)
-
-//SYSCALL(switchScheduler)

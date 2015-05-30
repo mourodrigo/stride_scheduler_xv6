@@ -11,7 +11,4 @@
 #define LOGSIZE      (MAXOPBLOCKS*3)  // max data blocks in on-disk log
 #define NBUF         (MAXOPBLOCKS*3)  // size of disk block cache
 #define FSSIZE       1000  // size of file system in blocks
-
-//#stride
-#define USERTOP  0xA0000 // end of user address space
-#define PHYSTOP  0x1000000 // use phys mem up to here as free pool
+#define DEBUGSTRIDE        //#stride constante de debug

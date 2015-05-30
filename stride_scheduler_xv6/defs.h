@@ -118,7 +118,7 @@ void            userinit(void);
 int             wait(void);
 void            wakeup(void*);
 void            yield(void);
-int            switchScheduler(void); //#stride
+int            switchScheduler(void); //#stride alterna entre escalonadores
 
 // swtch.S
 void            swtch(struct context**, struct context*);
