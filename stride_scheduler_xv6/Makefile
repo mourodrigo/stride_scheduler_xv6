@@ -171,6 +171,7 @@ UPROGS=\
 	_sh\
 	_stressfs\
     _switchScheduler\
+    _teste1\
 	_usertests\
 	_wc\
 	_zombie\
