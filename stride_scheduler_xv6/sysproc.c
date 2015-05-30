@@ -112,3 +112,8 @@ int
 sys_getusage(void) {
     return proc->usage;
 }
+
+int
+sys_getpass(void) {
+    return proc->pass;
+}

@@ -101,6 +101,7 @@ extern int sys_uptime(void);
 
 extern int sys_settickets(void); //#stride
 extern int sys_getusage(void); //#stride
+extern int sys_getpass(void); //#stride
 extern int sys_switchScheduler(void);//#stride
 
 static int (*syscalls[])(void) = {
@@ -127,6 +128,8 @@ static int (*syscalls[])(void) = {
 [SYS_close]   sys_close,
 [SYS_settickets] sys_settickets, //#stride
 [SYS_getusage] sys_getusage, //#stride
+[SYS_getpass] sys_getpass, //#stride
+
 };
 
 void

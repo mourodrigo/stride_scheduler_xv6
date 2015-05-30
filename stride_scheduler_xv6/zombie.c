@@ -27,10 +27,10 @@ void zombie(int pi,int tickets){
 			}
 			
 		}
-	printf(0, "\nturn %d indice %d pid %d tickets %d tempoCPU %d Fatorial %d = %d",turn,pi,getpid(),tickets,getusage(),x,result);	
+	printf(0, "\nturn %d indice %d pid %d tickets %d tempoCPU %d Passo %d Fatorial %d = %d",turn,pi,getpid(),tickets,getusage(),getpass(),x,result);
 	sleep(SLEEP);
 	}
-	printf(0, "\nturn %d indice %d pid %d tickets %d tempoCPU %d Fatorial %d = %d",turn,pi,getpid(),tickets,getusage(),x,result);
+	printf(0, "\nturn %d indice %d pid %d tickets %d tempoCPU %d Passo %d Fatorial %d = %d",turn,pi,getpid(),tickets,getusage(),getpass(),x,result);
     sleep(SLEEP);
 	exit();
 }
@@ -68,5 +68,8 @@ main(void)
 	forkTest(200,200);
 	forkTest(500,500);
 	forkTest(800,800);
+    forkTest(800,800);
+    forkTest(800,800);
+    
     exit();
 }
