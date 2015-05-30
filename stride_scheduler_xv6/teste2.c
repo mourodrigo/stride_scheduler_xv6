@@ -48,7 +48,7 @@ int forkTest(int i,int tickets){
     {
         // processo pai
         //zombie(i);
-        exit();
+        
     }
     else
     {
