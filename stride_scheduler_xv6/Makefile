@@ -175,6 +175,7 @@ UPROGS=\
     _teste2\
     _teste3\
     _teste4\
+    _teste5\
 	_usertests\
 	_wc\
 	_zombie\

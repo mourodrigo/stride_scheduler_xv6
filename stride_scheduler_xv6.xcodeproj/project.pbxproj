@@ -68,6 +68,7 @@
 		BBAC8CB11B19E39D00F6CC66 /* teste2.c in Sources */ = {isa = PBXBuildFile; fileRef = BBAC8CAF1B19E39D00F6CC66 /* teste2.c */; };
 		BBAC8CB41B19E66400F6CC66 /* teste3.c in Sources */ = {isa = PBXBuildFile; fileRef = BBAC8CB21B19E66400F6CC66 /* teste3.c */; };
 		BBAC8CB71B19E6EE00F6CC66 /* teste4.c in Sources */ = {isa = PBXBuildFile; fileRef = BBAC8CB51B19E6EE00F6CC66 /* teste4.c */; };
+		BBAC8CBA1B1A081D00F6CC66 /* teste5.c in Sources */ = {isa = PBXBuildFile; fileRef = BBAC8CB81B1A081D00F6CC66 /* teste5.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -193,6 +194,8 @@
 		BBAC8CB31B19E66400F6CC66 /* teste3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = teste3.h; sourceTree = "<group>"; };
 		BBAC8CB51B19E6EE00F6CC66 /* teste4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = teste4.c; sourceTree = "<group>"; };
 		BBAC8CB61B19E6EE00F6CC66 /* teste4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = teste4.h; sourceTree = "<group>"; };
+		BBAC8CB81B1A081D00F6CC66 /* teste5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = teste5.c; sourceTree = "<group>"; };
+		BBAC8CB91B1A081D00F6CC66 /* teste5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = teste5.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,6 +331,8 @@
 				BBAC8CB31B19E66400F6CC66 /* teste3.h */,
 				BBAC8CB51B19E6EE00F6CC66 /* teste4.c */,
 				BBAC8CB61B19E6EE00F6CC66 /* teste4.h */,
+				BBAC8CB81B1A081D00F6CC66 /* teste5.c */,
+				BBAC8CB91B1A081D00F6CC66 /* teste5.h */,
 				304981521B16765600A1CE18 /* usys.S */,
 				304981531B16765600A1CE18 /* vectors.pl */,
 				304981541B16765600A1CE18 /* vm.c */,
@@ -427,6 +432,7 @@
 				3049815B1B16765600A1CE18 /* cat.c in Sources */,
 				304981901B1677F700A1CE18 /* hello.c in Sources */,
 				3049817A1B16765600A1CE18 /* rm.c in Sources */,
+				BBAC8CBA1B1A081D00F6CC66 /* teste5.c in Sources */,
 				304981721B16765600A1CE18 /* memide.c in Sources */,
 				3049816F1B16765600A1CE18 /* ls.c in Sources */,
 				BBAC8CB11B19E39D00F6CC66 /* teste2.c in Sources */,

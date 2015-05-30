@@ -10,7 +10,7 @@
 
 #define SLEEP 100
 
-//Recebe um numero identificador e numero de tickets, em seguida calcula o fatorial de x por turn vezez exibindo a cada iteração:
+//Recebe um numero identificador e numero de tickets, em seguida calcula o fatorial de x por turn vezes exibindo a cada iteração:
 //o turn, indice, pid, numero de tíckets, tempo de CPU, e o fatorial de x.
 //OBS: Há um sleep de 100ms para melhor acompanhamento
 void zombie(int pi,int tickets,int rodadas){
@@ -62,47 +62,12 @@ int forkTest(int i,int tickets,int rodadas){
 int
 main(void)
 {
-    printf(0, "\nEste teste criara 3 processos com o 200,500,700 tickets que calcularao o fatorial de 0 ate 12 por 20 vezes com um intervalo de 100ms");
-/*    sleep(SLEEP*10);
-    forkTest(100,100);
-    settickets(100);
-    sleep(SLEEP);
-    forkTest(250,250);
-    settickets(250);
-    sleep(SLEEP);
-
-    forkTest(500,500);
-    settickets(500);
-    sleep(SLEEP);
-
-    forkTest(1,1);
-    settickets(1);
-    sleep(SLEEP);
-
-    forkTest(2,2);
-    settickets(2);
-    sleep(SLEEP);
-
-    forkTest(5,5);
-    settickets(5);
-    sleep(SLEEP);
-*/
+    printf(0, "\nEste teste criara 3 processos com 10,5,2 tickets que calcularao o fatorial de 0 ate 12 por 30 vezes respectivamente com um intervalo de 100ms");
     
-    forkTest(10,10,100);
-    settickets(10);
+    forkTest(10,10,30);
+    forkTest(5,5,30);
+    forkTest(2,2,30);
     sleep(500);
-
-    forkTest(5,5,50);
-    settickets(5);
-    sleep(500);
-
-    forkTest(2,2,25);
-    settickets(2);
-    sleep(500);
-//
-//    forkTest(1,1,1);
-//    settickets(1);
-//    sleep(500);
     
     exit();
 }
