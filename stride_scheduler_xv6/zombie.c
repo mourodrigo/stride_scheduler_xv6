@@ -28,10 +28,10 @@ void zombie(int pi,int tickets){
 			
 		}
 	printf(0, "\nturn %d indice %d pid %d tickets %d tempoCPU %d Passo %d Fatorial %d = %d",turn,pi,getpid(),tickets,getusage(),getpass(),x,result);
-	sleep(SLEEP);
+//	sleep(SLEEP);
 	}
 	printf(0, "\nturn %d indice %d pid %d tickets %d tempoCPU %d Passo %d Fatorial %d = %d",turn,pi,getpid(),tickets,getusage(),getpass(),x,result);
-    sleep(SLEEP);
+//    sleep(SLEEP);
 	exit();
 }
 
