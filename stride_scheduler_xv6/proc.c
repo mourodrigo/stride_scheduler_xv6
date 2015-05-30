@@ -326,10 +326,7 @@ scheduler(void) //#stride
             acquire(&ptable.lock);
             for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
                 if(p->state != RUNNABLE)
-                    if (current->pass!=0 && current->tickets>1) {
-                        cprintf("PID %d Passo: %d  Tickets %d",current->pid,current->pass,current->tickets);
-                    }
-                    continue;
+                  continue;
                 if (minPass < 0 || p->pass < minPass){
                     current = p;
                     minPass = p->pass;
