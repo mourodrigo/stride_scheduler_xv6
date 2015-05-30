@@ -335,12 +335,12 @@ scheduler(void) //#stride
                 // to release ptable.lock and then reacquire it
                 // before jumping back to us.
                 if (p->pass!=0 && p->tickets>1) {
-                    cprintf("PID %d Passo: %d ",p->pid,p->pass,p->tickets);
+                    cprintf("PID %d Passo: %d Tickets %d",p->pid,p->pass,p->tickets);
                 }
                 
             }
             if (current->pass!=0 && current->tickets>1) {
-                cprintf("PID %d Passo: %d ",current->pid,current->pass,current->tickets);
+                cprintf("PID %d Passo: %d  Tickets %d",current->pid,current->pass,current->tickets);
             }
             proc = current;
             current->pass += current->stride;
@@ -355,7 +355,7 @@ scheduler(void) //#stride
             // Process is done running for now.
             // It should have changed its p->state before coming back.
             if (current->pass!=0 && current->tickets>1) {
-                cprintf("PID %d Passo: %d ",current->pid,current->pass,current->tickets);
+                cprintf("PID %d Passo: %d  Tickets %d",current->pid,current->pass,current->tickets);
             }
             
             

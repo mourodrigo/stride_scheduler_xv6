@@ -48,6 +48,7 @@ int forkTest(int i,int tickets){
     {
         // processo pai
         //zombie(i);
+        exit();
     }
     else
     {
@@ -65,9 +66,16 @@ main(void)
     printf(0, "\nEste teste criara 5 processos com o mesmo numero de tickets que calcularao o fatorial de 0 ate 12 por 20 vezes com um intervalo de 100ms");
     sleep(SLEEP*10);
     forkTest(1,200);
+    sleep(SLEEP);
     forkTest(2,200);
+    sleep(SLEEP);
+
     forkTest(3,200);
+    sleep(SLEEP);
+
     forkTest(4,200);
+    sleep(SLEEP);
+
     forkTest(5,200);
 
     exit();
