@@ -88,21 +88,21 @@ main(void)
     sleep(SLEEP);
 */
     
-    forkTest(10,10,10);
+    forkTest(10,10,30);
     settickets(10);
     sleep(500);
 
-    forkTest(5,5,10);
+    forkTest(5,5,30);
     settickets(5);
     sleep(500);
 
-    forkTest(2,2,2);
+    forkTest(2,2,5);
     settickets(2);
     sleep(500);
-
-    forkTest(1,1,1);
-    settickets(1);
-    sleep(500);
+//
+//    forkTest(1,1,1);
+//    settickets(1);
+//    sleep(500);
     
     exit();
 }
