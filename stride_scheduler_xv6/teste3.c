@@ -13,9 +13,9 @@
 //Recebe um numero identificador e numero de tickets, em seguida calcula o fatorial de x por turn vezez exibindo a cada iteração:
 //o turn, indice, pid, numero de tíckets, tempo de CPU, e o fatorial de x.
 //OBS: Há um sleep de 100ms para melhor acompanhamento
-void zombie(int pi,int tickets){
+void zombie(int pi,int tickets,int rodadas){
     printf(0, "\nIniciando pid %d\n",getpid());
-    uint x=0; uint y=0; uint turn = 200;
+    uint x=0; uint y=0; uint turn = rodadas;
     uint limit = 12;
     uint result = 0;
     for(turn=turn;turn!=1;turn--){
@@ -35,14 +35,14 @@ void zombie(int pi,int tickets){
 }
 
 //Recebe um numero identificador e numero de tickets que é utilizado na chamada fork
-int forkTest(int i,int tickets){
+int forkTest(int i,int tickets,int rodadas){
     int counter = 0;
     int pid = fork(tickets);
     
     if (pid == 0)
     {
         // processo filho
-        zombie(i,tickets);
+        zombie(i,tickets,rodadas);
     }
     else if (pid > 0)
     {
@@ -88,19 +88,19 @@ main(void)
     sleep(SLEEP);
 */
     
-    forkTest(10,10);
+    forkTest(10,10,10);
     settickets(10);
     sleep(500);
 
-    forkTest(5,5);
+    forkTest(5,5,10);
     settickets(5);
     sleep(500);
 
-    forkTest(2,2);
+    forkTest(2,2,2);
     settickets(2);
     sleep(500);
 
-    forkTest(1,1);
+    forkTest(1,1,1);
     settickets(1);
     sleep(500);
     
