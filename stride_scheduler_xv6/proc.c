@@ -326,10 +326,16 @@ scheduler(void) //#stride
             acquire(&ptable.lock);
             for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
                 if(p->state != RUNNABLE)
+                    if (current->pass!=0 && current->tickets>1) {
+                        cprintf("PID %d Passo: %d  Tickets %d",current->pid,current->pass,current->tickets);
+                    }
                     continue;
                 if (minPass < 0 || p->pass < minPass){
                     current = p;
                     minPass = p->pass;
+                    if (current->pass!=0 && current->tickets>1) {
+                        cprintf("PID %d Passo: %d  Tickets %d",current->pid,current->pass,current->tickets);
+                    }
                 }
                 // Switch to chosen process.  It is the process's job
                 // to release ptable.lock and then reacquire it

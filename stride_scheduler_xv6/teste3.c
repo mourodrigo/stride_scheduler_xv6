@@ -66,16 +66,26 @@ main(void)
     sleep(SLEEP*10);
     forkTest(100,100);
     settickets(100);
+    sleep(SLEEP);
     forkTest(250,250);
     settickets(250);
+    sleep(SLEEP);
+
     forkTest(500,500);
     settickets(500);
+    sleep(SLEEP);
+
     forkTest(1,1);
     settickets(1);
+    sleep(SLEEP);
+
     forkTest(2,2);
     settickets(2);
+    sleep(SLEEP);
+
     forkTest(5,5);
     settickets(5);
+    sleep(SLEEP);
 
     exit();
 }
