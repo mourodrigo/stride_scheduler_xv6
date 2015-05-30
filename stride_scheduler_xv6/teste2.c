@@ -64,8 +64,8 @@ main(void)
 {
     printf(0, "\nEste teste criara 3 processos com o mesmo numero de tickets que calcularao o fatorial de 0 ate 12 por 2 vezes com um intervalo de 100ms");
     sleep(SLEEP*10);
-    forkTest(200,200);
-    forkTest(500,500);
-    forkTest(800,800);
+    forkTest(1,200);
+    forkTest(2,200);
+    forkTest(3,200);
     exit();
 }
