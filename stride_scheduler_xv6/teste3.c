@@ -88,7 +88,7 @@ main(void)
     sleep(SLEEP);
 */
     
-    forkTest(5,10);
+    forkTest(10,10);
     settickets(10);
     sleep(5000);
 
