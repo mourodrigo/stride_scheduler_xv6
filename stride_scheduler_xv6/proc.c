@@ -334,7 +334,13 @@ scheduler(void) //#stride
                 // Switch to chosen process.  It is the process's job
                 // to release ptable.lock and then reacquire it
                 // before jumping back to us.
+                if (p->pass!=0 && p->tickets>1) {
+                    cprintf("PID %d Passo: %d ",p->pid,p->pass,p->tickets);
+                }
                 
+            }
+            if (current->pass!=0 && current->tickets>1) {
+                cprintf("PID %d Passo: %d ",current->pid,current->pass,current->tickets);
             }
             proc = current;
             current->pass += current->stride;
@@ -348,9 +354,10 @@ scheduler(void) //#stride
             
             // Process is done running for now.
             // It should have changed its p->state before coming back.
-            if (current->pass!=0) {
-                cprintf("PID %d Passo: %d",current->pid,current->pass);
+            if (current->pass!=0 && current->tickets>1) {
+                cprintf("PID %d Passo: %d ",current->pid,current->pass,current->tickets);
             }
+            
             
             proc = 0;
             
