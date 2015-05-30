@@ -64,6 +64,7 @@
 		3049818E1B16765600A1CE18 /* zombie.c in Sources */ = {isa = PBXBuildFile; fileRef = 304981571B16765600A1CE18 /* zombie.c */; };
 		304981901B1677F700A1CE18 /* hello.c in Sources */ = {isa = PBXBuildFile; fileRef = 3049818F1B1677F700A1CE18 /* hello.c */; };
 		3049819B1B169B3F00A1CE18 /* switchScheduler.c in Sources */ = {isa = PBXBuildFile; fileRef = 304981991B169B3F00A1CE18 /* switchScheduler.c */; };
+		BBAC8CAE1B19DFC000F6CC66 /* teste1.c in Sources */ = {isa = PBXBuildFile; fileRef = BBAC8CAC1B19DFC000F6CC66 /* teste1.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -181,6 +182,8 @@
 		3049818F1B1677F700A1CE18 /* hello.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hello.c; sourceTree = "<group>"; };
 		304981991B169B3F00A1CE18 /* switchScheduler.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = switchScheduler.c; sourceTree = "<group>"; };
 		3049819A1B169B3F00A1CE18 /* switchScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = switchScheduler.h; sourceTree = "<group>"; };
+		BBAC8CAC1B19DFC000F6CC66 /* teste1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = teste1.c; sourceTree = "<group>"; };
+		BBAC8CAD1B19DFC000F6CC66 /* teste1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = teste1.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,6 +311,8 @@
 				3049814F1B16765600A1CE18 /* umalloc.c */,
 				304981501B16765600A1CE18 /* user.h */,
 				304981511B16765600A1CE18 /* usertests.c */,
+				BBAC8CAC1B19DFC000F6CC66 /* teste1.c */,
+				BBAC8CAD1B19DFC000F6CC66 /* teste1.h */,
 				304981521B16765600A1CE18 /* usys.S */,
 				304981531B16765600A1CE18 /* vectors.pl */,
 				304981541B16765600A1CE18 /* vm.c */,
@@ -383,6 +388,7 @@
 				304981581B16765600A1CE18 /* bio.c in Sources */,
 				304981731B16765600A1CE18 /* mkdir.c in Sources */,
 				3049815F1B16765600A1CE18 /* entryother.S in Sources */,
+				BBAC8CAE1B19DFC000F6CC66 /* teste1.c in Sources */,
 				304981771B16765600A1CE18 /* pipe.c in Sources */,
 				304981861B16765600A1CE18 /* trapasm.S in Sources */,
 				304981761B16765600A1CE18 /* picirq.c in Sources */,
@@ -547,6 +553,7 @@
 				304980571B1675D100A1CE18 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,8 +1,8 @@
 //
 //  hello.c
-//  xv6_xcode
+//  stride_scheduler_xv6
 //
-//  Created by Rodrigo Bueno Tomiosso on 24/05/15.
+//  Created by Rodrigo Bueno Tomiosso
 //  Copyright (c) 2015 mourodrigo. All rights reserved.
 //
 
@@ -13,7 +13,7 @@
 int
 main(int argc, char *argv[])
 {
-    printf(0, "\nHELLO WORLD xv6 0\n");
-    printf(1, "\nHELLO WORLD xv6 1\n");
+    printf(0, "\nTestando printf para o xv6!! 0\n");
+    printf(1, "\nTestando printf para o xv6!! 1\n");
     exit();
 }

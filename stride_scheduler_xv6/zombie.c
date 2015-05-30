@@ -2,7 +2,7 @@
 //  zombie.c
 //  stride_scheduler_xv6
 //
-//  Created by Rodrigo Bueno Tomiosso on 12/05/15.
+//  Created by Rodrigo Bueno Tomiosso
 //  Copyright (c) 2015 mourodrigo. All rights reserved.
 //
 
