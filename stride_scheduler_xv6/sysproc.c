@@ -99,12 +99,12 @@ sys_uptime(void)
 //#stride
 
 int
-sys_settickets(void) {
-    int tix;
-    if(argint(0, &tix) < 0)
-        return -1;
-    proc->tickets = tix;
-    proc->stride = 10000 / tix;
+sys_settickets(int tickets) {
+//    int tix;
+//    if(argint(0, &tix) < 0)
+//        return -1;
+    proc->tickets = tickets;
+    proc->stride = 10000 / tickets;
     return 0;
 }
 

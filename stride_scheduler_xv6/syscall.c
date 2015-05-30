@@ -99,7 +99,7 @@ extern int sys_wait(void);
 extern int sys_write(void);
 extern int sys_uptime(void);
 
-extern int sys_settickets(void); //#stride
+extern int sys_settickets(int tickets); //#stride
 extern int sys_getusage(void); //#stride
 extern int sys_getpass(void); //#stride
 extern int sys_switchScheduler(void);//#stride
