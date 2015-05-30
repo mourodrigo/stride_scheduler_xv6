@@ -54,7 +54,7 @@ found:
         p->pass = 0; //processo inicia zerado
         p->stride = 10000 / p->tickets; // calculo do tamanho do passo
 #ifdef DEBUGSTRIDE
-        cprintf("Processo pid %d criado",p->pid);
+        cprintf("Processo pid %d criado com %d tickets e passo %d ",p->pid,p->tickets, p->stride);
 #endif
         //#stride end
     }
