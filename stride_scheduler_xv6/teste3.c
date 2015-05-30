@@ -90,10 +90,19 @@ main(void)
     
     forkTest(10,10);
     settickets(10);
-    sleep(5000);
+    sleep(500);
 
     forkTest(5,5);
     settickets(5);
+    sleep(500);
 
+    forkTest(2,2);
+    settickets(2);
+    sleep(500);
+
+    forkTest(1,1);
+    settickets(1);
+    sleep(500);
+    
     exit();
 }
