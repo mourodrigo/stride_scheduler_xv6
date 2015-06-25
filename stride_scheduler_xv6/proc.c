@@ -354,10 +354,7 @@ scheduler(void) //#stride
             //Quando terminar a execução e voltar para o contexto imprime o passo do processo
             if (current->pass!=0 && current->tickets>1 && current->pid!=1) {
                 cprintf("PID %d Passo: %d  Tickets %d",current->pid,current->pass,current->tickets);
-                for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
-                    cprintf(" pid %d tickets %d",p->pid,p->tickets);
-                    
-                }
+                
             }
             proc = 0;
             release(&ptable.lock);
@@ -548,11 +545,15 @@ procdump(void)
 }
 
 int switchScheduler(void){
-    isRoundRobin=!isRoundRobin;
-    if (isRoundRobin) {
-        cprintf("\nModo RoundRobin ativado!\n");
-    }else{
-        cprintf("\nModo Passo Largo ativado!\n");
+//    isRoundRobin=!isRoundRobin;
+//    if (isRoundRobin) {
+//        cprintf("\nModo RoundRobin ativado!\n");
+//    }else{
+//        cprintf("\nModo Passo Largo ativado!\n");
+//    }
+    for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+        cprintf(" pid %d tickets %d",p->pid,p->tickets);
+        
     }
     return isRoundRobin;
 }
