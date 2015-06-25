@@ -69,10 +69,20 @@
 		BBAC8CB41B19E66400F6CC66 /* teste3.c in Sources */ = {isa = PBXBuildFile; fileRef = BBAC8CB21B19E66400F6CC66 /* teste3.c */; };
 		BBAC8CB71B19E6EE00F6CC66 /* teste4.c in Sources */ = {isa = PBXBuildFile; fileRef = BBAC8CB51B19E6EE00F6CC66 /* teste4.c */; };
 		BBAC8CBA1B1A081D00F6CC66 /* teste5.c in Sources */ = {isa = PBXBuildFile; fileRef = BBAC8CB81B1A081D00F6CC66 /* teste5.c */; };
+		BBAC8CC21B1A61BB00F6CC66 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = BBAC8CC11B1A61BB00F6CC66 /* main.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		3049804C1B1675D100A1CE18 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		BBAC8CBD1B1A61B900F6CC66 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -196,10 +206,19 @@
 		BBAC8CB61B19E6EE00F6CC66 /* teste4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = teste4.h; sourceTree = "<group>"; };
 		BBAC8CB81B1A081D00F6CC66 /* teste5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = teste5.c; sourceTree = "<group>"; };
 		BBAC8CB91B1A081D00F6CC66 /* teste5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = teste5.h; sourceTree = "<group>"; };
+		BBAC8CBF1B1A61B900F6CC66 /* xv6_stride_scheduler */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = xv6_stride_scheduler; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBAC8CC11B1A61BB00F6CC66 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3049804B1B1675D100A1CE18 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBAC8CBC1B1A61B900F6CC66 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -213,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				304980501B1675D100A1CE18 /* stride_scheduler_xv6 */,
+				BBAC8CC01B1A61BB00F6CC66 /* xv6_stride_scheduler */,
 				3049804F1B1675D100A1CE18 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -221,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				3049804E1B1675D100A1CE18 /* stride_scheduler_xv6 */,
+				BBAC8CBF1B1A61B900F6CC66 /* xv6_stride_scheduler */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -343,6 +364,14 @@
 			path = stride_scheduler_xv6;
 			sourceTree = "<group>";
 		};
+		BBAC8CC01B1A61BB00F6CC66 /* xv6_stride_scheduler */ = {
+			isa = PBXGroup;
+			children = (
+				BBAC8CC11B1A61BB00F6CC66 /* main.c */,
+			);
+			path = xv6_stride_scheduler;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -363,6 +392,23 @@
 			productReference = 3049804E1B1675D100A1CE18 /* stride_scheduler_xv6 */;
 			productType = "com.apple.product-type.tool";
 		};
+		BBAC8CBE1B1A61B900F6CC66 /* xv6_stride_scheduler */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BBAC8CC31B1A61BC00F6CC66 /* Build configuration list for PBXNativeTarget "xv6_stride_scheduler" */;
+			buildPhases = (
+				BBAC8CBB1B1A61B900F6CC66 /* Sources */,
+				BBAC8CBC1B1A61B900F6CC66 /* Frameworks */,
+				BBAC8CBD1B1A61B900F6CC66 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = xv6_stride_scheduler;
+			productName = xv6_stride_scheduler;
+			productReference = BBAC8CBF1B1A61B900F6CC66 /* xv6_stride_scheduler */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -374,6 +420,9 @@
 				TargetAttributes = {
 					3049804D1B1675D100A1CE18 = {
 						CreatedOnToolsVersion = 6.3;
+					};
+					BBAC8CBE1B1A61B900F6CC66 = {
+						CreatedOnToolsVersion = 6.3.1;
 					};
 				};
 			};
@@ -390,6 +439,7 @@
 			projectRoot = "";
 			targets = (
 				3049804D1B1675D100A1CE18 /* stride_scheduler_xv6 */,
+				BBAC8CBE1B1A61B900F6CC66 /* xv6_stride_scheduler */,
 			);
 		};
 /* End PBXProject section */
@@ -461,6 +511,14 @@
 				3049818D1B16765600A1CE18 /* wc.c in Sources */,
 				3049816A1B16765600A1CE18 /* kbd.c in Sources */,
 				304981621B16765600A1CE18 /* forktest.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBAC8CBB1B1A61B900F6CC66 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBAC8CC21B1A61BB00F6CC66 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,6 +616,24 @@
 			};
 			name = Release;
 		};
+		BBAC8CC41B1A61BC00F6CC66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BBAC8CC51B1A61BC00F6CC66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -578,6 +654,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		BBAC8CC31B1A61BC00F6CC66 /* Build configuration list for PBXNativeTarget "xv6_stride_scheduler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBAC8CC41B1A61BC00F6CC66 /* Debug */,
+				BBAC8CC51B1A61BC00F6CC66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
