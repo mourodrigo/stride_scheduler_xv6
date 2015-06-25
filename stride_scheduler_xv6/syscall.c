@@ -127,6 +127,7 @@ static int (*syscalls[])(void) = {
 [SYS_close]   sys_close,
 [SYS_settickets] sys_settickets, //#stride //chamada do sistema para setar tickets
 [SYS_getusage] sys_getusage, //#stride ////chamada do sistema para obter o uso da cpu
+[SYS_switchScheduler] sys_switchScheduler, //#stride ////chamada do sistema para obter o uso da cpu
 
 };
 
