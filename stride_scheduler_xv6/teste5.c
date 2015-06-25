@@ -7,7 +7,7 @@
 //
 
 #include "teste3.h"
-
+/*
 #define SLEEP 100
 
 //Recebe um numero identificador e numero de tickets, em seguida calcula o fatorial de x por turn vezes exibindo a cada iteração:
@@ -58,7 +58,7 @@ int forkTest(int i,int tickets,int rodadas){
     
     return 0;
 }
-
+*/
 int
 main(void)
 {
