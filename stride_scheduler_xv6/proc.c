@@ -327,7 +327,7 @@ scheduler(void) //#stride
             sti();
             int minPass = -1;
             acquire(&ptable.lock);
-            cprintf("process list");
+//            cprintf("process list");
             
             for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){// Passa pelos processos procurando o próximo à executar.
                 
