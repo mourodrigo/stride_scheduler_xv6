@@ -13,7 +13,7 @@ main(int argc, char *argv[])
 {
     
     printf(0, "\nAlternando escalonador...\n");
-    switchScheduler();
+//    switchScheduler();
     exit();
 }
 

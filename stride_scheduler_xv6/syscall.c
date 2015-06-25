@@ -101,7 +101,7 @@ extern int sys_uptime(void);
 
 extern int sys_settickets(int tickets); //#stride //chamada do sistema para setar tickets
 extern int sys_getusage(void); //#stride //chamada do sistema para obter o uso da cpu
-extern int sys_switchScheduler(void);//#stride //chamada do sistema para alternar entre escalonadores
+//extern int sys_switchScheduler(void);//#stride //chamada do sistema para alternar entre escalonadores
 
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
@@ -127,7 +127,7 @@ static int (*syscalls[])(void) = {
 [SYS_close]   sys_close,
 [SYS_settickets] sys_settickets, //#stride //chamada do sistema para setar tickets
 [SYS_getusage] sys_getusage, //#stride ////chamada do sistema para obter o uso da cpu
-[SYS_switchScheduler] sys_switchScheduler, //#stride ////chamada do sistema para obter o uso da cpu
+//[SYS_switchScheduler] sys_switchScheduler, //#stride ////chamada do sistema para obter o uso da cpu
 
 };
 
