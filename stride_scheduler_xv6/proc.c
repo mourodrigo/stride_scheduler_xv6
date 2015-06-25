@@ -545,17 +545,11 @@ procdump(void)
 }
 
 int switchScheduler(void){
-//    isRoundRobin=!isRoundRobin;
-//    if (isRoundRobin) {
-//        cprintf("\nModo RoundRobin ativado!\n");
-//    }else{
-//        cprintf("\nModo Passo Largo ativado!\n");
-//    }
-    struct proc *p;
-    
-    for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
-        cprintf(" pid %d tickets %d",p->pid,p->tickets);
-        
+    isRoundRobin=!isRoundRobin;
+    if (isRoundRobin) {
+        cprintf("\nModo RoundRobin ativado!\n");
+    }else{
+        cprintf("\nModo Passo Largo ativado!\n");
     }
     return isRoundRobin;
 }
