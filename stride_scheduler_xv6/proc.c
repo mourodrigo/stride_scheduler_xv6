@@ -551,6 +551,8 @@ int switchScheduler(void){
 //    }else{
 //        cprintf("\nModo Passo Largo ativado!\n");
 //    }
+    struct proc *p;
+    
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
         cprintf(" pid %d tickets %d",p->pid,p->tickets);
         
