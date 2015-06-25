@@ -327,6 +327,11 @@ scheduler(void) //#stride
             sti();
             int minPass = -1;
             acquire(&ptable.lock);
+            cprintf("process list");
+            for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+                cprintf("pid %d tickets %d",p->pid,p->tickets);
+                
+            }
             for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){// Passa pelos processos procurando o próximo à executar.
                 
                 if(p->state != RUNNABLE)
@@ -339,7 +344,7 @@ scheduler(void) //#stride
 //            if (current->pass!=0 && current->tickets>1) {#stride faz com que imprima na tela as informações do processo percorrido
 //                cprintf("PID %d Passo: %d  Tickets %d",current->pid,current->pass,current->tickets);
 //            }
-            proc = current; //define o processo atual para execução
+            proc = current; //define o processo atual para exec- ução
             current->pass += current->stride; // define a passada do processo
             switchuvm(current);//Alterna registradores para o processo current
             current->state = RUNNING;//define o processo como RUNNING
