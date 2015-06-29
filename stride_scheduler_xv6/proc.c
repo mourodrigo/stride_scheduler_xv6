@@ -335,21 +335,27 @@ scheduler(void) //#stride
             
             int x=0;
             for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
-                if (p->pass > minProc->pass) {
+                if (p->pass > minProc->pass && p->state == RUNNABLE) {
                     minProc = p;
                 }
                 //        cprintf("pid %d tickets %d/n",p->pid,p->tickets);
             }
             
-            proc=minProc;
-            if(proc->state == RUNNING){
-                proc->pass++;
-                proc->usage++;
-                continue;
-            }
+            proc = minProc;
+            minProc->pass++;
+            switchuvm(minProc);
+            minProc->state = RUNNING;
+            swtch(&cpu->scheduler, proc->context);
+            switchkvm();
             
+            // Process is done running for now.
+            // It should have changed its p->state before coming back.
+            proc = 0;
+            release(&ptable.lock);
+
             
             /*
+            
             for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){// Passa pelos processos procurando o próximo à executar.
                 
                 if(p->state != RUNNABLE){
@@ -363,15 +369,14 @@ scheduler(void) //#stride
                     minPass = p->pass;
                 }
             }
-             */
 //            if (current->pass!=0 && current->tickets>1) {#stride faz com que imprima na tela as informações do processo percorrido
 //                cprintf("PID %d Passo: %d  Tickets %d",current->pid,current->pass,current->tickets);
 //            }
-//            proc = current; //define o processo atual para exec- ução
-//            current->pass += current->stride; // define a passada do processo
-            switchuvm(proc);//Alterna registradores para o processo current
-//            current->state = RUNNING;//define o processo como RUNNING
-//            current->usage = current->usage+1;//aumenta o passo do processo
+            proc = current; //define o processo atual para exec- ução
+            current->pass += current->stride; // define a passada do processo
+            switchuvm(current);//Alterna registradores para o processo current
+            current->state = RUNNING;//define o processo como RUNNING
+            current->usage = current->usage+1;//aumenta o passo do processo
 
             //cprintf("Passo: %d",current->stride);
             swtch(&cpu->scheduler, proc->context);//passa para o contexto do processo
@@ -382,7 +387,8 @@ scheduler(void) //#stride
 //                cprintf("PID %d Passo: %d  Tickets %d",current->pid,current->pass,current->tickets);
 //            }
             proc = 0;
-            release(&ptable.lock);
+            release(&ptable.lock);*/
+            
             
         }
     }
