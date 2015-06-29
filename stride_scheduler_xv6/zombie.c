@@ -38,7 +38,7 @@ void zombie(int pi,int tickets){
 //Recebe um numero identificador e numero de tickets que é utilizado na chamada fork
 int forkTest(int i,int tickets){
     int counter = 0;
-    int pid = fork(tickets);
+    int pid = fork();
 
     if (pid == 0)
     {

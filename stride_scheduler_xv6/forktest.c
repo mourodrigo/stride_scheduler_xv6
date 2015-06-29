@@ -21,7 +21,7 @@ forktest(void)
   printf(1, "fork test\n");
 
   for(n=0; n<N; n++){
-    pid = fork(100);
+    pid = fork();
     if(pid < 0)
       break;
     if(pid == 0)
