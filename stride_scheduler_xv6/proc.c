@@ -344,7 +344,7 @@ scheduler(void) //#stride
 
                 //        cprintf("pid %d tickets %d/n",p->pid,p->tickets);
             }
-            cprintf("\n\n=================\nProcesso escolhido \n pid %d \n tickets %d \n passos %d \n passada %d \n limite passo %d\n=================\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->limitpass);
+            //cprintf("\n\n=================\nProcesso escolhido \n pid %d \n tickets %d \n passos %d \n passada %d \n limite passo %d\n=================\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->limitpass);
 
             if (minProc->pass>=minProc->limitpass) {
                 minProc->limitpass+=minProc->pass+minProc->stride;
