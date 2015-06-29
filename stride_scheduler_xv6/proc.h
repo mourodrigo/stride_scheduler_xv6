@@ -86,6 +86,7 @@ struct proc {
     int usage;                   //#stride Uso da CPU
     int stride;                  //#stride Tamanho do passo
     int pass;                    //#stride Passos efetuados
+    int limitpass;
 };
 
 // ## Old round robin structure of proc ##

@@ -335,7 +335,7 @@ scheduler(void) //#stride
             
             int x=0;
             for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
-                if (p->pass > minProc->pass && p->state == RUNNABLE) {
+                if (p->pass > minProc->pass && p->state == RUNNABLE && !(minProc->pass>=minProc->limitpass)) {
                     minProc = p;
                 }
                 //        cprintf("pid %d tickets %d/n",p->pid,p->tickets);
@@ -343,7 +343,11 @@ scheduler(void) //#stride
             cprintf("\n\n=================\nProcesso escolhido \n pid %d \n tickets %d \n passos %d \n passada %d \n limite passo %d\n=================\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->pass+minProc->stride);
 
             proc = minProc;
-            minProc->pass++;
+            if (minProc->pass>=minProc->limitpass) {
+                minProc->limitpass+=minProc->pass+minProc->stride;
+            }else{
+                minProc->pass++;
+            }
             switchuvm(minProc);
             minProc->state = RUNNING;
             swtch(&cpu->scheduler, proc->context);
