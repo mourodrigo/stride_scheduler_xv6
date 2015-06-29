@@ -100,6 +100,7 @@ sys_uptime(void)
 
 void
 sys_pidInfo(int pid){
+    cprintf("TESTE PIDINFO %D",pid);
     cprintf("\n===================\nPid: %d\nStride: %d\nPass: %d\nLimitPass %d\nTickets: %d",proc->pid,proc->pass,proc->limitpass, proc->tickets);
 }
 //#stride
