@@ -53,6 +53,7 @@ found:
         p->tickets = tickets; //processo recebe o numero de tickets passado
         p->pass = 0; //processo inicia zerado
         p->stride = 10000 / p->tickets; // calculo do tamanho do passo
+        p->limitpass = p->stride;
 #ifdef DEBUGSTRIDE
         cprintf("Processo pid %d criado com %d tickets ",p->pid,tickets);
 #endif
@@ -337,7 +338,7 @@ scheduler(void) //#stride
             for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
                 cprintf("\n\n---\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo --\n---\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->pass+minProc->stride);
 
-                if (p->pass > minProc->pass && p->state == RUNNABLE && !(minProc->pass>=minProc->limitpass)) {
+                if (p->pass > minProc->pass && p->state == RUNNABLE && minProc->pass<=minProc->limitpass) {
                     minProc = p;
                 }
                 //        cprintf("pid %d tickets %d/n",p->pid,p->tickets);
