@@ -73,12 +73,7 @@ main(void)
 //    forkTest(10,2,10000);
 //    forkTest(5,900,10000);
 //    forkTest(2,100,10000);
-    fork(50);
-    fork(40);
-    fork(800);
-    fork(500);
-    fork(1000);
-
+    
     sleep(500);
     
     exit();

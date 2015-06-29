@@ -146,7 +146,7 @@ fork(int tickets)
   struct proc *np;
     cprintf("fork tickets %d", tickets);
   // Allocate process.
-  if((np = allocproc(tickets)) == 0)
+  if((np = allocproc(350)) == 0)
     return -1;
 
   // Copy process state from p.
