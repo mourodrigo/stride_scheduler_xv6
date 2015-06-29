@@ -35,7 +35,7 @@ pinit(void)
 static struct proc*
 allocproc(int tickets)
 {
-    cprintf("Allocproc tickets %d",tickets);
+//    cprintf("Allocproc tickets %d",tickets);
   struct proc *p;
   char *sp;
 
@@ -144,7 +144,7 @@ fork(int tickets)
 {
   int i, pid;
   struct proc *np;
-
+    cprintf("fork tickets %d", tickets);
   // Allocate process.
   if((np = allocproc(tickets)) == 0)
     return -1;
