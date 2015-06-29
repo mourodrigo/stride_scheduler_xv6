@@ -83,6 +83,11 @@ extern int sys_dup(void);
 extern int sys_exec(void);
 extern int sys_exit(void);
 extern int sys_fork(void);
+extern int fork_lowest(void);
+extern int fork_low(void);
+extern int fork_medium(void);
+extern int fork_high(void);
+extern int fork_highest(void);
 extern int sys_fstat(void);
 extern int sys_getpid(void);
 extern int sys_kill(void);
@@ -130,7 +135,12 @@ static int (*syscalls[])(void) = {
 [SYS_getusage] sys_getusage, //#stride ////chamada do sistema para obter o uso da cpu
 [SYS_switchScheduler] sys_switchScheduler, //#stride ////chamada do sistema para obter o uso da cpu
 [SYS_pidInfo] sys_pidInfo,
-
+[SYS_fork_lowest] sys_fork_lowest,
+[SYS_fork_lowest] sys_fork_low,
+[SYS_fork_lowest] sys_fork_medium,
+[SYS_fork_lowest] sys_fork_high,
+[SYS_fork_lowest] sys_fork_highest,
+    
 };
 
 void

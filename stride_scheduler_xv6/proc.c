@@ -188,11 +188,34 @@ int forks(int tickets){
 }
 
 int
-fork()
+fork_lowest()
+{
+    return forks(100);
+}
+
+int
+fork_low()
+{
+    return forks(250);
+}
+
+int
+fork_medium()
 {
     return forks(500);
 }
 
+int
+fork_high()
+{
+    return forks(750);
+}
+
+int
+fork_highest()
+{
+    return forks(1000);
+}
 // Exit the current process.  Does not return.
 // An exited process remains in the zombie state
 // until its parent calls wait() to find out it exited.

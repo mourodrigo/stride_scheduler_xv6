@@ -14,6 +14,36 @@ sys_fork()
 }
 
 int
+sys_fork_lowest()
+{
+    return fork_lowest();
+}
+
+int
+sys_fork_low()
+{
+    return fork_low();
+}
+
+int
+sys_fork_medium()
+{
+    return fork_medium();
+}
+
+int
+sys_fork_high()
+{
+    return fork_high();
+}
+
+int
+sys_fork_highest()
+{
+    return fork_highest();
+}
+
+int
 sys_exit(void)
 {
   exit();
