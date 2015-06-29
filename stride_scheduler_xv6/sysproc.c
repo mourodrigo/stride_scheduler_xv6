@@ -8,37 +8,37 @@
 #include "proc.h"
 
 int
-sys_fork()
+sys_fork(void)
 {
   return fork();
 }
 
 int
-sys_fork_lowest()
+sys_fork_lowest(void)
 {
     return fork_lowest();
 }
 
 int
-sys_fork_low()
+sys_fork_low(void)
 {
     return fork_low();
 }
 
 int
-sys_fork_medium()
+sys_fork_medium(void)
 {
     return fork_medium();
 }
 
 int
-sys_fork_high()
+sys_fork_high(void)
 {
     return fork_high();
 }
 
 int
-sys_fork_highest()
+sys_fork_highest(void)
 {
     return fork_highest();
 }
