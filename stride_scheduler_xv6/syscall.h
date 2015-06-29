@@ -23,3 +23,4 @@
 #define SYS_settickets 22
 #define SYS_getusage 23
 #define SYS_switchScheduler 24
+#define SYS_pidInfo 25

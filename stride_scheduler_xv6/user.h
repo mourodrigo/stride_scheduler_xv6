@@ -24,6 +24,7 @@ char* sbrk(int);
 int sleep(int);
 int uptime(void);
 int switchScheduler(void);
+void pidInfo(int pid);
 
 // ulib.c
 int stat(char*, struct stat*);

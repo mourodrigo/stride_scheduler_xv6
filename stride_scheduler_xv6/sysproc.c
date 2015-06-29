@@ -96,6 +96,10 @@ sys_uptime(void)
   return xticks;
 }
 
+void
+sys_pidInfo(int pid){
+    cprintf("\n===================\nPid: %d\nStride: %d\nPass: %d\nLimitPass %d\nTickets: %d",proc->pid,proc->pass,proc->limitpass, proc->tickets);
+}
 //#stride
 int
 sys_getusage(void) {
