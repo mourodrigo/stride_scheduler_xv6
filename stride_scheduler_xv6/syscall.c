@@ -103,7 +103,6 @@ extern int sys_unlink(void);
 extern int sys_wait(void);
 extern int sys_write(void);
 extern int sys_uptime(void);
-
 extern int sys_settickets(int tickets); //#stride //chamada do sistema para setar tickets
 extern int sys_getusage(void); //#stride //chamada do sistema para obter o uso da cpu
 extern int sys_switchScheduler(void);//#stride //chamada do sistema para alternar entre escalonadores

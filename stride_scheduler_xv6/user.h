@@ -2,7 +2,7 @@ struct stat;
 struct rtcdate;
 
 // system calls
-int fork();
+int fork(void);
 int fork_lowest();
 int fork_low();
 int fork_medium();
