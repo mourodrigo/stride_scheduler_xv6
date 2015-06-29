@@ -35,6 +35,7 @@ pinit(void)
 static struct proc*
 allocproc(int tickets)
 {
+    cprintf("Allocproc tickets ",tickets);
   struct proc *p;
   char *sp;
 
