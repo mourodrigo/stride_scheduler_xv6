@@ -10,6 +10,8 @@
 int
 sys_fork(int tickets)
 {
+cprintf("sys_forktickets %d", tickets);
+
   return fork(tickets);
 }
 
