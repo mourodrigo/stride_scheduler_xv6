@@ -73,7 +73,7 @@ main(void)
 //    forkTest(10,2,10000);
 //    forkTest(5,900,10000);
 //    forkTest(2,100,10000);
-    
+    settickets(50);
     sleep(500);
     
     exit();

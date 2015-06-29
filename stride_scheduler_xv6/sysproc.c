@@ -110,6 +110,7 @@ sys_getusage(void) {
 
 int
 sys_settickets(int tickets) {
+    cprintf("\n===================\nTICKETS SETADOS %d",tickets);
     proc->tickets = tickets;
     proc->stride = 10000 / tickets;
     return 0;
