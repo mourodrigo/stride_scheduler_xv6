@@ -551,10 +551,16 @@ int switchScheduler(void){
         cprintf("\nModo Passo Largo ativado!\n");
     }*/
     struct proc *p;
+    struct proc *minProc = ptable.proc;
+    
     int x=0;
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
-        cprintf("pid %d tickets %d/n",p->pid,p->tickets);
-        
+        if (p->pass < minProc->pass) {
+            minProc = p;
+        }
+//        cprintf("pid %d tickets %d/n",p->pid,p->tickets);
     }
+            cprintf("Processo escolhido \n pid %d \n tickets %d \n passos %d",minProc->pid,minProc->tickets, minProc->pass );
+    
     return isRoundRobin;
 }
