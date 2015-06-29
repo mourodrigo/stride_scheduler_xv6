@@ -75,7 +75,8 @@ main(void)
 //    forkTest(2,100,10000);
     proc *p;
     int pids = p->fork(999999);
-//    settickets(50);
+    printf(0, "PIDDD %d",pid);
+    //    settickets(50);
     sleep(500);
     
     exit();
