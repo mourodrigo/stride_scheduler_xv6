@@ -336,11 +336,12 @@ scheduler(void) //#stride
             
             int x=0;
             for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
-                cprintf("\n\n---\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo --\n---\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->pass+minProc->stride);
 
                 if (p->pass > minProc->pass && p->state == RUNNABLE && minProc->pass<=minProc->limitpass) {
                     minProc = p;
                 }
+                cprintf("\n\n---\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo --\n---\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->limitpass);
+
                 //        cprintf("pid %d tickets %d/n",p->pid,p->tickets);
             }
             cprintf("\n\n=================\nProcesso escolhido \n pid %d \n tickets %d \n passos %d \n passada %d \n limite passo %d\n=================\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->pass+minProc->stride);
