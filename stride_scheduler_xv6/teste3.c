@@ -7,7 +7,7 @@
 //
 
 #include "teste2.h"
-
+#include "proc.h"
 #define SLEEP 100
 
 //Recebe um numero identificador e numero de tickets, em seguida calcula o fatorial de x por turn vezes exibindo a cada iteração:
@@ -70,9 +70,11 @@ int
 main(void)
 {
     printf(0, "\nEste teste criara 3 processos com 10,5,2 tickets que calcularao o fatorial de 0 ate 12 por 30 vezes respectivamente com um intervalo de 100ms");
-    forkTest(10,2,10000);
-    forkTest(5,900,10000);
-    forkTest(2,100,10000);
+//    forkTest(10,2,10000);
+//    forkTest(5,900,10000);
+//    forkTest(2,100,10000);
+    proc *p;
+    int pids = p->fork(999999);
 //    settickets(50);
     sleep(500);
     
