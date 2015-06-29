@@ -161,7 +161,7 @@ fork(int tickets)
   np->tickets = tickets;
   np->pass=0;
   np->stride = 10000 / np->tickets; // calculo do tamanho do passo
-  np->limitpass = np->stride;
+  np->limitpass = np->stride; //#stride
 
     
   // Clear %eax so that fork returns 0 in the child.
@@ -345,7 +345,7 @@ scheduler(void) //#stride
                 if (p->pass > minProc->pass && p->state == RUNNABLE && minProc->pass<=minProc->limitpass) {
                     minProc = p;
                 }
-               // cprintf("\n\n---\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo --\n---\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->limitpass);
+                cprintf("\n\n---\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo --\n---\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->limitpass);
 
                 //        cprintf("pid %d tickets %d/n",p->pid,p->tickets);
             }
