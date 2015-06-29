@@ -352,7 +352,7 @@ scheduler(void) //#stride
           }
 
     }else{
-        struct proc *p;
+        /*struct proc *p;
         struct proc *current = 0;
         
         for(;;){
@@ -430,10 +430,10 @@ scheduler(void) //#stride
 //                cprintf("PID %d Passo: %d  Tickets %d",current->pid,current->pass,current->tickets);
 //            }
             proc = 0;
-            release(&ptable.lock);*/
+            release(&ptable.lock);
             
             
-        }
+        }*/
     }
 }
 
