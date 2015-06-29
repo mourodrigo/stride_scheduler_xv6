@@ -356,9 +356,9 @@ scheduler(void) //#stride
             switchkvm();
             
             //Quando terminar a execução e voltar para o contexto imprime o passo do processo
-            if (current->pass!=0 && current->tickets>1 && current->pid!=1) {
-                cprintf("PID %d Passo: %d  Tickets %d",current->pid,current->pass,current->tickets);
-            }
+//            if (current->pass!=0 && current->tickets>1 && current->pid!=1) {
+//                cprintf("PID %d Passo: %d  Tickets %d",current->pid,current->pass,current->tickets);
+//            }
             proc = 0;
             release(&ptable.lock);
             
