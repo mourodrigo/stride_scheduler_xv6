@@ -362,7 +362,6 @@ scheduler(void) //#stride
             acquire(&ptable.lock);
 //            cprintf("process list");
             
-            
             struct proc *p;
             struct proc *minProc = ptable.proc;
             
