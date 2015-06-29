@@ -331,11 +331,12 @@ scheduler(void) //#stride
             
             for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){// Passa pelos processos procurando o próximo à executar.
                 
-                if(p->state != RUNNABLE)
+                if(p->state != RUNNABLE){
                     p->pass++;
                     p->usage++;
+                    continue;
+                }
                 
-                  continue;
                 if (minPass < 0 || p->pass < minPass){//se o processo atual esta em executando e ainda nao chegou no passo total
                     current = p;
                     minPass = p->pass;
