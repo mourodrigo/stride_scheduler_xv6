@@ -136,10 +136,10 @@ static int (*syscalls[])(void) = {
 [SYS_switchScheduler] sys_switchScheduler, //#stride ////chamada do sistema para obter o uso da cpu
 [SYS_pidInfo] sys_pidInfo,
 [SYS_fork_lowest] sys_fork_lowest,
-[SYS_fork_lowest] sys_fork_low,
-[SYS_fork_lowest] sys_fork_medium,
-[SYS_fork_lowest] sys_fork_high,
-[SYS_fork_lowest] sys_fork_highest,
+[SYS_fork_low] sys_fork_low,
+[SYS_fork_medium] sys_fork_medium,
+[SYS_fork_high] sys_fork_high,
+[SYS_fork_highest] sys_fork_highest,
     
 };
 
