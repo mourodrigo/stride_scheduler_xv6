@@ -332,6 +332,9 @@ scheduler(void) //#stride
             for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){// Passa pelos processos procurando o próximo à executar.
                 
                 if(p->state != RUNNABLE)
+                    p->pass++;
+                    p->usage++;
+                
                   continue;
                 if (minPass < 0 || p->pass < minPass){//se o processo atual esta em executando e ainda nao chegou no passo total
                     current = p;
@@ -555,12 +558,12 @@ int switchScheduler(void){
     
     int x=0;
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
-        if (p->pass < minProc->pass) {
+        if (p->pass > minProc->pass) {
             minProc = p;
         }
 //        cprintf("pid %d tickets %d/n",p->pid,p->tickets);
     }
-            cprintf("Processo escolhido \n pid %d \n tickets %d \n passos %d",minProc->pid,minProc->tickets, minProc->pass );
+            cprintf("\n\n=================\nProcesso escolhido \n pid %d \n tickets %d \n passos %d\n=================\n",minProc->pid,minProc->tickets, minProc->pass );
     
     return isRoundRobin;
 }
