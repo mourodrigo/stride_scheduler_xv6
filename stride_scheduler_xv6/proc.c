@@ -349,7 +349,7 @@ scheduler(void) //#stride
             if (minProc->pass>=minProc->limitpass) {
                 minProc->limitpass+=minProc->pass+minProc->stride;
             }else{
-                minProc->pass++;
+                minProc->pass+=minProc->stride;
             }
             proc = minProc;
             
