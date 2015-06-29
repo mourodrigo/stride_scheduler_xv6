@@ -38,7 +38,7 @@ allocproc(int tickets)
     cprintf("Allocproc tickets %d",tickets);
   struct proc *p;
   char *sp;
-
+    
   acquire(&ptable.lock);
   for(p = ptable.proc; p < &ptable.proc[NPROC]; p++)
     if(p->state == UNUSED)
@@ -94,7 +94,7 @@ userinit(void)
 {
   struct proc *p;
   extern char _binary_initcode_start[], _binary_initcode_size[];
-  
+    priority = 0;
   p = allocproc(10);
   initproc = p;
   if((p->pgdir = setupkvm()) == 0)
@@ -600,6 +600,7 @@ int switchScheduler(void){
     }else{
         cprintf("\nModo Passo Largo ativado!\n");
     }*/
+    /*
     struct proc *p;
     struct proc *minProc = ptable.proc;
     
@@ -611,6 +612,9 @@ int switchScheduler(void){
 //        cprintf("pid %d tickets %d/n",p->pid,p->tickets);
     }
             cprintf("\n\n=================\nProcesso escolhido \n pid %d \n tickets %d \n passos %d \n passada %d \n limite passo %d\n=================\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->pass+minProc->stride);
+    */
+    priority++;
+    cprintf("Priority %d/n",priority);
     
     return isRoundRobin;
 }

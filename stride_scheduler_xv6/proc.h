@@ -66,7 +66,7 @@ enum procstate { UNUSED, EMBRYO, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };
 
 //#stride
 int totalTickets;               //total of tickets available
-
+int priority;
 // Per-process state
 struct proc {
     uint sz;                     // Size of process memory (bytes)
