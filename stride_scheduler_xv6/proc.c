@@ -340,7 +340,7 @@ scheduler(void) //#stride
                 if (p->pass > minProc->pass && p->state == RUNNABLE && minProc->pass<=minProc->limitpass) {
                     minProc = p;
                 }
-                cprintf("\n\n---\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo --\n---\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->limitpass);
+               // cprintf("\n\n---\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo --\n---\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->limitpass);
 
                 //        cprintf("pid %d tickets %d/n",p->pid,p->tickets);
             }
