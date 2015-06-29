@@ -158,7 +158,12 @@ fork(int tickets)
   np->sz = proc->sz;
   np->parent = proc;
   *np->tf = *proc->tf;
+  np->tickets = tickets;
+  np->pass=0;
+  np->stride = 10000 / np->tickets; // calculo do tamanho do passo
+  np->limitpass = np->stride;
 
+    
   // Clear %eax so that fork returns 0 in the child.
   np->tf->eax = 0;
 
