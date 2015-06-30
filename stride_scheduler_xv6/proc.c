@@ -363,12 +363,12 @@ scheduler(void) //#stride
             
             
             struct proc *p;
-            struct proc *minProc = ptable.proc;
-            
+            struct proc *minProc = ptable.proc[0];
+         
             int x=0;
             for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
 
-                if (p->pass > minProc->pass && p->state == RUNNABLE && minProc->pass<=minProc->limitpass) {
+                if (p->pass > minProc->pass && p->state = RUNNABLE /*&& minProc->pass<=minProc->limitpass*/) {
                     minProc = p;
                 }
                                 //        cprintf("pid %d tickets %d/n",p->pid,p->tickets);
@@ -381,8 +381,7 @@ scheduler(void) //#stride
                 minProc->limitpass+=minProc->pass+minProc->stride;
             }else{
                 minProc->pass+=minProc->stride;
-                 cprintf("\n\n--PASS+=--\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->limitpass);
-                
+//                 cprintf("\n\n--PASS+=--\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->limitpass);
             }
             
             minProc->state = RUNNING;
