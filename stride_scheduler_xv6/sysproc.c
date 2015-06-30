@@ -8,19 +8,20 @@
 #include "proc.h"
 
 int sys_forkLowest(void){
-    
+    return forkLowest();
 }
 int sys_forkLow(void){
+    return forkLow();
     
 }
 int sys_forkMedium(void){
-    
+    return forkMedium();
 }
 int sys_forkHigh(void){
-    
+    return forkHigh();
 }
 int sys_forkHighest(void){
-    
+    return forkHighest();
 }
 
 int
