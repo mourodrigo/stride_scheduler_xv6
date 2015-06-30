@@ -191,62 +191,84 @@ Foram realizadas mudanças em uma série de arquivos, as mudanças propostas seg
 
 **Defs.h**<br>
 
-![defs.h](http://s8.postimg.org/txewr41md/defs_h.png)
+![defs.h](http://s8.postimg.org/txewr41md/defs_h.png)<br><br>
+
 **Init.c**<br>
 
-![init.c](http://s8.postimg.org/qzhxxetyt/init_c.png)
+![init.c](http://s8.postimg.org/qzhxxetyt/init_c.png)<br><br>
+
 **makefile**<br>
 
-![makefile](http://s8.postimg.org/mmet18vud/makefile1.png)
+![makefile](http://s8.postimg.org/mmet18vud/makefile1.png)<br><br>
+
 **makefile**<br>
 
-![makefile](http://s8.postimg.org/w88dhjn05/makefile2.png)
+![makefile](http://s8.postimg.org/w88dhjn05/makefile2.png)<br><br>
+
 **makefile**<br>
 
-![makefile](http://s8.postimg.org/u144tmhpx/makefile3.png)
+![makefile](http://s8.postimg.org/u144tmhpx/makefile3.png)<br><br>
+
 **proc.c**<br>
 
-![proc.c](http://s8.postimg.org/agplquh4l/proc_c1.png)
+![proc.c](http://s8.postimg.org/agplquh4l/proc_c1.png)<br><br>
+
 **proc.c**<br>
 
-![proc.c](http://s8.postimg.org/vzfe5czlh/proc_c2.png)
+![proc.c](http://s8.postimg.org/vzfe5czlh/proc_c2.png)<br><br>
+
 **proc.c**<br>
 
-![proc.c](http://s8.postimg.org/g3hdaku9h/proc_c3.png)
+![proc.c](http://s8.postimg.org/g3hdaku9h/proc_c3.png)<br><br>
+
 **proc.c**<br>
 
-![proc.c](http://s8.postimg.org/ye79psfud/proc_c4.png)
+![proc.c](http://s8.postimg.org/ye79psfud/proc_c4.png)<br><br>
+
 **proc.c**<br>
 
-![proc.c](http://s8.postimg.org/mssi4c4z9/proc_c5.png)
+![proc.c](http://s8.postimg.org/mssi4c4z9/proc_c5.png)<br><br>
+
 **proc.c**<br>
 
-![proc.c](http://s8.postimg.org/722twywc5/proc_c6.png)
+![proc.c](http://s8.postimg.org/722twywc5/proc_c6.png)<br><br>
+
 **proc.c**<br>
 
-![proc.c](http://s8.postimg.org/rq62pg6yd/proc_c7.png)
+![proc.c](http://s8.postimg.org/rq62pg6yd/proc_c7.png)<br><br>
+
 **proc.c**<br>
 
-![proc.h](http://s8.postimg.org/tabenufcl/proc_h.png)
+![proc.h](http://s8.postimg.org/tabenufcl/proc_h.png)<br><br>
+
 **proc.c**<br>
 
-![sh.c](http://s8.postimg.org/iftylww8l/sh_c.png)
+![sh.c](http://s8.postimg.org/iftylww8l/sh_c.png)<br><br>
+
 **proc.c**<br>
 
-![syscall.c](http://s8.postimg.org/i86bpel9x/syscall_c.png)
+![syscall.c](http://s8.postimg.org/i86bpel9x/syscall_c.png)<br><br>
+
 **proc.c**<br>
 
-![syscall.h](http://s8.postimg.org/j6moroylx/syscall_h.png)
+![syscall.h](http://s8.postimg.org/j6moroylx/syscall_h.png)<br><br>
+
 **proc.c**<br>
 
-![sysproc.c](http://s8.postimg.org/f6ay1pir9/sysproc_c.png)
+![sysproc.c](http://s8.postimg.org/f6ay1pir9/sysproc_c.png)<br><br>
+
 **proc.c**<br>
 
-![trap.c](http://s8.postimg.org/ya49i1vlh/trap_c.png)
+![trap.c](http://s8.postimg.org/ya49i1vlh/trap_c.png)<br><br>
+
 **proc.c**<br>
 
-![user.h](http://s8.postimg.org/tyfnt1ool/user_h.png)
+![user.h](http://s8.postimg.org/tyfnt1ool/user_h.png)<br><br>
+
 **proc.c**<br>
 
-![usys.S/](http://s8.postimg.org/6lhmaj8l1/usys_S.png)
+![usys.S/](http://s8.postimg.org/6lhmaj8l1/usys_S.png)<br><br>
+
+
+
 
