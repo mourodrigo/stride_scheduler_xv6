@@ -368,7 +368,7 @@ scheduler(void) //#stride
             int x=0;
             for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
 
-                if (p->pass > minProc->pass && p->state = RUNNABLE /*&& minProc->pass<=minProc->limitpass*/) {
+                if (p->pass > minProc->pass && p->state == RUNNABLE /*&& minProc->pass<=minProc->limitpass*/) {
                     minProc = p;
                 }
                                 //        cprintf("pid %d tickets %d/n",p->pid,p->tickets);
