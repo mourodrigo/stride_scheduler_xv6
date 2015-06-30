@@ -184,7 +184,7 @@ fork1(void)
 {
   int pid;
   
-    pid = forkHigh(); //#stride
+    pid = forkHigh(); //#stride //Todos os forks padrão do sistema foram substituidos por forks com prioridade
   if(pid == -1)
     panic("fork");
   return pid;

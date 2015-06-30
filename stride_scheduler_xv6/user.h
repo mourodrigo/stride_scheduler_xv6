@@ -2,7 +2,14 @@ struct stat;
 struct rtcdate;
 
 // system calls
-int fork(int tickets);
+int fork(void);
+int forkLowest(void);
+int forkLow(void);
+int forkMedium(void);
+int forkHigh(void);
+int forkHighest(void);
+int switchDebug(void);
+void pidInfo(int pid);
 int exit(void) __attribute__((noreturn));
 int wait(void);
 int pipe(int*);
@@ -23,13 +30,7 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
-int switchScheduler(void);
-void pidInfo(int pid);
-int forkLowest(void);
-int forkLow(void);
-int forkMedium(void);
-int forkHigh(void);
-int forkHighest(void);
+
 // ulib.c
 int stat(char*, struct stat*);
 char* strcpy(char*, char*);

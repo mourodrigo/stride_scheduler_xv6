@@ -106,13 +106,14 @@ int             pipewrite(struct pipe*, char*, int);
 // proc.c
 struct proc*    copyproc(struct proc*);
 void            exit(void);
-int             fork(int tickets);
+int             fork(void); //#stride
 
-int             forkLowest(void);
-int             forkLow(void);
-int             forkMedium(void);
-int             forkHigh(void);
-int             forkHighest(void);
+//#stride cria processos com numero de tickets conforme a prioridade
+int             forkLowest(void); //#stride 100 tickets
+int             forkLow(void); //#stride 300 tickets
+int             forkMedium(void); //#stride 500 tickets
+int             forkHigh(void); //#stride 750 tickets
+int             forkHighest(void); //#stride 990 tickets
 
 int             growproc(int);
 int             kill(int);
@@ -125,7 +126,7 @@ void            userinit(void);
 int             wait(void);
 void            wakeup(void*);
 void            yield(void);
-int            switchScheduler(void); //#stride alterna entre escalonadores
+int             switchDebug(void); //#alterna constante para exibir logs
 
 // swtch.S
 void            swtch(struct context**, struct context*);

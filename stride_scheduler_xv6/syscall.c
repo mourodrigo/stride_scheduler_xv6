@@ -98,16 +98,14 @@ extern int sys_unlink(void);
 extern int sys_wait(void);
 extern int sys_write(void);
 extern int sys_uptime(void);
-extern int sys_forkLowest(void);
-extern int sys_forkLow(void);
-extern int sys_forkMedium(void);
-extern int sys_forkHigh(void);
-extern int sys_forkHighest(void);
+extern int sys_forkLowest(void); //#stride //fork alterado passando
+extern int sys_forkLow(void);    // que cria o processo conforme
+extern int sys_forkMedium(void); // a prioridade selecionada
+extern int sys_forkHigh(void);   //
+extern int sys_forkHighest(void);//
 
-extern int sys_settickets(int tickets); //#stride //chamada do sistema para setar tickets
-extern int sys_getusage(void); //#stride //chamada do sistema para obter o uso da cpu
-extern int sys_switchScheduler(void);//#stride //chamada do sistema para alternar entre escalonadores
-extern void sys_pidInfo(int pid);
+extern int sys_switchDebug(void);//#stride //chamada do sistema para alternar entre modo de debug
+extern void sys_pidInfo(int pid); //#stride //mostra informações do processo em execução
 
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
@@ -131,9 +129,7 @@ static int (*syscalls[])(void) = {
 [SYS_link]    sys_link,
 [SYS_mkdir]   sys_mkdir,
 [SYS_close]   sys_close,
-[SYS_settickets] sys_settickets, //#stride //chamada do sistema para setar tickets
-[SYS_getusage] sys_getusage, //#stride ////chamada do sistema para obter o uso da cpu
-[SYS_switchScheduler] sys_switchScheduler, //#stride ////chamada do sistema para obter o uso da cpu
+[SYS_switchDebug] sys_switchDebug,
 [SYS_pidInfo] sys_pidInfo,
 [SYS_forkLowest] forkLowest,
 [SYS_forkLow] forkLow,

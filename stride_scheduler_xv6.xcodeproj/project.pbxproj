@@ -63,7 +63,7 @@
 		3049818D1B16765600A1CE18 /* wc.c in Sources */ = {isa = PBXBuildFile; fileRef = 304981551B16765600A1CE18 /* wc.c */; };
 		3049818E1B16765600A1CE18 /* zombie.c in Sources */ = {isa = PBXBuildFile; fileRef = 304981571B16765600A1CE18 /* zombie.c */; };
 		304981901B1677F700A1CE18 /* hello.c in Sources */ = {isa = PBXBuildFile; fileRef = 3049818F1B1677F700A1CE18 /* hello.c */; };
-		3049819B1B169B3F00A1CE18 /* switchScheduler.c in Sources */ = {isa = PBXBuildFile; fileRef = 304981991B169B3F00A1CE18 /* switchScheduler.c */; };
+		3049819B1B169B3F00A1CE18 /* switchDebug.c in Sources */ = {isa = PBXBuildFile; fileRef = 304981991B169B3F00A1CE18 /* switchDebug.c */; };
 		BBAC8CAE1B19DFC000F6CC66 /* teste1.c in Sources */ = {isa = PBXBuildFile; fileRef = BBAC8CAC1B19DFC000F6CC66 /* teste1.c */; };
 		BBAC8CB11B19E39D00F6CC66 /* teste2.c in Sources */ = {isa = PBXBuildFile; fileRef = BBAC8CAF1B19E39D00F6CC66 /* teste2.c */; };
 		BBAC8CB41B19E66400F6CC66 /* teste3.c in Sources */ = {isa = PBXBuildFile; fileRef = BBAC8CB21B19E66400F6CC66 /* teste3.c */; };
@@ -194,8 +194,8 @@
 		304981561B16765600A1CE18 /* x86.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x86.h; sourceTree = "<group>"; };
 		304981571B16765600A1CE18 /* zombie.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zombie.c; sourceTree = "<group>"; };
 		3049818F1B1677F700A1CE18 /* hello.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hello.c; sourceTree = "<group>"; };
-		304981991B169B3F00A1CE18 /* switchScheduler.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = switchScheduler.c; sourceTree = "<group>"; };
-		3049819A1B169B3F00A1CE18 /* switchScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = switchScheduler.h; sourceTree = "<group>"; };
+		304981991B169B3F00A1CE18 /* switchDebug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = switchDebug.c; sourceTree = "<group>"; };
+		3049819A1B169B3F00A1CE18 /* switchDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = switchDebug.h; sourceTree = "<group>"; };
 		BBAC8CAC1B19DFC000F6CC66 /* teste1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = teste1.c; sourceTree = "<group>"; };
 		BBAC8CAD1B19DFC000F6CC66 /* teste1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = teste1.h; sourceTree = "<group>"; };
 		BBAC8CAF1B19E39D00F6CC66 /* teste2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = teste2.c; sourceTree = "<group>"; };
@@ -324,8 +324,8 @@
 				3049813D1B16765500A1CE18 /* stressfs.c */,
 				3049813E1B16765500A1CE18 /* string.c */,
 				3049813F1B16765500A1CE18 /* swtch.S */,
-				304981991B169B3F00A1CE18 /* switchScheduler.c */,
-				3049819A1B169B3F00A1CE18 /* switchScheduler.h */,
+				304981991B169B3F00A1CE18 /* switchDebug.c */,
+				3049819A1B169B3F00A1CE18 /* switchDebug.h */,
 				304981401B16765500A1CE18 /* symlink.patch */,
 				304981411B16765600A1CE18 /* syscall.c */,
 				304981421B16765600A1CE18 /* syscall.h */,
@@ -469,7 +469,7 @@
 				3049815A1B16765600A1CE18 /* bootmain.c in Sources */,
 				3049817D1B16765600A1CE18 /* spinlock.c in Sources */,
 				3049815D1B16765600A1CE18 /* echo.c in Sources */,
-				3049819B1B169B3F00A1CE18 /* switchScheduler.c in Sources */,
+				3049819B1B169B3F00A1CE18 /* switchDebug.c in Sources */,
 				304981681B16765600A1CE18 /* ioapic.c in Sources */,
 				3049817B1B16765600A1CE18 /* sh.c in Sources */,
 				304981871B16765600A1CE18 /* uart.c in Sources */,
@@ -662,6 +662,7 @@
 				BBAC8CC51B1A61BC00F6CC66 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

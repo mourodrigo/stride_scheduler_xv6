@@ -62,11 +62,8 @@ struct context {
 
 enum procstate { UNUSED, EMBRYO, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };
 
-
-
 //#stride
-int totalTickets;               //total of tickets available
-int priority;
+int isDebug=0; //#stride //parametro para exibir constantes de debug
 // Per-process state
 struct proc {
     uint sz;                     // Size of process memory (bytes)
@@ -87,7 +84,7 @@ struct proc {
     int usage;                   //#stride Uso da CPU
     int stride;                  //#stride Tamanho do passo
     int pass;                    //#stride Passos efetuados
-    int limitpass;
+    int limitpass;               //#stride Limite de passos que podem ser efetuados conforme passada
 };
 
 // ## Old round robin structure of proc ##

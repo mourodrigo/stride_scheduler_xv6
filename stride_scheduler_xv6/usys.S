@@ -30,8 +30,7 @@ SYSCALL(sbrk)
 SYSCALL(sleep)
 SYSCALL(uptime)
 SYSCALL(getusage)
-SYSCALL(settickets)
-SYSCALL(switchScheduler)
+SYSCALL(switchDebug)
 SYSCALL(pidInfo)
 SYSCALL(forkLowest);
 SYSCALL(forkLow);

@@ -170,7 +170,7 @@ UPROGS=\
 	_rm\
 	_sh\
 	_stressfs\
-    _switchScheduler\
+    _switchDebug\
     _teste1\
     _teste2\
     _teste3\

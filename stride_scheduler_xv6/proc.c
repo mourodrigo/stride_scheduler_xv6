@@ -33,6 +33,8 @@ pinit(void)
 // state required to run in the kernel.
 // Otherwise return 0.
 static struct proc*
+
+//#stride //Método alloc proc foi modificado para receber o número de tickets que é repassado ao processo criado
 allocproc(int tickets)
 {
 //  cprintf("Allocproc tickets %d",tickets); //#stride
@@ -55,9 +57,9 @@ found:
         p->pass = 0; //processo inicia zerado
         p->stride = 10000 / p->tickets; // calculo do tamanho do passo
         p->limitpass = p->stride;
-#ifdef DEBUGSTRIDE
-        //cprintf("Processo pid %d criado com %d tickets ",p->pid,tickets); //#stride
-#endif
+        if (isDebug) {
+            cprintf("Processo pid %d criado com %d tickets ",p->pid,tickets); //#stride
+        }
         //#stride end
     }
     
@@ -140,6 +142,8 @@ growproc(int n)
 // Sets up stack to return as if from system call.
 // Caller must set state of returned proc to RUNNABLE.
 
+//#stride //Por padrão a função FORK criará processos com 500 tickets, todas as funções de fork chamarão a função Forks passando o numero de tickets
+
 int forks(int tickets){
     int i, pid;
     struct proc *np;
@@ -190,6 +194,12 @@ int forks(int tickets){
     return pid;
 }
 
+int
+fork()
+{
+    forks(500);
+}
+
 int forkLowest(void){
     forks(100);
     
@@ -210,11 +220,7 @@ int forkHighest(void){
     forks(990);
 }
 
-int
-fork(int tickets)
-{
-    forks(500);
-}
+
 
 // Exit the current process.  Does not return.
 // An exited process remains in the zombie state
@@ -321,7 +327,7 @@ wait(void)
 void
 scheduler(void) //#stride
 {
-    if (isRoundRobin) {
+    if (isRoundRobin) { //VERSÃO ORIGINAL DO ESCALONADOR
           struct proc *p;
         
           for(;;){
@@ -354,96 +360,49 @@ scheduler(void) //#stride
     }else{
         struct proc *p;
         struct proc *current = 0;
-//        priority=1;
         for(;;){
             // Habilita interrrupções no processador.
             sti();
             int minPass = -1;
             acquire(&ptable.lock);
-//            cprintf("process list");
-            
-            
             struct proc *p;
             struct proc *minProc = ptable.proc;
          
             int x=0;
             for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
-
-                if (p->pass < minProc->pass && p->state > EMBRYO && p->state < ZOMBIE && p->tickets>0/*&& minProc->pass<=minProc->limitpass*/) {
+                //#STRIDE Encontra o processo com menor numero de passos e que possa ser rodado
+                if (p->pass < minProc->pass && p->state > EMBRYO && p->state < ZOMBIE && p->tickets>0) {
                     minProc = p;
                 }
-                if (priority && p->tickets>0) {
-                    cprintf("\n\n--PROC ON FOR--\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--estado %d \n---\n",p->pid,p->tickets, p->pass , p->stride, p->limitpass, p->state);
-                }                //        cprintf("pid %d tickets %d/n",p->pid,p->tickets);
             }
 
-            if (minProc->pass>=minProc->limitpass) {
+            if (minProc->pass>=minProc->limitpass) { // #STRIDE //Caso o processo tenha chegado no seu limite de passadas calcula o próximo limite de passos
                 minProc->limitpass+=minProc->pass+minProc->stride;
-                if (priority) {
-
-                cprintf("\n\n--PASS+=STRIDE--\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->limitpass);
+                if (isDebug) {
+                    cprintf("\n\n--PASS+=STRIDE--\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->limitpass);
                 }
-            }else{
+            }else{ // #STRIDE //Se o processo ainda pode ser executado aumenta o número de passadas
                 minProc->pass+=minProc->stride;
-                if (priority) {
-
-                cprintf("\n\n--PASS+=--\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->limitpass);
+                if (isDebug) {
+                    cprintf("\n\n--PASS+=--\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->limitpass);
                 }
             }
             
-            minProc->state = RUNNING;
+            minProc->state = RUNNING; //#STRIDE Define o estado do processo
 
             proc = minProc;
-            if (proc->pass<0) {
+            if (proc->pass<0) { //#STRIDE caso numero de passadas tenha passado o maxint reinicia a contagem
                 proc->pass=0;
                 proc->limitpass = proc->stride;
             }
             switchuvm(proc);
-            swtch(&cpu->scheduler, proc->context);
+            swtch(&cpu->scheduler, proc->context); //#STRIDE passa para o contexto do processo
             switchkvm();
             
             // Process is done running for now.
             // It should have changed its p->state before coming back.
             proc = 0;
             release(&ptable.lock);
-
-            
-            /*
-            
-            for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){// Passa pelos processos procurando o próximo à executar.
-                
-                if(p->state != RUNNABLE){
-                    p->pass++;
-                    p->usage++;
-                    continue;
-                }
-                
-                if (minPass < 0 || p->pass < minPass){//se o processo atual esta em executando e ainda nao chegou no passo total
-                    current = p;
-                    minPass = p->pass;
-                }
-            }
-//            if (current->pass!=0 && current->tickets>1) {#stride faz com que imprima na tela as informações do processo percorrido
-//                cprintf("PID %d Passo: %d  Tickets %d",current->pid,current->pass,current->tickets);
-//            }
-            proc = current; //define o processo atual para exec- ução
-            current->pass += current->stride; // define a passada do processo
-            switchuvm(current);//Alterna registradores para o processo current
-            current->state = RUNNING;//define o processo como RUNNING
-            current->usage = current->usage+1;//aumenta o passo do processo
-
-            //cprintf("Passo: %d",current->stride);
-            swtch(&cpu->scheduler, proc->context);//passa para o contexto do processo
-            switchkvm();
-            
-            //Quando terminar a execução e voltar para o contexto imprime o passo do processo
-//            if (current->pass!=0 && current->tickets>1 && current->pid!=1) {
-//                cprintf("PID %d Passo: %d  Tickets %d",current->pid,current->pass,current->tickets);
-//            }
-            proc = 0;
-            release(&ptable.lock);*/
-            
-            
         }
     }
 }
@@ -480,32 +439,28 @@ yield(void)
 
 // A fork child's very first scheduling by scheduler()
 // will swtch here.  "Return" to user space.
-
-
 void
 forkret(void)
 {
-//    if (isRoundRobin) { //#stride
-//          static int first = 1;
-//          // Still holding ptable.lock from scheduler.
-//          release(&ptable.lock);
-//        
-//          if (first) {
-//            // Some initialization functions must be run in the context
-//            // of a regular process (e.g., they call sleep), and thus cannot
-//            // be run from main().
-//            first = 0;
-//            initlog();
-//          }
-//        
-//          // Return to "caller", actually trapret (see allocproc).
-//
-//    }else{
-//        // Still holding ptable.lock from scheduler.
-//        release(&ptable.lock);
-//        
-//    }
-    release(&ptable.lock);
+    if (isRoundRobin) { //#stride
+          static int first = 1;
+          // Still holding ptable.lock from scheduler.
+          release(&ptable.lock);
+        
+          if (first) {
+            // Some initialization functions must be run in the context
+            // of a regular process (e.g., they call sleep), and thus cannot
+            // be run from main().
+            first = 0;
+            initlog();
+          }
+        
+          // Return to "caller", actually trapret (see allocproc).
+
+    }else{
+        // Still holding ptable.lock from scheduler.
+        release(&ptable.lock);
+    }
     // Return to "caller", actually trapret (see allocproc).
 }
 
@@ -628,29 +583,8 @@ procdump(void)
     cprintf("\n");
   }
 }
-
-int switchScheduler(void){
-//    isRoundRobin=!isRoundRobin;
-   /* if (isRoundRobin) {
-        cprintf("\nModo RoundRobin ativado!\n");
-    }else{
-        cprintf("\nModo Passo Largo ativado!\n");
-    }*/
-    /*
-    struct proc *p;
-    struct proc *minProc = ptable.proc;
-    
-    int x=0;
-    for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
-        if (p->pass > minProc->pass) {
-            minProc = p;
-        }
-//        cprintf("pid %d tickets %d/n",p->pid,p->tickets);
-    }
-            cprintf("\n\n=================\nProcesso escolhido \n pid %d \n tickets %d \n passos %d \n passada %d \n limite passo %d\n=================\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->pass+minProc->stride);
-    */
-    priority=!priority;
-    cprintf("Priority %d/n",priority);
-    
-    return isRoundRobin;
+//#STRIDE Ativa/desativa contante de debug
+int switchDebug(void){
+    isDebug=!isDebug;
+    return isDebug;
 }

@@ -80,8 +80,6 @@ trap(struct trapframe *tf)
    
   //PAGEBREAK: 13
   default:
-      
-
     if(proc == 0 || (tf->cs&3) == 0){
       // In kernel, it must be our mistake.
       cprintf("unexpected trap %d from cpu %d eip %x (cr2=0x%x)\n",
@@ -100,22 +98,17 @@ trap(struct trapframe *tf)
   // (If it is still executing in the kernel, let it keep running 
   // until it gets to the regular system call return.)
     if(proc && proc->killed && (tf->cs&3) == DPL_USER){
-        cprintf("\n\n---GOING TO EXIT-----\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",proc->pid,proc->tickets, proc->pass , proc->stride, proc->limitpass);
         exit();
     }
   // Force process to give up CPU on clock tick.
   // If interrupts were on while locks held, would need to check nlock.
-
+    //#STRIDE Alterado para que o processo seja retirado de execução após atingir o número total de passos, retornando ao escalonador
     if(proc && proc->state == RUNNING && (proc->pass>=proc->limitpass || tf->trapno == T_IRQ0+IRQ_TIMER)){
         proc->limitpass+=proc->pass+proc->stride;
-//        cprintf("\n\n---GOING TO YELD-----\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",proc->pid,proc->tickets, proc->pass , proc->stride, proc->limitpass);
         yield();
-    }else if(proc && proc->state == RUNNING && proc->pass<proc->limitpass){
+    }else if(proc && proc->state == RUNNING && proc->pass<proc->limitpass){ //#STRIDE Processo ainda em execução aumenta o numero de passos executados
         proc->pass+=proc->stride;
-//        cprintf("\n\n---PASS++---\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",proc->pid,proc->tickets, proc->pass , proc->stride, proc->limitpass);
     }
-    
-    
   // Check if the process has been killed since we yielded
   if(proc && proc->killed && (tf->cs&3) == DPL_USER)
     exit();

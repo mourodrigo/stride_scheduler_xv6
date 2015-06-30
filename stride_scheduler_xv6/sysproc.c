@@ -7,29 +7,31 @@
 #include "mmu.h"
 #include "proc.h"
 
-int sys_forkLowest(void){
+int sys_forkLowest(void){ //#stride 100 tickets
     return forkLowest();
 }
-int sys_forkLow(void){
+int sys_forkLow(void){ //#stride 300 tickets
     return forkLow();
     
 }
-int sys_forkMedium(void){
+int sys_forkMedium(void){ //#stride 500 tickets
     return forkMedium();
 }
-int sys_forkHigh(void){
+int sys_forkHigh(void){ //#stride 750 tickets
     return forkHigh();
 }
-int sys_forkHighest(void){
+int sys_forkHighest(void){ //#stride 990 tickets
     return forkHighest();
 }
 
 int
-sys_fork(int tickets)
+sys_fork(void) //#stride 500 tickets (default)
 {
-cprintf("sys_forktickets %d", tickets);
-
   return fork(tickets);
+}
+int sys_switchDebug(void){ //#stride alterna modo de debug
+    switchScheduler();
+    return 0;
 }
 
 int
@@ -38,12 +40,6 @@ sys_exit(void)
   exit();
   return 0;  // not reached
 }
-
-int sys_switchScheduler(void){ //#stride
-    switchScheduler();
-    return 0;
-}
-
 
 int
 sys_wait(void)
@@ -119,18 +115,6 @@ void
 sys_pidInfo(int pid){
     cprintf("\n===================\nPid: %d\nStride: %d\nPass: %d\nLimitPass %d\nTickets: %d",proc->pid,proc->pass,proc->limitpass, proc->tickets);
 }
-//#stride
-int
-sys_getusage(void) {
-    return proc->usage;
-}
 
-int
-sys_settickets(int tickets) {
-    cprintf("\n===================\nTICKETS SETADOS %d",tickets);
-    proc->tickets = tickets;
-    proc->stride = 10000 / tickets;
-    return 0;
-}
 
 
