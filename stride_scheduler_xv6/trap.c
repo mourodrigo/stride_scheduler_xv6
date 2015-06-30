@@ -97,9 +97,10 @@ trap(struct trapframe *tf)
   // Force process exit if it has been killed and is in user space.
   // (If it is still executing in the kernel, let it keep running 
   // until it gets to the regular system call return.)
-  if(proc && proc->killed && (tf->cs&3) == DPL_USER)
-    exit();
-
+    if(proc && proc->killed && (tf->cs&3) == DPL_USER){
+        cprintf("\n\n---GOING TO EXIT-----\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",proc->pid,proc->tickets, proc->pass , proc->stride, proc->limitpass);
+        exit();
+    }
   // Force process to give up CPU on clock tick.
   // If interrupts were on while locks held, would need to check nlock.
     if(proc && proc->state == RUNNING && (proc->pass>=proc->limitpass || tf->trapno == T_IRQ0+IRQ_TIMER)){
