@@ -36,7 +36,7 @@ void zombie(int pi,int tickets,int rodadas){
 //        sleep(SLEEP);
         
     }
-    printf(0, "\nturn %d indice %d pid %d tickets %d tempoCPU %d Fatorial %d = %d\n\n",turn,pi,getpid(),tickets,getusage(),x,result);
+//    printf(0, "\nturn %d indice %d pid %d tickets %d tempoCPU %d Fatorial %d = %d\n\n",turn,pi,getpid(),tickets,getusage(),x,result);
     printf(0, "\n Pid %d com prioridade %d finalizado em %d segundos\n\n" ,getpid(),tickets,uptime()-systemTime);
 
     //pidInfo(getpid());
@@ -94,7 +94,7 @@ main(void)
 {
     printf(0, "\nEste teste criara 3 processos com 10,5,2 tickets que calcularao o fatorial de 0 ate 12 por 30 vezes respectivamente com um intervalo de 100ms");
   //  switchScheduler();
-    int turns = 2400000;
+    int turns = 4000000;
     forkTest(1,turns);
     forkTest(2,turns);
     forkTest(3,turns);
