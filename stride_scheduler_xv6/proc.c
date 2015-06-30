@@ -58,7 +58,7 @@ found:
         p->stride = 10000 / p->tickets; // calculo do tamanho do passo
         p->limitpass = p->stride;
         if (isDebug) {
-            cprintf("Processo pid %d criado com %d tickets ",p->pid,tickets); //#stride
+            cprintf("\n|-Processo pid %d criado com %d tickets-|\n",p->pid,tickets); //#stride
         }
         //#stride end
     }
