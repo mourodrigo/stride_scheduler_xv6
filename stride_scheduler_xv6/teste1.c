@@ -4,52 +4,86 @@
 //
 //  Created by Rodrigo Bueno Tomiosso
 //  Copyright (c) 2015 mourodrigo. All rights reserved.
-//  Versão modificada do forktest do xv6 onde é passado um número de tickets para o processo conforme o for é percorrido
+//
 
 #include "teste1.h"
 
-#define N  1000
+#define SLEEP 100
 
-void
-forktest(void)
-{
-    int n, pid;
+//Recebe como parametros a prioridade do processo e número de rodadas que realizará o cálculo, em seguida calcula o fatorial de x pelo numero de rodadas
+void zombie(int prioridade,int rodadas){
+    printf(0, "\nIniciando pid %d com prioridade %d",getpid(),prioridade);
+    uint x=0; uint y=0; uint turn = rodadas;
+    uint limit = 12;
+    uint result = 0;
+    uint systemTime = uptime();
     
-    printf(1, "fork test\n");
-    
-    for(n=0; n<N; n++){
-        pid = forkHighest();
-        if(pid < 0)
-            break;
-        if(pid == 0)
-            exit();
-    }
-    
-    if(n == N){
-        printf(1, "fork claimed to work N times!\n", N);
-        exit();
-    }
-    
-    for(; n > 0; n--){
-        if(wait() < 0){
-            printf(1, "wait stopped early\n");
-            exit();
+    for(turn=turn;turn!=1;turn--){
+        for(x=1;x<limit;x++){
+            result = x;
+            for(y=x;y!=1;y--){
+                result = result*y;
+            }
+            
         }
+        result=result-10;
+    }
+    printf(0, "\n Pid %d com prioridade %d finalizado em %d segundos\n\n" ,getpid(),prioridade,uptime()-systemTime);
+    exit();
+}
+
+//Recebe um numero identificador e numero de tickets que é utilizado na chamada fork
+int forkTest(int priority,int rodadas){
+    int pid;
+    switch (priority) {
+        case 1:
+            pid = forkLowest();
+            break;
+        case 2:
+            pid = forkLow();
+            break;
+        case 3:
+            pid = forkMedium();
+            break;
+        case 4:
+            pid = forkHigh();
+            break;
+        case 5:
+            pid = forkHighest();
+            break;
     }
     
-    if(wait() != -1){
-        printf(1, "wait got too many\n");
-        exit();
+    if (pid == 0)
+    {
+        // processo filho
+        zombie(priority,rodadas);
+    }
+    else if (pid > 0)
+    {
+        // processo pai
+        //zombie(i);
+    }
+    else
+    {
+        // falha no fork
+        printf(1, "fork(1) failed!\n");
+        return 1;
     }
     
-    printf(1, "Teste de 1000 forks OK\n");
+    return 0;
 }
 
 int
 main(void)
 {
-    printf(1, "Versao modificada do forktest do xv6 onde e passado um número de tickets (1 a 1000) para o processo conforme o for e percorrido\n");
-    sleep(1000);
-    forktest();
+    printf(0, "\nEste teste criara 39 processos com prioridades que variam da mais baixa ate mais alta calcularao o fatorial de 0 ate 12 por 4000000 vezes respectivamente. Apos finalizar o calculo sera apresentado o PID do processo com o tempo de execucao.\n\n");
+    
+    int turns = 3600000;
+    
+    forkTest(3,turns);
+    forkTest(3,turns);
+    forkTest(3,turns);
+    forkTest(3,turns);
+    forkTest(3,turns);
     exit();
 }
