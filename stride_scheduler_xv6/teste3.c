@@ -27,7 +27,7 @@ void zombie(int pi,int tickets,int rodadas){
             
         }
         printf(0, "\nturn %d indice %d pid %d tickets %d tempoCPU %d Fatorial %d = %d",turn,pi,getpid(),tickets,getusage(),x,result);
-        pidInfo(getpid());
+      //  pidInfo(getpid());
 //        switchScheduler();
 
 //        sleep(SLEEP);
@@ -42,14 +42,32 @@ void zombie(int pi,int tickets,int rodadas){
 }
 
 //Recebe um numero identificador e numero de tickets que é utilizado na chamada fork
-int forkTest(int i,int tickets,int rodadas){
+int forkTest(int priority,int rodadas){
     int counter = 0;
-    int pid = forkMedium();
+    
+    int pid;
+    switch (priority) {
+        case 1:
+            pid = forkLowest();
+            break;
+        case 2:
+            pid = forkLow();
+            break;
+        case 3:
+            pid = forkMedium();
+            break;
+        case 4:
+            pid = forkHigh();
+            break;
+        case 5:
+            pid = forkHighest();
+            break;
+    }
     
     if (pid == 0)
     {
         // processo filho
-        zombie(i,tickets,rodadas);
+        zombie(priority,priority,rodadas);
     }
     else if (pid > 0)
     {
@@ -71,9 +89,9 @@ main(void)
 {
     printf(0, "\nEste teste criara 3 processos com 10,5,2 tickets que calcularao o fatorial de 0 ate 12 por 30 vezes respectivamente com um intervalo de 100ms");
   //  switchScheduler();
-    forkTest(10,2,10000);
-    forkTest(5,900,10000);
-    forkTest(2,100,10000);
+    forkTest(1,3000);
+    forkTest(3,3000);
+    forkTest(5,3000);
     
 //    settickets(50);
     sleep(500);
