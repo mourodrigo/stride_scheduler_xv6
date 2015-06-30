@@ -377,12 +377,12 @@ scheduler(void) //#stride
             cprintf("\n\n----FOR;;--\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->limitpass);
             
 
-/*
+
             if (minProc->pass>=minProc->limitpass) {
                 minProc->limitpass+=minProc->pass+minProc->stride;
             }else{
                 minProc->pass+=minProc->stride;
-            }*/
+            }
             
             minProc->state = RUNNING;
 
