@@ -109,3 +109,76 @@ O XV6 utiliza a técnica de escalonamento RoundRobin ou seja, quando um processo
 Para alternar entre um processo e outro são utilizados mecanismos de trocas de contexto, são executados dois tipos de troca de contexto de baixo nível: De uma thread do escalonador da CPU para um processo e de uma thread do escalonador para uma thread do kernel.<br>
 No XV6 não há trocas diretas de um processo do usuário para outro, isto ocorre através de uma transição do kernel de usuário (chamada do sistema ou interrupção), cada processo tem sua pilha de kernel e conjunto de registradores e cada CPU tem sua própria thread do escalonador para execução. Alternar entre uma thread e outra envolve salvar os registradores da CPU da thread atual e restaurar os registradores salvos anteriormente da thread atual.
 
+*swtch.S - Troca de contexto entre processos de nível de usuário e de kernel*
+```
+# Context switch
+#
+#   void swtch(struct context **old, struct context *new);
+# 
+# Save current register context in old
+# and then load register context from new.
+
+.globl swtch
+swtch:
+  movl 4(%esp), %eax
+  movl 8(%esp), %edx
+
+  # Save old callee-save registers
+  pushl %ebp
+  pushl %ebx
+  pushl %esi
+  pushl %edi
+
+  # Switch stacks
+  movl %esp, (%eax)
+  movl %edx, %esp
+
+  # Load new callee-save registers
+  popl %edi
+  popl %esi
+  popl %ebx
+  popl %ebp
+  ret
+
+```
+O código apresentado acima é responsável por salvar e resgatar as informações dos registradores (contextos).<br> Quando é chegado o momento de um processo sair da execução da CPU, a thread do kernel do processo chamará o swtch para salvar seu próprio contexto e retornar para a contexto do escalonador. <br>
+Esta ação é originalmente disparada pela classe trap.c, responsável por administrar as interrupções do sistema.<br>
+*Trap.c*
+```
+ // Força o processo à sair se for morto e estiver no espaço do usuário
+  if(proc && proc->killed && (tf->cs&3) == DPL_USER)
+    exit();
+
+  // Força o processo à sair de execução por tempo de relógio
+  if(proc && proc->state == RUNNING && tf->trapno == T_IRQ0+IRQ_TIMER)
+    yield();
+
+  // Verifica se o processo foi morto desde o momento que foi removido da execução
+  if(proc && proc->killed && (tf->cs&3) == DPL_USER)
+    exit();
+```
+
+Cada contexto é representado por um ponteiro para uma estrutura armazenada no próprio kernel em que está envolvido, o swtch recebe dois argumentos, um ponteiro para o contexto antigo e um para o novo contexto. Então são alternados os registradores da CPU atual na pilha e salvos o ponteiro da pilha no ponteiro do contexto antigo.<br>
+<br>*proc.c*
+```
+void
+sched(void) //exemplo de contexto sendo alternado
+{
+  int intena;
+
+  if(!holding(&ptable.lock))
+    panic("sched ptable.lock");
+  if(cpu->ncli != 1)
+    panic("sched locks");
+  if(proc->state == RUNNING)
+    panic("sched running");
+  if(readeflags()&FL_IF)
+    panic("sched interruptible");
+  intena = cpu->intena;
+  swtch(&proc->context, cpu->scheduler);
+  cpu->intena = intena;
+}
+```
+Na estrutura original o escalonador roda em um looping, procurando um processo para rodar, coloca-o em execução até que o mesmo pare ou seja removido por tempo de relógio e repete o processo novamente. O escalonador mantém ptable.lock para a maioria de suas rotinas, porém libera o bloqueio e habilita as interrupções a cada interação do looping. Isto é importante para o caso especial em que a CPU está ociosa ou hajam múltiplas CPUs.<br>
+Hibernar e acordar são métodos de sincronização entre processos simples e precisos podendo ser utilizados para vários tipos de espera. Um exemplo é a chamada de espera que um processo pai usa para aguardar enquanto um processo filho está sendo executado. No XV6 quando um processo termina, este não é finalizado imediatamente. Ele é enviado para um estado zumbi até que o processo pai seja notificado da finalização. O processo pai é então responsável por liberar a memória associada. Caso o processo pai seja finalizado antes do filho, o processo init é responsável por adotar este processo filho e aguardar por ele, de tal maneira que sempre haverá um processo pai para limpar a memória após sua utilização.
+
