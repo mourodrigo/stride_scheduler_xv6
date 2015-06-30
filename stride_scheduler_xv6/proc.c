@@ -371,7 +371,7 @@ scheduler(void) //#stride
                 if (p->pass > minProc->pass && p->state == RUNNABLE && p->tickets>0/*&& minProc->pass<=minProc->limitpass*/) {
                     minProc = p;
                 }
-                if (priority) {
+                if (priority && p->tickets>0) {
                     cprintf("\n\n--PROC ON FOR--\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",p->pid,p->tickets, p->pass , p->stride, p->limitpass);
                 }                //        cprintf("pid %d tickets %d/n",p->pid,p->tickets);
             }
