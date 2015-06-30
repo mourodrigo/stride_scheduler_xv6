@@ -201,11 +201,23 @@ Foram desenvolvidos métodos para criar processos conforme o nível de prioridad
 O método padrão para criação de processos (fork) também utilizará 500 tickets na criação de processos.
 Também foi desenvolvido o método switchDebug, responsável por habilitar logs de debug, esses logs são disparados dentro da execução do kernel, na criação e finalização de processos, indicando o número do PID e quantidade de tickets. Os logs do kernel são impressos dentro de tags |- -|.
 
+**Defs.h**<br>
+Foram desenvolvidos métodos para criar processos conforme o nível de prioridade, cada método cria processos da mesma maneira porém utilizando números de tickets diferentes.
+
+* forkLowest - 100 tickets
+* forkLow - 300 tickets
+* forkMedium - 500 tickets
+* forkHigh - 750 tickets
+* forkHighest - 990 tickets
+
+O método padrão para criação de processos (fork) também utilizará 500 tickets na criação de processos.
+Também foi desenvolvido o método switchDebug, responsável por habilitar logs de debug, esses logs são disparados dentro da execução do kernel, na criação e finalização de processos, indicando o número do PID e quantidade de tickets. Os logs do kernel são impressos dentro de tags |- -|.
+
 
 ![defs.h](http://s23.postimg.org/evomtie3f/Captura_de_Tela_2015_06_30_s_19_17_46.png)<br><br>
 
 **Init.c**<br>
-O processo responsável pelo shell foi inicializado com baixa prioridade (300 tickets).
+O primeiro processo responsável pelo shell foi inicializado com baixa prioridade (300 tickets).
 ![init.c](http://s8.postimg.org/qzhxxetyt/init_c.png)<br><br>
 
 **makefile**<br>
@@ -257,31 +269,30 @@ A syscall criada switchDebug é responsável por babilitar e desabilitar a const
 Alterações realizadas na estrutura do processo, para permitir o número de tickets, tempo de uso da cpu, tamanho do passo, passos efetuados, limite de passos à serem efetuados a cada rodada.
 ![proc.h](http://s8.postimg.org/tabenufcl/proc_h.png)<br><br>
 
-**proc.c**<br>
-Métodos de teste e chamadas do sistemas foram alteradas para seguir o padrão de alocação de processsos com tickets.
+**sh.c**<br>
+Métodos de teste e chamadas do sistemas foram alteradas para seguir o padrão de alocação de processsos com tickets.<br>
 ![sh.c](http://s8.postimg.org/iftylww8l/sh_c.png)<br><br>
 
-**proc.c**<br>
+**syscall.c**<br>
+Adicionadas chamadas de sistema conforme os novos métodos, permitindo que sejam chamados à nível de kernel.<br>
+![syscall.c](http://s30.postimg.org/ya1dnb6td/syscall_c.png)<br><br>
 
-![syscall.c](http://s8.postimg.org/i86bpel9x/syscall_c.png)<br><br>
-
-**proc.c**<br>
-
+**syscall.h**<br>
+Constantes numéricas para chamadas do sistema (syscalls).
 ![syscall.h](http://s8.postimg.org/j6moroylx/syscall_h.png)<br><br>
 
-**proc.c**<br>
-
+**sysproc.c**<br>
+Implementação das syscalls.
 ![sysproc.c](http://s8.postimg.org/f6ay1pir9/sysproc_c.png)<br><br>
 
-**proc.c**<br>
-
+**trap.c**<br>
+Importante alteração do escalonador pois permite que o processo seja retirado da execução executado o número de passos necessários. Caso ainda não tenha chegado no limite de passos o número de passos realizados é incrementado.
 ![trap.c](http://s8.postimg.org/ya49i1vlh/trap_c.png)<br><br>
 
-**proc.c**<br>
-
+**user.h**<br>
+Declaração do cabecalho das syscalls na classe importada pelo usuário, permitindo que sejam chamados à nível de usuário.
 ![user.h](http://s8.postimg.org/tyfnt1ool/user_h.png)<br><br>
 
 **proc.c**<br>
-
+Declaração das syscalls com protótipo das funções.
 ![usys.S/](http://s8.postimg.org/6lhmaj8l1/usys_S.png)<br><br>
-
