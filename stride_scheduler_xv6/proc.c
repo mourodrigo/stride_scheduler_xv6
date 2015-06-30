@@ -139,6 +139,23 @@ growproc(int n)
 // Create a new process copying p as the parent.
 // Sets up stack to return as if from system call.
 // Caller must set state of returned proc to RUNNABLE.
+
+int forkLowest(void){
+    
+}
+int forkLow(void){
+    
+}
+int forkMedium(void){
+    
+}
+int forkHigh(void){
+    
+}
+int forkHighest(void){
+    
+}
+
 int
 fork(int tickets)
 {

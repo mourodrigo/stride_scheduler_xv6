@@ -33,3 +33,8 @@ SYSCALL(getusage)
 SYSCALL(settickets)
 SYSCALL(switchScheduler)
 SYSCALL(pidInfo)
+SYSCALL(forkLowest);
+SYSCALL(forkLow);
+SYSCALL(forkMedium);
+SYSCALL(forkHigh);
+SYSCALL(forkHighest);

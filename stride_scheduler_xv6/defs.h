@@ -107,6 +107,13 @@ int             pipewrite(struct pipe*, char*, int);
 struct proc*    copyproc(struct proc*);
 void            exit(void);
 int             fork(int tickets);
+
+int             forkLowest(void);
+int             forkLow(void);
+int             forkMedium(void);
+int             forkHigh(void);
+int             forkHighest(void);
+
 int             growproc(int);
 int             kill(int);
 void            pinit(void);

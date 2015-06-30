@@ -7,6 +7,22 @@
 #include "mmu.h"
 #include "proc.h"
 
+int sys_forkLowest(void){
+    
+}
+int sys_forkLow(void){
+    
+}
+int sys_forkMedium(void){
+    
+}
+int sys_forkHigh(void){
+    
+}
+int sys_forkHighest(void){
+    
+}
+
 int
 sys_fork(int tickets)
 {

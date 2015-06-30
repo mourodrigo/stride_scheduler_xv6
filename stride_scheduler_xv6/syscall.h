@@ -24,3 +24,8 @@
 #define SYS_getusage 23
 #define SYS_switchScheduler 24
 #define SYS_pidInfo 25
+#define SYS_forkLowest 26
+#define SYS_forkLow 27
+#define SYS_forkMedium 28
+#define SYS_forkHigh 29
+#define SYS_forkHighest 30

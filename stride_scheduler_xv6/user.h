@@ -25,7 +25,11 @@ int sleep(int);
 int uptime(void);
 int switchScheduler(void);
 void pidInfo(int pid);
-
+int forkLowest(void);
+int forkLow(void);
+int forkMedium(void);
+int forkHigh(void);
+int forkHighest(void);
 // ulib.c
 int stat(char*, struct stat*);
 char* strcpy(char*, char*);

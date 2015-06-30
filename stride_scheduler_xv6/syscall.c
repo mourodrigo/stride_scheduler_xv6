@@ -98,6 +98,11 @@ extern int sys_unlink(void);
 extern int sys_wait(void);
 extern int sys_write(void);
 extern int sys_uptime(void);
+extern int sys_forkLowest(void);
+extern int sys_forkLow(void);
+extern int sys_forkMedium(void);
+extern int sys_forkHigh(void);
+extern int sys_forkHighest(void);
 
 extern int sys_settickets(int tickets); //#stride //chamada do sistema para setar tickets
 extern int sys_getusage(void); //#stride //chamada do sistema para obter o uso da cpu
@@ -130,7 +135,11 @@ static int (*syscalls[])(void) = {
 [SYS_getusage] sys_getusage, //#stride ////chamada do sistema para obter o uso da cpu
 [SYS_switchScheduler] sys_switchScheduler, //#stride ////chamada do sistema para obter o uso da cpu
 [SYS_pidInfo] sys_pidInfo,
-
+[SYS_forkLowest] forkLowest,
+[SYS_forkLow] forkLow,
+[SYS_forkMedium] forkMedium,
+[SYS_forkHigh] forkHigh,
+[SYS_forkHighest] forkHighest,
 };
 
 void
