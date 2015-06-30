@@ -29,7 +29,6 @@ SYSCALL(getpid)
 SYSCALL(sbrk)
 SYSCALL(sleep)
 SYSCALL(uptime)
-SYSCALL(getusage)
 SYSCALL(switchDebug)
 SYSCALL(pidInfo)
 SYSCALL(forkLowest);
