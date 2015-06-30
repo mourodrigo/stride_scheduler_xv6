@@ -378,14 +378,8 @@ scheduler(void) //#stride
 
             if (minProc->pass>=minProc->limitpass) { // #STRIDE //Caso o processo tenha chegado no seu limite de passadas calcula o próximo limite de passos
                 minProc->limitpass+=minProc->pass+minProc->stride;
-                if (isDebug) {
-                    cprintf("\n\n--PASS+=STRIDE--\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->limitpass);
-                }
             }else{ // #STRIDE //Se o processo ainda pode ser executado aumenta o número de passadas
                 minProc->pass+=minProc->stride;
-                if (isDebug) {
-                    cprintf("\n\n--PASS+=--\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->limitpass);
-                }
             }
             
             minProc->state = RUNNING; //#STRIDE Define o estado do processo
