@@ -199,19 +199,8 @@ Foram desenvolvidos métodos para criar processos conforme o nível de prioridad
 * forkHighest - 990 tickets
 
 O método padrão para criação de processos (fork) também utilizará 500 tickets na criação de processos.
-Também foi desenvolvido o método switchDebug, responsável por habilitar logs de debug, esses logs são disparados dentro da execução do kernel, na criação e finalização de processos, indicando o número do PID e quantidade de tickets. Os logs do kernel são impressos dentro de tags |- -|.
-
-**Defs.h**<br>
-Foram desenvolvidos métodos para criar processos conforme o nível de prioridade, cada método cria processos da mesma maneira porém utilizando números de tickets diferentes.
-
-* forkLowest - 100 tickets
-* forkLow - 300 tickets
-* forkMedium - 500 tickets
-* forkHigh - 750 tickets
-* forkHighest - 990 tickets
-
-O método padrão para criação de processos (fork) também utilizará 500 tickets na criação de processos.
-Também foi desenvolvido o método switchDebug, responsável por habilitar logs de debug, esses logs são disparados dentro da execução do kernel, na criação e finalização de processos, indicando o número do PID e quantidade de tickets. Os logs do kernel são impressos dentro de tags |- -|.
+Também foi desenvolvido o método switchDebug, responsável por habilitar logs de debug, esses logs são disparados dentro da execução do kernel, na criação e finalização de processos, indicando o número do PID e quantidade de tickets. <br>
+Os logs do kernel são impressos dentro de tags |- -|.
 
 
 ![defs.h](http://s23.postimg.org/evomtie3f/Captura_de_Tela_2015_06_30_s_19_17_46.png)<br><br>
@@ -245,7 +234,7 @@ O primeiro processo p (pid 1) alogado dentro do userinit é alocado diretamente 
 ![proc.c](http://s8.postimg.org/g3hdaku9h/proc_c3.png)<br><br>
 
 **proc.c**<br>
-O método fork passou à ser um método semelhante aos outros métodos com prioridade, não alocando de fato o processo. O método responsável pela alocação é o método forks(int tickets), que passa a ser chamado por todos os outros métodos com suas devidas prioridades.
+O método fork passou à ser um método semelhante aos outros métodos com prioridade, não alocando de fato o processo. O método responsável pela alocação é o método forks(int tickets), que passa a ser chamado por todos os outros métodos com suas devidas prioridades. No método também são atribuídas as informações de tickets e passada do processo.
 ![proc.c](http://s8.postimg.org/ye79psfud/proc_c4.png)<br><br>
 
 **proc.c**<br>
@@ -254,7 +243,7 @@ Implementação dos métodos de fork com prioridades e seus devidos números de 
 
 **proc.c**<br>
 Principal método do escalonador ( void scheduler(void){} ), responsável por adquirir um método e repassá-lo à CPU para execução. <br>
-O for que percorre todos os processos foi alterado para percorrer toda a lista buscando o processo com menor passada executada. O processo não pode ser escolhido se não estiver pronto para execução (EMBRYO) ou se sua execução já tiver sido finalizada (ZOMBIE). Considerando que o if de comparação da passada considera apenas um valor MENOR de passos efetuados, não são necessários critérios de desempate pois o algoritmo seguirá a órdem lógica da lista (consequentemente pelo número do PID).<br>
+O for que percorre todos os processos foi alterado para percorrer toda a lista buscando o processo com menor passada executada. O processo não pode ser escolhido se não estiver pronto para execução (EMBRYO) ou se sua execução já tiver sido finalizada (ZOMBIE). Considerando que o if de comparação da passada considera apenas um valor MENOR de passos efetuados, não são necessários critérios de desempate pois o algoritmo seguirá a ordem lógica da lista (consequentemente pelo número do PID).<br>
 Após identificado o método à ser executado o valor do limite da passada é atualizado, bem como o número do passo.<br>
 O processo escolhido passa a ter seu estado definido como RUNNING, passando também à ser o processo principal. Definido o estado é feito um tratamento para o número da passada, onde caso o número tenha extrapolado o valor máximo de um inteiro, reinicia a contagem, impedindo que processos com longa execução fiquem em looping por limitações de alocação de informação.<br>
 Em seguida é feita a troca de contexto do kernel para o processo e a tabela de processos é desbloqueada.
@@ -262,7 +251,7 @@ Em seguida é feita a troca de contexto do kernel para o processo e a tabela de 
 ![proc.c](http://s8.postimg.org/722twywc5/proc_c6.png)<br><br>
 
 **proc.c**<br>
-A syscall criada switchDebug é responsável por babilitar e desabilitar a constante de debug.
+A syscall criada switchDebug é responsável por habilitar e desabilitar a constante de debug.
 ![proc.c](http://s8.postimg.org/rq62pg6yd/proc_c7.png)<br><br>
 
 **proc.c**<br>
@@ -286,7 +275,7 @@ Implementação das syscalls.
 ![sysproc.c](http://s8.postimg.org/f6ay1pir9/sysproc_c.png)<br><br>
 
 **trap.c**<br>
-Importante alteração do escalonador pois permite que o processo seja retirado da execução executado o número de passos necessários. Caso ainda não tenha chegado no limite de passos o número de passos realizados é incrementado.
+Importante alteração do escalonador pois permite que o processo seja retirado da execução assim que executado o número de passos necessários. Caso ainda não tenha chegado no limite de passos o número de passos realizados é incrementado.
 ![trap.c](http://s8.postimg.org/ya49i1vlh/trap_c.png)<br><br>
 
 **user.h**<br>
