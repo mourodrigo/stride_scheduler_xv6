@@ -35,7 +35,7 @@ pinit(void)
 static struct proc*
 allocproc(int tickets)
 {
-    cprintf("Allocproc tickets %d",tickets);
+//  cprintf("Allocproc tickets %d",tickets); //#stride
   struct proc *p;
   char *sp;
     
@@ -56,7 +56,7 @@ found:
         p->stride = 10000 / p->tickets; // calculo do tamanho do passo
         p->limitpass = p->stride;
 #ifdef DEBUGSTRIDE
-        cprintf("Processo pid %d criado com %d tickets ",p->pid,tickets);
+        //cprintf("Processo pid %d criado com %d tickets ",p->pid,tickets); //#stride
 #endif
         //#stride end
     }
