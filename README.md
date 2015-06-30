@@ -384,22 +384,23 @@ Todos os testes criam x processos com prioridades que variam da mais baixa até 
 ```
     int turns = 2400000;
     forkTest(1,turns); // 100 tickets
-    forkTest(1,turns); // 100 tickets
-    forkTest(1,turns); // 100 tickets
-    forkTest(1,turns); // 100 tickets
-    forkTest(1,turns); // 100 tickets
-    forkTest(1,turns); // 100 tickets
-    forkTest(1,turns); // 100 tickets
-    forkTest(1,turns); // 100 tickets
-    forkTest(1,turns); // 100 tickets
-    forkTest(1,turns); // 100 tickets
-    forkTest(1,turns); // 100 tickets
-    forkTest(1,turns); // 100 tickets
-    forkTest(1,turns); // 100 tickets
-    forkTest(1,turns); // 100 tickets
-    forkTest(1,turns); // 100 tickets
-    forkTest(1,turns); // 100 tickets
+    forkTest(4,turns); // 750 tickets
     forkTest(5,turns); // 990 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(4,turns); // 750 tickets
+    forkTest(3,turns); // 500 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(3,turns); // 500 tickets
+    forkTest(3,turns); // 500 tickets
+    forkTest(2,turns); // 300 tickets
+    forkTest(3,turns); // 500 tickets
+    forkTest(4,turns); // 750 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(4,turns); // 750 tickets
+    forkTest(5,turns); // 990 tickets
+    forkTest(5,turns); // 990 tickets
+    forkTest(5,turns); // 990 tickets
+
 ```
 *Teste5*
 ```
