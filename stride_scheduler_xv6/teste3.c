@@ -14,7 +14,7 @@
 //o turn, indice, pid, numero de tíckets, tempo de CPU, e o fatorial de x.
 //OBS: Há um sleep de 100ms para melhor acompanhamento
 void zombie(int pi,int tickets,int rodadas){
-    printf(0, "\nIniciando pid %d com prioridade %d",getpid(),tickets);
+    //printf(0, "\nIniciando pid %d com prioridade %d",getpid(),tickets);
     uint x=0; uint y=0; uint turn = rodadas;
     uint limit = 12;
     uint result = 0;
