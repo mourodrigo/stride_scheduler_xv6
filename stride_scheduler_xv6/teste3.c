@@ -94,10 +94,10 @@ main(void)
 {
     printf(0, "\nEste teste criara 3 processos com 10,5,2 tickets que calcularao o fatorial de 0 ate 12 por 30 vezes respectivamente com um intervalo de 100ms");
   //  switchScheduler();
-    forkTest(3,99999);
-    forkTest(1,99999);
-    forkTest(5,99999);
-    forkTest(2,99999);
+    forkTest(3,999999);
+    forkTest(1,999999);
+    forkTest(5,999999);
+    forkTest(2,999999);
     
     
 //    settickets(50);
