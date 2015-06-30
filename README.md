@@ -187,44 +187,66 @@ Hibernar e acordar são métodos de sincronização entre processos simples e pr
 #####3. Problema proposto
 Implementar o escalonador de processos stride scheduling (escalonamento em passos largos). Semelhante ao escalonamento por loteria, cada processo recebe um número fixo de bilhetes (tickets). Ao invés de utilizar um sorteio (abordagem probabilística), calcula-se o “passo” (stride) de cada processo como sendo o resultado da divisão de um valor constante (e.g., 10.000) pelo número de bilhetes do processo. Cada processo inicia com uma “passada inicial” igual a zero (0). O escalonador seleciona o processo com o menor valor de passada atual; portanto, inicialmente qualquer um dos processos prontos podem ser selecionados (utilizou-se o número do PID como critério de desempate). Após selecionado, a passada do processo é incrementada com o valor do “passo” do processo. 
 #####4. Implementações realizadas
-Foram realizadas mudanças em uma série de arquivos, as mudanças propostas seguem em imagens abaixo com os devidos comentários justificando a alteração conforme o problema proposto.
+Foram realizadas mudanças em uma série de arquivos, as mudanças propostas seguem em imagens abaixo com os devidos comentários justificando a alteração conforme o problema proposto.<br><br>
 
-[defs.h](http://s8.postimg.org/txewr41md/defs_h.png)
+**Defs.h**<br>
 
-[init.c](http://s8.postimg.org/qzhxxetyt/init_c.png)
+![defs.h](http://s8.postimg.org/txewr41md/defs_h.png)
+**Init.c**<br>
 
-[makefile](http://s8.postimg.org/mmet18vud/makefile1.png)
+![init.c](http://s8.postimg.org/qzhxxetyt/init_c.png)
+**makefile**<br>
 
-[makefile](http://s8.postimg.org/w88dhjn05/makefile2.png)
+![makefile](http://s8.postimg.org/mmet18vud/makefile1.png)
+**makefile**<br>
 
-[makefile](http://s8.postimg.org/u144tmhpx/makefile3.png)
+![makefile](http://s8.postimg.org/w88dhjn05/makefile2.png)
+**makefile**<br>
 
-[proc.c](http://s8.postimg.org/agplquh4l/proc_c1.png)
+![makefile](http://s8.postimg.org/u144tmhpx/makefile3.png)
+**proc.c**<br>
 
-[proc.c](http://s8.postimg.org/vzfe5czlh/proc_c2.png)
+![proc.c](http://s8.postimg.org/agplquh4l/proc_c1.png)
+**proc.c**<br>
 
-[proc.c](http://s8.postimg.org/g3hdaku9h/proc_c3.png)
+![proc.c](http://s8.postimg.org/vzfe5czlh/proc_c2.png)
+**proc.c**<br>
 
-[proc.c](http://s8.postimg.org/ye79psfud/proc_c4.png)
+![proc.c](http://s8.postimg.org/g3hdaku9h/proc_c3.png)
+**proc.c**<br>
 
-[proc.c](http://s8.postimg.org/mssi4c4z9/proc_c5.png)
+![proc.c](http://s8.postimg.org/ye79psfud/proc_c4.png)
+**proc.c**<br>
 
-[proc.c](http://s8.postimg.org/722twywc5/proc_c6.png)
+![proc.c](http://s8.postimg.org/mssi4c4z9/proc_c5.png)
+**proc.c**<br>
 
-[proc.c](http://s8.postimg.org/rq62pg6yd/proc_c7.png)
+![proc.c](http://s8.postimg.org/722twywc5/proc_c6.png)
+**proc.c**<br>
 
-[proc.h](http://s8.postimg.org/tabenufcl/proc_h.png)
+![proc.c](http://s8.postimg.org/rq62pg6yd/proc_c7.png)
+**proc.c**<br>
 
-[sh.c](http://s8.postimg.org/iftylww8l/sh_c.png)
+![proc.h](http://s8.postimg.org/tabenufcl/proc_h.png)
+**proc.c**<br>
 
-[syscall.c](http://s8.postimg.org/i86bpel9x/syscall_c.png)
+![sh.c](http://s8.postimg.org/iftylww8l/sh_c.png)
+**proc.c**<br>
 
-[syscall.h](http://s8.postimg.org/j6moroylx/syscall_h.png)
+![syscall.c](http://s8.postimg.org/i86bpel9x/syscall_c.png)
+**proc.c**<br>
 
-[sysproc.c](http://s8.postimg.org/f6ay1pir9/sysproc_c.png)
+![syscall.h](http://s8.postimg.org/j6moroylx/syscall_h.png)
+**proc.c**<br>
 
-[trap.c](http://s8.postimg.org/ya49i1vlh/trap_c.png)
+![sysproc.c](http://s8.postimg.org/f6ay1pir9/sysproc_c.png)
+**proc.c**<br>
 
-[user.h](http://s8.postimg.org/tyfnt1ool/user_h.png)
+![trap.c](http://s8.postimg.org/ya49i1vlh/trap_c.png)
+**proc.c**<br>
 
-[usys.S/](http://s8.postimg.org/6lhmaj8l1/usys_S.png)
+![user.h](http://s8.postimg.org/tyfnt1ool/user_h.png)
+**proc.c**<br>
+
+![usys.S/](http://s8.postimg.org/6lhmaj8l1/usys_S.png)
+
