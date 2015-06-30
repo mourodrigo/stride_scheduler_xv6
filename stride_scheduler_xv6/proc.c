@@ -139,83 +139,56 @@ growproc(int n)
 // Create a new process copying p as the parent.
 // Sets up stack to return as if from system call.
 // Caller must set state of returned proc to RUNNABLE.
-int forks(int tickets){
-    int i, pid;
-    struct proc *np;
-    // Allocate process.
-    if((np = allocproc(tickets)) == 0)
-        return -1;
+int
+fork()
+{
+  int i, pid;
+  struct proc *np;
+    cprintf("fork tickets %d", tickets);
+  // Allocate process.
+  if((np = allocproc(350)) == 0)
+    return -1;
+
+  // Copy process state from p.
+  if((np->pgdir = copyuvm(proc->pgdir, proc->sz)) == 0){
+    kfree(np->kstack);
+    np->kstack = 0;
+    np->state = UNUSED;
+    return -1;
+  }
+  np->sz = proc->sz;
+  np->parent = proc;
+  *np->tf = *proc->tf;
+  np->tickets = tickets;
+  np->pass=0;
+  np->stride = 10000 / np->tickets; // calculo do tamanho do passo
+  np->limitpass = np->stride; //#stride
+
     
-    // Copy process state from p.
-    if((np->pgdir = copyuvm(proc->pgdir, proc->sz)) == 0){
-        kfree(np->kstack);
-        np->kstack = 0;
-        np->state = UNUSED;
-        return -1;
-    }
-    np->sz = proc->sz;
-    np->parent = proc;
-    *np->tf = *proc->tf;
-    np->tickets = tickets;
-    np->pass=0;
-    np->stride = 10000 / np->tickets; // calculo do tamanho do passo
-    np->limitpass = np->stride; //#stride
-    
-    
-    // Clear %eax so that fork returns 0 in the child.
-    np->tf->eax = 0;
-    
-    for(i = 0; i < NOFILE; i++)
-        if(proc->ofile[i])
-            np->ofile[i] = filedup(proc->ofile[i]);
-    np->cwd = idup(proc->cwd);
-    
-    pid = np->pid;
-    
-    // lock to force the compiler to emit the np->state write last.
+  // Clear %eax so that fork returns 0 in the child.
+  np->tf->eax = 0;
+
+  for(i = 0; i < NOFILE; i++)
+    if(proc->ofile[i])
+      np->ofile[i] = filedup(proc->ofile[i]);
+  np->cwd = idup(proc->cwd);
+
+  pid = np->pid;
+
+  // lock to force the compiler to emit the np->state write last.
     if (isRoundRobin) {//#stride
         acquire(&ptable.lock);
     }
-    
+
     np->state = RUNNABLE;
-    
-    safestrcpy(np->name, proc->name, sizeof(proc->name));
+
+  safestrcpy(np->name, proc->name, sizeof(proc->name));
     if (isRoundRobin) {//#stride
         release(&ptable.lock);
     }
-    
-    return pid;
+  
+  return pid;
 }
-/*
-int
-fork_lowest()
-{
-    return forks(100);
-}
-
-int
-fork_low()
-{
-    return forks(250);
-}
-
-int
-fork_medium()
-{
-    return forks(500);
-}
-
-int
-fork_high()
-{
-    return forks(750);
-}
-
-int
-fork_highest()
-{
-    return forks(1000);
-}*/
 
 // Exit the current process.  Does not return.
 // An exited process remains in the zombie state
@@ -362,6 +335,7 @@ scheduler(void) //#stride
             int minPass = -1;
             acquire(&ptable.lock);
 //            cprintf("process list");
+            
             
             struct proc *p;
             struct proc *minProc = ptable.proc;

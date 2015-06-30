@@ -83,12 +83,7 @@ extern int sys_dup(void);
 extern int sys_exec(void);
 extern int sys_exit(void);
 extern int sys_fork(void);
-/*extern int sys_fork_lowest(void);
-extern int sys_fork_low(void);
-extern int sys_fork_medium(void);
-extern int sys_fork_high(void);
-extern int sys_fork_highest(void);
-extern int sys_fstat(void);*/
+extern int sys_fstat(void);
 extern int sys_getpid(void);
 extern int sys_kill(void);
 extern int sys_link(void);
@@ -103,6 +98,7 @@ extern int sys_unlink(void);
 extern int sys_wait(void);
 extern int sys_write(void);
 extern int sys_uptime(void);
+
 extern int sys_settickets(int tickets); //#stride //chamada do sistema para setar tickets
 extern int sys_getusage(void); //#stride //chamada do sistema para obter o uso da cpu
 extern int sys_switchScheduler(void);//#stride //chamada do sistema para alternar entre escalonadores
@@ -133,13 +129,8 @@ static int (*syscalls[])(void) = {
 [SYS_settickets] sys_settickets, //#stride //chamada do sistema para setar tickets
 [SYS_getusage] sys_getusage, //#stride ////chamada do sistema para obter o uso da cpu
 [SYS_switchScheduler] sys_switchScheduler, //#stride ////chamada do sistema para obter o uso da cpu
-[SYS_pidInfo] sys_pidInfo,/*
-[SYS_fork_lowest] sys_fork_lowest,
-[SYS_fork_low] sys_fork_low,
-[SYS_fork_medium] sys_fork_medium,
-[SYS_fork_high] sys_fork_high,
-[SYS_fork_highest] sys_fork_highest,
-*/    
+[SYS_pidInfo] sys_pidInfo,
+
 };
 
 void

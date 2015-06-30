@@ -2,12 +2,7 @@ struct stat;
 struct rtcdate;
 
 // system calls
-int fork(void);/*
-int fork_lowest(void);
-int fork_low(void);
-int fork_medium(void);
-int fork_high(void);
-int fork_highest(void);*/
+int fork(int tickets);
 int exit(void) __attribute__((noreturn));
 int wait(void);
 int pipe(int*);

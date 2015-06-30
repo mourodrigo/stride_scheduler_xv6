@@ -8,41 +8,13 @@
 #include "proc.h"
 
 int
-sys_fork(void)
+sys_fork(int tickets)
 {
-    return fork();
-}
-/*
-int
-sys_fork_lowest(void)
-{
-    return fork_lowest();
+cprintf("sys_forktickets %d", tickets);
+
+  return fork(tickets);
 }
 
-int
-sys_fork_low(void)
-{
-    return fork_low();
-}
-
-int
-sys_fork_medium(void)
-{
-    return fork_medium();
-}
-
-int
-sys_fork_high(void)
-{
-    return fork_high();
-}
-
-int
-sys_fork_highest(void)
-{
-    return fork_highest();
-}
-*/
 int
 sys_exit(void)
 {
@@ -54,6 +26,7 @@ int sys_switchScheduler(void){ //#stride
     switchScheduler();
     return 0;
 }
+
 
 int
 sys_wait(void)
