@@ -393,7 +393,10 @@ scheduler(void) //#stride
             minProc->state = RUNNING;
 
             proc = minProc;
-
+            if (proc->pass<0) {
+                proc->pass=0;
+                proc->limitpass = proc->stride;
+            }
             switchuvm(proc);
             swtch(&cpu->scheduler, proc->context);
             switchkvm();

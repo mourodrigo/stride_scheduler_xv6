@@ -114,10 +114,7 @@ trap(struct trapframe *tf)
         proc->pass+=proc->stride;
         cprintf("\n\n---PASS++---\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",proc->pid,proc->tickets, proc->pass , proc->stride, proc->limitpass);
     }
-    if (proc->pass<0) {
-        proc->pass=0;
-        proc->limitpass = proc->stride;
-    }
+    
     
   // Check if the process has been killed since we yielded
   if(proc && proc->killed && (tf->cs&3) == DPL_USER)
