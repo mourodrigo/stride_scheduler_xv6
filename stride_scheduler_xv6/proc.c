@@ -228,6 +228,9 @@ int forkHighest(void){
 void
 exit(void)
 {
+    if (isDebug) {
+          cprintf("|-Processo finalizado PID[%d] Tickets[%d] Passos[%d] -|",proc->pid,proc->tickets,proc->pass);
+    }
   struct proc *p;
   int fd;
 
