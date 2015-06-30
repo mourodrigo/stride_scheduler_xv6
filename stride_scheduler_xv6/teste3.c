@@ -28,6 +28,7 @@ void zombie(int pi,int tickets,int rodadas){
             }
             
         }
+        result=result-10;
         //printf(0, "\nturn %d indice %d pid %d tickets %d tempoCPU %d Fatorial %d = %d",turn,pi,getpid(),tickets,getusage(),x,result);
       //  pidInfo(getpid());
 //        switchScheduler();
