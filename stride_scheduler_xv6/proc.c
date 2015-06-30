@@ -149,8 +149,9 @@ int forks(int tickets){
     // Allocate process.
     if((np = allocproc(tickets)) == 0)
         return -1;
-    
-    cprintf("\n|-Fork pid %d executado com tickets %d-|", np->pid,tickets);
+    if (isDebug) {
+        cprintf("\n|-Fork pid %d executado com tickets %d-|", np->pid,tickets);
+    }
     
     // Copy process state from p.
     if((np->pgdir = copyuvm(proc->pgdir, proc->sz)) == 0){
