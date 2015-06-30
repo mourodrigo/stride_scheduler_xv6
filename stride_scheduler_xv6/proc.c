@@ -374,7 +374,6 @@ scheduler(void) //#stride
                                 //        cprintf("pid %d tickets %d/n",p->pid,p->tickets);
             }
             
-           // cprintf("\n\n----FOR;;--\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->limitpass);
             
 
 
@@ -382,6 +381,8 @@ scheduler(void) //#stride
                 minProc->limitpass+=minProc->pass+minProc->stride;
             }else{
                 minProc->pass+=minProc->stride;
+                 cprintf("\n\n--PASS+=--\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->limitpass);
+                
             }
             
             minProc->state = RUNNING;
