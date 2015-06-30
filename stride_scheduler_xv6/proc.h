@@ -63,7 +63,7 @@ struct context {
 enum procstate { UNUSED, EMBRYO, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };
 
 //#stride
-int isDebug=0; //#stride //parametro para exibir constantes de debug
+int isDebug; //#stride //parametro para exibir constantes de debug
 // Per-process state
 struct proc {
     uint sz;                     // Size of process memory (bytes)
