@@ -143,6 +143,7 @@ swtch:
 ```
 O código apresentado acima é responsável por salvar e resgatar as informações dos registradores (contextos).<br> Quando é chegado o momento de um processo sair da execução da CPU, a thread do kernel do processo chamará o swtch para salvar seu próprio contexto e retornar para a contexto do escalonador. <br>
 Esta ação é originalmente disparada pela classe trap.c, responsável por administrar as interrupções do sistema.<br>
+
 *Trap.c*
 ```
  // Força o processo à sair se for morto e estiver no espaço do usuário
@@ -159,6 +160,7 @@ Esta ação é originalmente disparada pela classe trap.c, responsável por admi
 ```
 
 Cada contexto é representado por um ponteiro para uma estrutura armazenada no próprio kernel em que está envolvido, o swtch recebe dois argumentos, um ponteiro para o contexto antigo e um para o novo contexto. Então são alternados os registradores da CPU atual na pilha e salvos o ponteiro da pilha no ponteiro do contexto antigo.<br>
+
 <br>*proc.c*
 ```
 void
@@ -181,4 +183,9 @@ sched(void) //exemplo de contexto sendo alternado
 ```
 Na estrutura original o escalonador roda em um looping, procurando um processo para rodar, coloca-o em execução até que o mesmo pare ou seja removido por tempo de relógio e repete o processo novamente. O escalonador mantém ptable.lock para a maioria de suas rotinas, porém libera o bloqueio e habilita as interrupções a cada interação do looping. Isto é importante para o caso especial em que a CPU está ociosa ou hajam múltiplas CPUs.<br>
 Hibernar e acordar são métodos de sincronização entre processos simples e precisos podendo ser utilizados para vários tipos de espera. Um exemplo é a chamada de espera que um processo pai usa para aguardar enquanto um processo filho está sendo executado. No XV6 quando um processo termina, este não é finalizado imediatamente. Ele é enviado para um estado zumbi até que o processo pai seja notificado da finalização. O processo pai é então responsável por liberar a memória associada. Caso o processo pai seja finalizado antes do filho, o processo init é responsável por adotar este processo filho e aguardar por ele, de tal maneira que sempre haverá um processo pai para limpar a memória após sua utilização.
+
+#####3. Problema proposto
+Implementar o escalonador de processos stride scheduling (escalonamento em passos largos). Semelhante ao escalonamento por loteria, cada processo recebe um número fixo de bilhetes (tickets). Ao invés de utilizar um sorteio (abordagem probabilística), calcula-se o “passo” (stride) de cada processo como sendo o resultado da divisão de um valor constante (e.g., 10.000) pelo número de bilhetes do processo. Cada processo inicia com uma “passada inicial” igual a zero (0). O escalonador seleciona o processo com o menor valor de passada atual; portanto, inicialmente qualquer um dos processos prontos podem ser selecionados (utilizou-se o número do PID como critério de desempate). Após selecionado, a passada do processo é incrementada com o valor do “passo” do processo. 
+####4. Implementações realizadas
+Foram realizadas mudanças em uma série de arquivos, as mudanças propostas seguem em imagens abaixo com os devidos comentários justificando a alteração conforme o problema proposto.
 
