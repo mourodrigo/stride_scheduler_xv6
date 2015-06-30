@@ -80,6 +80,8 @@ trap(struct trapframe *tf)
    
   //PAGEBREAK: 13
   default:
+      
+
     if(proc == 0 || (tf->cs&3) == 0){
       // In kernel, it must be our mistake.
       cprintf("unexpected trap %d from cpu %d eip %x (cr2=0x%x)\n",
@@ -103,10 +105,7 @@ trap(struct trapframe *tf)
     }
   // Force process to give up CPU on clock tick.
   // If interrupts were on while locks held, would need to check nlock.
-//    if (proc->pass<0) {
-//        proc->pass=0;
-//        proc->limitpass = proc->stride;
-//    }
+
     if(proc && proc->state == RUNNING && (proc->pass>=proc->limitpass || tf->trapno == T_IRQ0+IRQ_TIMER)){
         proc->limitpass+=proc->pass+proc->stride;
         cprintf("\n\n---GOING TO YELD-----\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",proc->pid,proc->tickets, proc->pass , proc->stride, proc->limitpass);
@@ -114,7 +113,10 @@ trap(struct trapframe *tf)
     }else if(proc && proc->state == RUNNING && proc->pass<proc->limitpass){
         proc->pass+=proc->stride;
         cprintf("\n\n---PASS++---\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",proc->pid,proc->tickets, proc->pass , proc->stride, proc->limitpass);
-        
+    }
+    if (proc->pass<0) {
+        proc->pass=0;
+        proc->limitpass = proc->stride;
     }
     
   // Check if the process has been killed since we yielded
