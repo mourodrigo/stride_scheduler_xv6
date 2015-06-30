@@ -102,7 +102,7 @@ trap(struct trapframe *tf)
 
   // Force process to give up CPU on clock tick.
   // If interrupts were on while locks held, would need to check nlock.
-    if(proc && proc->state == RUNNING && proc->pass=>proc->limitpass/*tf->trapno == T_IRQ0+IRQ_TIMER*/){
+    if(proc && proc->state == RUNNING && proc->pass>=proc->limitpass/*tf->trapno == T_IRQ0+IRQ_TIMER*/){
         proc->limitpass+=proc->pass+proc->stride;
         yield();
     }else if(proc && proc->state == RUNNING && proc->pass<proc->limitpass){
