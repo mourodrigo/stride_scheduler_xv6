@@ -374,7 +374,7 @@ scheduler(void) //#stride
                                 //        cprintf("pid %d tickets %d/n",p->pid,p->tickets);
             }
             
-            cprintf("\n\n----FOR;;--\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->limitpass);
+           // cprintf("\n\n----FOR;;--\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->limitpass);
             
 
 
