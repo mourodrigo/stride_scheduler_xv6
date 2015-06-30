@@ -143,7 +143,7 @@ growproc(int n)
 int forks(int tickets){
     int i, pid;
     struct proc *np;
-    cprintf("fork tickets %d", tickets);
+    cprintf("|-Fork executado com tickets %d-|", tickets);
     // Allocate process.
     if((np = allocproc(tickets)) == 0)
         return -1;
