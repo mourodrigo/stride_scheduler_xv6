@@ -107,7 +107,7 @@ trap(struct trapframe *tf)
         cprintf("\n\n---GOING TO YELD-----\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",proc->pid,proc->tickets, proc->pass , proc->stride, proc->limitpass);
         yield();
     }else if(proc && proc->state == RUNNING && proc->pass<proc->limitpass){
-        proc->pass++;
+        proc->pass+=proc->stride;
         cprintf("\n\n---PASS++---\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",proc->pid,proc->tickets, proc->pass , proc->stride, proc->limitpass);
         
     }
