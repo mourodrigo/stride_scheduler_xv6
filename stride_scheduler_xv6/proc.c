@@ -372,7 +372,7 @@ scheduler(void) //#stride
                     minProc = p;
                 }
                 if (priority) {
-                    printf("\n\n--PROC ON FOR--\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",p->pid,p->tickets, p->pass , p->stride, p->limitpass);
+                    cprintf("\n\n--PROC ON FOR--\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",p->pid,p->tickets, p->pass , p->stride, p->limitpass);
                 }                //        cprintf("pid %d tickets %d/n",p->pid,p->tickets);
             }
 
@@ -380,7 +380,7 @@ scheduler(void) //#stride
                 minProc->limitpass+=minProc->pass+minProc->stride;
                 if (priority) {
 
-                printf("\n\n--PASS+=STRIDE--\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->limitpass);
+                cprintf("\n\n--PASS+=STRIDE--\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->limitpass);
                 }
             }else{
                 minProc->pass+=minProc->stride;
