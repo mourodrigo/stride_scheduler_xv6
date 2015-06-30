@@ -37,7 +37,7 @@ void zombie(int pi,int tickets,int rodadas){
         
     }
 //    printf(0, "\nturn %d indice %d pid %d tickets %d tempoCPU %d Fatorial %d = %d\n\n",turn,pi,getpid(),tickets,getusage(),x,result);
-    printf(0, "\n Pid %d com prioridade %d finalizado em %d segundos\n\n" ,getpid(),tickets,uptime()-systemTime);
+    printf(0, "\nPid %d com prioridade %d finalizado em %d segundos\n\n" ,getpid(),tickets,uptime()-systemTime);
 
     //pidInfo(getpid());
 //    switchScheduler();
@@ -92,10 +92,10 @@ int forkTest(int priority,int rodadas){
 int
 main(void)
 {
-    printf(0, "\nEste teste criara 12 processos com prioridades que variam da mais baixa à mais alta calcularao o fatorial de 0 ate 12 por 4000000 vezes respectivamente. Após finalizar o calculo será apresentado o PID do processo com o tempo de execução.");
-    sleep(500);
+    printf(0, "\nEste teste criara 12 processos com prioridades que variam da mais baixa ate mais alta calcularao o fatorial de 0 ate 12 por 4000000 vezes respectivamente. Apos finalizar o calculo sera apresentado o PID do processo com o tempo de execucao.\n\n");
+    sleep(1500);
     
-    int turns = 4000000;
+    int turns = 8000000;
     
     forkTest(1,turns);
     forkTest(2,turns);
