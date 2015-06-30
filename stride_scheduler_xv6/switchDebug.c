@@ -12,13 +12,8 @@ int
 main(int argc, char *argv[])
 {
     
-    printf(0, "\nAlternando debug...\n");
-    if(switchDebug()){
-        printf(0, "\nDEBUG ATIVADO!!!\n");
-    }else{
-        printf(0, "\nDebug desativado!!\n");
-    }
-    
+    printf(0, "\nAlternando modo debug...\n");
+    switchDebug();
     exit();
 }
 
