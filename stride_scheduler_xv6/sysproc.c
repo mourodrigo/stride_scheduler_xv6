@@ -27,7 +27,7 @@ int sys_forkHighest(void){ //#stride 990 tickets
 int
 sys_fork(void) //#stride 500 tickets (default)
 {
-  return fork(tickets);
+  return fork();
 }
 int sys_switchDebug(void){ //#stride alterna modo de debug
     switchScheduler();
