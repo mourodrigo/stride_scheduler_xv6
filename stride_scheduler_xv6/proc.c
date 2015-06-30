@@ -96,8 +96,7 @@ userinit(void)
 {
   struct proc *p;
   extern char _binary_initcode_start[], _binary_initcode_size[];
-    priority = 0;
-  p = allocproc(300);
+  p = allocproc(300);//#stride //Necessário atribuir um numero de tickets ao primeiro processo alocado pelo sistema.
   initproc = p;
   if((p->pgdir = setupkvm()) == 0)
     panic("userinit: out of memory?");
@@ -195,29 +194,29 @@ int forks(int tickets){
 }
 
 int
-fork()
+fork(void)
 {
-    forks(500);
+    return forks(500);
 }
 
 int forkLowest(void){
-    forks(100);
+    return forks(100);
     
 }
 int forkLow(void){
-    forks(300);
+    return forks(300);
     
 }
 int forkMedium(void){
-    forks(500);
+    return forks(500);
 
 }
 int forkHigh(void){
-    forks(750);
+    return forks(750);
 
 }
 int forkHighest(void){
-    forks(990);
+    return forks(990);
 }
 
 
