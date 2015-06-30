@@ -110,6 +110,8 @@ trap(struct trapframe *tf)
         proc->pass++;
         cprintf("\n\n------\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",proc->pid,proc->tickets, proc->pass , proc->stride, proc->limitpass);
         
+    }else{
+        cprintf("\n\n---ELSE YELD---\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",proc->pid,proc->tickets, proc->pass , proc->stride, proc->limitpass);
     }
     
   // Check if the process has been killed since we yielded
