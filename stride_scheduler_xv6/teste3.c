@@ -18,6 +18,8 @@ void zombie(int pi,int tickets,int rodadas){
     uint x=0; uint y=0; uint turn = rodadas;
     uint limit = 12;
     uint result = 0;
+    uint systemTime = uptime();
+
     for(turn=turn;turn!=1;turn--){
         for(x=1;x<limit;x++){
             result = x;
@@ -29,11 +31,13 @@ void zombie(int pi,int tickets,int rodadas){
         //printf(0, "\nturn %d indice %d pid %d tickets %d tempoCPU %d Fatorial %d = %d",turn,pi,getpid(),tickets,getusage(),x,result);
       //  pidInfo(getpid());
 //        switchScheduler();
-        printf(0, "\n\nPid %d Turn %d\n\n", pi,turn);
+        //printf(0, "\n\nPid %d Turn %d\n\n", pi,turn);
 //        sleep(SLEEP);
         
     }
     printf(0, "\nturn %d indice %d pid %d tickets %d tempoCPU %d Fatorial %d = %d",turn,pi,getpid(),tickets,getusage(),x,result);
+    printf(0, "\n Pid %d finalizado em %d" ,pi,uptime()-systemTime);
+
     //pidInfo(getpid());
 //    switchScheduler();
 
