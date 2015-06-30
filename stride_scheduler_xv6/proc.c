@@ -186,7 +186,7 @@ int forks(int tickets){
     
     return pid;
 }
-
+/*
 int
 fork_lowest()
 {
@@ -215,7 +215,8 @@ int
 fork_highest()
 {
     return forks(1000);
-}
+}*/
+
 // Exit the current process.  Does not return.
 // An exited process remains in the zombie state
 // until its parent calls wait() to find out it exited.
@@ -352,7 +353,7 @@ scheduler(void) //#stride
           }
 
     }else{
-        /*struct proc *p;
+        struct proc *p;
         struct proc *current = 0;
         
         for(;;){
@@ -430,10 +431,10 @@ scheduler(void) //#stride
 //                cprintf("PID %d Passo: %d  Tickets %d",current->pid,current->pass,current->tickets);
 //            }
             proc = 0;
-            release(&ptable.lock);
+            release(&ptable.lock);*/
             
             
-        }*/
+        }
     }
 }
 

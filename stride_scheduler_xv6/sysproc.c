@@ -12,7 +12,7 @@ sys_fork(void)
 {
     return fork();
 }
-
+/*
 int
 sys_fork_lowest(void)
 {
@@ -42,7 +42,7 @@ sys_fork_highest(void)
 {
     return fork_highest();
 }
-
+*/
 int
 sys_exit(void)
 {
