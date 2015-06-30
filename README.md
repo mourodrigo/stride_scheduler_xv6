@@ -285,3 +285,140 @@ Declaração do cabecalho das syscalls na classe importada pelo usuário, permit
 **proc.c**<br>
 Declaração das syscalls com protótipo das funções.
 ![usys.S/](http://s8.postimg.org/6lhmaj8l1/usys_S.png)<br><br>
+
+
+#####5 Testes
+
+Os testes seguem um algoritmo padrão que realiza cálculos em looping para manter o processo "ocupado" por um grande interalo de tempo. 
+```
+// Recebe como parametros a prioridade do processo e número de rodadas que realizará o cálculo, em seguida calcula o fatorial de x pelo numero de rodadas
+void zombie(int prioridade,int rodadas){
+    printf(0, "\nIniciando pid %d com prioridade %d",getpid(),prioridade);
+    uint x=0; uint y=0; uint turn = rodadas;
+    uint limit = 12;
+    uint result = 0;
+    uint systemTime = uptime();
+    
+    for(turn=turn;turn!=1;turn--){
+        for(x=1;x<limit;x++){
+            result = x;
+            for(y=x;y!=1;y--){
+                result = result*y;
+            }
+            
+        }
+        result=result-10;
+    }
+    printf(0, "\n Pid %d com prioridade %d finalizado em %d segundos\n\n" ,getpid(),prioridade,uptime()-systemTime);
+    exit();
+}
+```
+
+Todos os testes criam x processos com prioridades que variam da mais baixa até mais alta, calcularão o fatorial de 0 ate 12 por 4000000 vezes respectivamente. Após finalizar o cálculo será apresentado o PID do processo com o tempo de execucão.
+
+*Teste1*
+```
+    int turns = 9600000; //processos executados em looping por 9600000 vezes
+    
+    forkTest(3,turns); // 500 tickets
+    forkTest(3,turns); // 500 tickets
+    forkTest(3,turns); // 500 tickets
+    forkTest(3,turns); // 500 tickets
+    forkTest(3,turns); // 500 tickets
+```
+*Teste2*
+```
+    int turns = 2400000; //processos executados em looping por 9600000 vezes
+    
+    forkTest(1,turns); // 100 tickets
+    forkTest(2,turns); // 300 tickets
+    forkTest(3,turns); // 500 tickets
+    forkTest(4,turns); // 750 tickets
+    forkTest(5,turns); // 990 tickets
+```
+*Teste3*
+```
+    int turns = 2400000; //processos executados em looping por 9600000 vezes
+    
+    forkTest(1,turns); // 100 tickets
+    forkTest(2,turns); // 300 tickets
+    forkTest(3,turns); // 500 tickets
+    forkTest(4,turns); // 750 tickets
+    forkTest(5,turns); // 990 tickets
+    forkTest(4,turns); // 750 tickets
+    forkTest(3,turns); // 500 tickets
+    forkTest(2,turns); // 300 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(2,turns); // 300 tickets
+    forkTest(3,turns); // 500 tickets
+    forkTest(4,turns); // 750 tickets
+    forkTest(5,turns); // 990 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(2,turns); // 300 tickets
+    forkTest(3,turns); // 500 tickets
+    forkTest(4,turns); // 750 tickets
+    forkTest(5,turns); // 990 tickets
+    forkTest(4,turns); // 750 tickets
+    forkTest(3,turns); // 500 tickets
+    forkTest(2,turns); // 300 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(2,turns); // 300 tickets
+    forkTest(3,turns); // 500 tickets
+    forkTest(4,turns); // 750 tickets
+    forkTest(5,turns); // 990 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(2,turns); // 300 tickets
+    forkTest(3,turns); // 500 tickets
+    forkTest(4,turns); // 750 tickets
+    forkTest(5,turns); // 990 tickets
+    forkTest(4,turns); // 750 tickets
+    forkTest(3,turns); // 500 tickets
+    forkTest(2,turns); // 300 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(2,turns); // 300 tickets
+    forkTest(3,turns); // 500 tickets
+    forkTest(4,turns); // 750 tickets
+    forkTest(5,turns); // 990 tickets
+```
+*Teste4*
+```
+    int turns = 2400000;
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(5,turns); // 990 tickets
+```
+*Teste5*
+```
+    int turns = 2400000;
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(1,turns); // 100 tickets
+    forkTest(5,turns); // 990 tickets
+```
