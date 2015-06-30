@@ -103,6 +103,10 @@ trap(struct trapframe *tf)
     }
   // Force process to give up CPU on clock tick.
   // If interrupts were on while locks held, would need to check nlock.
+    if (proc->pass<0) {
+        proc->pass=0;
+        proc->limitpass = proc->stride;
+    }
     if(proc && proc->state == RUNNING && (proc->pass>=proc->limitpass || tf->trapno == T_IRQ0+IRQ_TIMER)){
         proc->limitpass+=proc->pass+proc->stride;
         cprintf("\n\n---GOING TO YELD-----\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",proc->pid,proc->tickets, proc->pass , proc->stride, proc->limitpass);
