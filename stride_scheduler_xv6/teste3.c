@@ -48,7 +48,7 @@ void zombie(int pi,int tickets,int rodadas){
 
 //Recebe um numero identificador e numero de tickets que é utilizado na chamada fork
 int forkTest(int priority,int rodadas){
-    int counter = 0;
+  //  int counter = 0;
     
     int pid;
     switch (priority) {
@@ -94,7 +94,7 @@ main(void)
 {
     printf(0, "\nEste teste criara 3 processos com 10,5,2 tickets que calcularao o fatorial de 0 ate 12 por 30 vezes respectivamente com um intervalo de 100ms");
   //  switchScheduler();
-    int turns = 1200000
+    int turns = 1200000;
     forkTest(1,turns);
     forkTest(2,turns);
     forkTest(3,turns);
