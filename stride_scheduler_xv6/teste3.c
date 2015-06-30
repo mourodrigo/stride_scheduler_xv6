@@ -70,6 +70,7 @@ int
 main(void)
 {
     printf(0, "\nEste teste criara 3 processos com 10,5,2 tickets que calcularao o fatorial de 0 ate 12 por 30 vezes respectivamente com um intervalo de 100ms");
+    switchScheduler();
     forkTest(10,2,10000);
     forkTest(5,900,10000);
     forkTest(2,100,10000);

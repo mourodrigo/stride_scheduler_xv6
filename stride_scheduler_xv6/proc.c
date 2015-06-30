@@ -371,17 +371,23 @@ scheduler(void) //#stride
                 if (p->pass > minProc->pass && p->state == RUNNABLE /*&& minProc->pass<=minProc->limitpass*/) {
                     minProc = p;
                 }
-                                //        cprintf("pid %d tickets %d/n",p->pid,p->tickets);
+                if (priority) {
+                    printf("\n\n--PROC ON FOR--\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",p->pid,p->tickets, p->pass , p->stride, p->limitpass);
+                }                //        cprintf("pid %d tickets %d/n",p->pid,p->tickets);
             }
-            
-            
-
 
             if (minProc->pass>=minProc->limitpass) {
                 minProc->limitpass+=minProc->pass+minProc->stride;
+                if (priority) {
+
+                printf("\n\n--PASS+=STRIDE--\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->limitpass);
+                }
             }else{
                 minProc->pass+=minProc->stride;
-//                 cprintf("\n\n--PASS+=--\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->limitpass);
+                if (priority) {
+
+                cprintf("\n\n--PASS+=--\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->limitpass);
+                }
             }
             
             minProc->state = RUNNING;
@@ -639,7 +645,7 @@ int switchScheduler(void){
     }
             cprintf("\n\n=================\nProcesso escolhido \n pid %d \n tickets %d \n passos %d \n passada %d \n limite passo %d\n=================\n",minProc->pid,minProc->tickets, minProc->pass , minProc->stride, minProc->pass+minProc->stride);
     */
-    priority++;
+    priority=!priority;
     cprintf("Priority %d/n",priority);
     
     return isRoundRobin;
