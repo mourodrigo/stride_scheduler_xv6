@@ -104,11 +104,11 @@ trap(struct trapframe *tf)
   // If interrupts were on while locks held, would need to check nlock.
     if(proc && proc->state == RUNNING && proc->pass>=proc->limitpass/*tf->trapno == T_IRQ0+IRQ_TIMER*/){
         proc->limitpass+=proc->pass+proc->stride;
-        cprintf("\n\n---GOING TO YELD-----\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo --\n---\n",proc->pid,proc->tickets, proc->pass , proc->stride, proc->limitpass);
+        cprintf("\n\n---GOING TO YELD-----\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",proc->pid,proc->tickets, proc->pass , proc->stride, proc->limitpass);
         yield();
     }else if(proc && proc->state == RUNNING && proc->pass<proc->limitpass){
         proc->pass++;
-        cprintf("\n\n------\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo --\n---\n",proc->pid,proc->tickets, proc->pass , proc->stride, proc->limitpass);
+        cprintf("\n\n------\npid %d -- tickets %d -- passos %d -- passada %d -- limite passo %d--\n---\n",proc->pid,proc->tickets, proc->pass , proc->stride, proc->limitpass);
         
     }
     
