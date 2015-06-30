@@ -353,7 +353,7 @@ scheduler(void) //#stride
     }else{
         struct proc *p;
         struct proc *current = 0;
-        priority=1;
+//        priority=1;
         for(;;){
             // Habilita interrrupções no processador.
             sti();
