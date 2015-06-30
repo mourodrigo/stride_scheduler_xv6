@@ -368,7 +368,7 @@ scheduler(void) //#stride
             int x=0;
             for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
 
-                if (p->pass < minProc->pass && p->state != 1 && p->tickets>0/*&& minProc->pass<=minProc->limitpass*/) {
+                if (p->pass < minProc->pass && p->state > EMBRYO && p->state < ZOMBIE && p->tickets>0/*&& minProc->pass<=minProc->limitpass*/) {
                     minProc = p;
                 }
                 if (priority && p->tickets>0) {
