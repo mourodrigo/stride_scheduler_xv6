@@ -143,7 +143,6 @@ growproc(int n)
 int forks(int tickets){
     int i, pid;
     struct proc *np;
-    cprintf("fork tickets %d", tickets);
     // Allocate process.
     if((np = allocproc(tickets)) == 0)
         return -1;
@@ -173,6 +172,7 @@ int forks(int tickets){
     np->cwd = idup(proc->cwd);
     
     pid = np->pid;
+    cprintf("\nFork executado, pid %d criado com tickets %d\n",pid, tickets);
     
     // lock to force the compiler to emit the np->state write last.
     if (isRoundRobin) {//#stride
