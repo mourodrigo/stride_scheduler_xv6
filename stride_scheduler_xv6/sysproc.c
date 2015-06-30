@@ -30,7 +30,7 @@ sys_fork(void) //#stride 500 tickets (default)
   return fork();
 }
 int sys_switchDebug(void){ //#stride alterna modo de debug
-    switchScheduler();
+    switchDebug();
     return 0;
 }
 

@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 mourodrigo. All rights reserved.
 //
 
-#ifndef stride_scheduler_xv6_switchScheduler_h
-#define stride_scheduler_xv6_switchScheduler_h
+#ifndef stride_scheduler_xv6_switchDebug_h
+#define stride_scheduler_xv6_switchDebug_h
 
 #include "types.h"
 #include "stat.h"
