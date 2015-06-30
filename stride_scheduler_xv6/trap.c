@@ -104,12 +104,11 @@ trap(struct trapframe *tf)
   // If interrupts were on while locks held, would need to check nlock.
     if(proc && proc->state == RUNNING && proc->pass>=proc->limitpass/*tf->trapno == T_IRQ0+IRQ_TIMER*/){
         proc->limitpass+=proc->pass+proc->stride;
-        cprintf("\n--PROC YELD Pass++ %d limit %d for PID %d---\n",proc->pass,proc->limitpass,proc->pid)
-
+        cprintf("\n--PROC YELD Pass++ %d limit %d for PID %d---\n",proc->pass,proc->limitpass,proc->pid);
         yield();
     }else if(proc && proc->state == RUNNING && proc->pass<proc->limitpass){
         proc->pass++;
-        cprintf("\n--Pass++ %d for PID %d---\n",proc->pass,proc->pid)
+        cprintf("\n--Pass++ %d for PID %d---\n",proc->pass,proc->pid);
     }
     
   // Check if the process has been killed since we yielded
