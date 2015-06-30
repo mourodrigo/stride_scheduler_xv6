@@ -363,7 +363,7 @@ scheduler(void) //#stride
             
             
             struct proc *p;
-            struct proc *minProc = ptable.proc[0];
+            struct proc *minProc = ptable.proc;
          
             int x=0;
             for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
