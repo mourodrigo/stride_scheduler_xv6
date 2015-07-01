@@ -240,7 +240,7 @@ O método fork passou à ser um método semelhante aos outros métodos com prior
 ![proc.c](http://s8.postimg.org/ye79psfud/proc_c4.png)<br><br>
 
 **proc.c**<br>
-Implementação dos métodos de fork com prioridades e seus devidos números de tickets.
+Implementação dos métodos de fork com prioridades e seus devidos números de tickets.<br><br>
 ![proc.c](http://s8.postimg.org/mssi4c4z9/proc_c5.png)<br><br>
 
 **proc.c**<br>
