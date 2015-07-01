@@ -326,6 +326,31 @@ Todos os testes criam x processos com prioridades que variam da mais baixa até 
     forkTest(3,turns); // 500 tickets
     forkTest(3,turns); // 500 tickets
 ```
+*Execução Teste 1*
+```
+Este teste criara 5 processos com prioridades iguais (500 tickets) calcularao o fatorial de 0 ate 12 por 9600000 vezes respectivamente. Apos finalizar o calculo sera apresentado o PID do processo com o tempo de execucao.
+
+
+Iniciando pid 7 com prioridade 3
+Iniciando pid 8 com prioridade 3
+Iniciando pid 9 com prioridade 3
+Iniciando pid 10 com prioridade 3
+Iniciando pid 11 com prioridade 3
+ Pid 10 com prioridade 3 finalizado em 3200 segundos
+
+ Pid 8 com p
+rioridade 3 finalizado em 3242 segundos
+
+
+ Pid 11 com prioridade 3 finalizado em 3189 segundos
+
+
+ Pid 9 com prioridade 3 finalizado em 3233 segundos
+
+
+ Pid 7 com prioridade 3 finalizado em 3268 segundos
+
+```
 *Teste2*
 ```
     int turns = 2400000; //processos executados em looping por 9600000 vezes
@@ -335,6 +360,32 @@ Todos os testes criam x processos com prioridades que variam da mais baixa até 
     forkTest(3,turns); // 500 tickets
     forkTest(4,turns); // 750 tickets
     forkTest(5,turns); // 990 tickets
+```
+*Execução Teste 2*
+```
+Este teste criara 5 processos com prioridades que variam da mais baixa ate mais alta calcularao o fatorial de 0 ate 12 por 2400000 vezes respectivamente. Apos finalizar o calculo sera apresentado o PID do processo com o tempo de execucao.
+
+
+Iniciando pid 13 com prioridade 1
+Iniciando pid 14 com prioridade 2
+Iniciando pid 15 com prioridade 3
+Iniciando pid 16 com prioridade 4
+Iniciando pid 17 com prioridade 5
+ Pid 17 com prioridade 5 finalizado em 365 segundos
+
+
+ Pid 16 com prioridade 4 finalizado em 476 segundos
+
+
+ Pid 15 com prioridade 3 finalizado em 616 segundos
+
+
+ Pid 14 com prioridade 2 finalizado em 723 segundos
+
+
+ Pid 13 com prioridade 1 finalizado em 837 segundos
+
+
 ```
 *Teste3*
 ```
@@ -380,6 +431,168 @@ Todos os testes criam x processos com prioridades que variam da mais baixa até 
     forkTest(4,turns); // 750 tickets
     forkTest(5,turns); // 990 tickets
 ```
+*Execução Teste 3*
+```
+Este teste criara 39 processos com prioridades que variam da mais baixa ate mais alta calcularao o fatorial de 0 ate 12 por 2400000 vezes respectivamente. Apos finalizar o calculo sera apresentado o PID do processo com o tempo de execucao.
+
+
+Iniciando pid 21 com prioridade 1
+Iniciando pid 22 com prioridade 2
+Iniciando pid 23 com prioridade 3
+Iniciando pid 24 com prioridade 4
+Iniciando pid 25 com prioridade 5
+Iniciando pid 26 com prioridade 4
+Iniciando pid 27 com prioridade 3
+Iniciando pid 28 com prioridade 2
+Iniciando pid 29 com prioridade 1
+Iniciando pid 30 com prioridade 2
+Iniciando pid 31 com prioridade 3
+Iniciando pid 32 com prioridade 4
+Iniciando pid 33 com prioridade 5
+Iniciando pid 34 com prioridade 1
+Iniciando pid 35 com prioridade 2
+Iniciando pid 36 com prioridade 3
+Iniciando pid 37 com prioridade 4
+Iniciando pid 38 com prioridade 5
+Iniciando pid 39 com prioridade 4
+Iniciando pid 40 com prioridade 3
+Iniciando pid 41 com prioridade 2
+Iniciando pid 42 com prioridade 1
+Iniciando pid 43 com prioridade 2
+Iniciando pid 44 com prioridade 3
+Iniciando pid 45 com prioridade 4
+Iniciando pid 46 com prioridade 5
+Iniciando pid 47 com prioridade 1
+Iniciando pid 48 com prioridade 2
+Iniciando pid 49 com prioridade 3
+Iniciando pid 50 com prioridade 4
+Iniciando pid 51 com prioridade 5
+Iniciando pid 52 com prioridade 4
+Iniciando pid 53 com prioridade 3
+Iniciando pid 54 com prioridade 2
+Iniciando pid 55 com prioridade 1
+Iniciando pid 56 com prioridade 2
+Iniciando pid 57 com prioridade 3
+Iniciando pid 58
+Iniciando pid 59 com prioridade 5 com prioridade 4
+ Pid 33 com prioridade 5 finalizado em 3072 segundos
+
+
+ Pid 46 com prioridade 5 finalizado em 2487 segundos
+
+
+ Pid 25 com prioridade 5 finalizado em 3354 segundos
+
+
+ Pid 51 com prioridade 5 finalizado em 2238 segundos
+
+
+ Pid 59 com prioridade 5 finalizado em 1904 segundos
+
+
+ Pid 38 com prioridade 5 finalizado em 3098 segundos
+
+
+ Pid 52 com prioridade 4 fin
+ Pid 26 com prioridade 4 finalizado em 4064 segundos
+
+alizado em 2880 segundos
+
+
+ Pid 39 com prioridade 4 finalizado e
+ Pid 37 com prioridade 4 finalizado em 3733 segundos
+
+m 3583 segundos
+
+ Pid 24 com prioridade 4 finalizado em 4215 segundos
+
+
+
+ Pid 45 com prioridade 4 finalizado em 3417 segundos
+
+
+ Pid 50 com prioridade 4 finalizado em 3163 segundos
+
+
+ Pid 32 com prioridade 4 finalizado em 4004 segundos
+
+
+ Pid 58 com prioridade 4 finalizado em 2652 segundos
+
+
+ Pid 40 com prioridade 3 finalizado em 4428 segundos
+
+
+ Pid 27 com prioridade 3 finalizado em 5008 segundos
+
+
+ Pid 31
+ Pid 36 com prioridade 3 finalizado em 4722 segundos
+
+ com prioridade 3 finalizado em 4891 segundos
+
+
+ Pid 57 com prioridade 3 finalizado em 3594 segundos
+
+
+ Pid 23 com prioridade 3 finalizado em 5166
+ Pid 49 com prioridade 3 finalizado em 4086 segundos
+
+ segundos
+
+
+ Pid 53 com prioridade 3 finalizado em 3797 segundos
+
+
+ Pid 44 com prioridade 3 finalizado em 4371 segundos
+
+
+ Pid 28 com prioridade 2 finalizado em 5635 segundos
+
+
+ Pi
+ Pid 35 com prioridade 2 finalizado em 5421 segundos
+
+d 54 com prioridade 2 finalizado em 4383 segundos
+
+
+ Pid 41 com prioridade 2 finalizado em 5161 segundos
+
+
+ Pid 48 com prioridade 2 finalizado em 4806 segundos
+
+
+ Pid 56 com prioridade 2 finalizado em 4370 s
+ Pid 30 com prioridade 2 finalizado em 5644 segundos
+
+
+ Pid 43 com prioridade 2 finalizado em 5098 segundos
+
+egundos
+
+
+ Pid 22 com prioridade 2 finalizado em 5896 segundos
+
+
+ Pid 42 com prioridade 1 finalizado em 5770 segundos
+
+
+ Pid 21 com prioridade 1 finalizado em 6555 segundos
+
+
+ Pid 29 com prioridade 1 finalizado em 6318 segundos
+
+
+ Pid 55 com prioridade 1 finalizado em 5085 segundos
+
+
+ Pid 34 com prioridade 1 finalizado em 6135 segundos
+
+
+ Pid 47 com prioridade 1 finalizado em 5525 segundos
+
+
+```
 *Teste4*
 ```
     int turns = 2400000;
@@ -402,6 +615,79 @@ Todos os testes criam x processos com prioridades que variam da mais baixa até 
     forkTest(5,turns); // 990 tickets
 
 ```
+*Execução Teste 4*
+```
+Este teste criara 39 processos com prioridades da mais baixa ate a mais alta, calcularao o fatorial de 0 ate 12 por 2400000 vezes respectivamente. Apos finalizar o calculo sera apresentado o PID do processo com o tempo de execucao.
+
+
+Iniciando pid 61 com prioridade 1
+Iniciando pid 62 com prioridade 4
+Iniciando pid 63 com prioridade 5
+Iniciando pid 64 com prioridade 1
+Iniciando pid 65 com prioridade 4
+Iniciando pid 66 com prioridade 3
+Iniciando pid 67 com prioridade 1
+Iniciando pid 68 com prioridade 3
+Iniciando pid 69 com prioridade 3
+Iniciando pid 70 com prioridade 2
+Iniciando pid 71 com prioridade 3
+Iniciando pid 72 com prioridade 4
+Iniciando pid 73 com prioridade 1
+Iniciando pid 74 com prioridade 4
+Iniciando pid 75 com prioridade 5
+Iniciando pid 76 com prioridade 5
+Iniciando pid 77 com prioridade 5
+ Pid 63 com prioridade 5 finalizado em 1579 segundos
+
+
+ Pid 77 com prioridade 5 finalizado em 1144 segundos
+
+
+ Pid 75 com prioridade 5 finalizado em 1305 segundos
+
+
+ Pid 76 com prioridade 5 finalizado em 1280 segundos
+
+
+ Pid 72 com prioridade 4 finalizado em 1666 segundos
+
+
+ Pid 74 com prioridade 4 finalizado em 1619 segundos
+
+
+ Pid 65 com prioridade 4 finalizado em 1848 segundos
+
+
+ Pid 62 com prioridade 4 finalizado em 1932 segundos
+
+
+ Pid 69 com prioridade 3 finalizado em 2051 segundos
+
+
+ Pid 66 com prioridade 3 finalizado em 2124 segundos
+
+
+ Pid 71 com prioridade 3 finalizado em 2023 segundos
+
+
+ Pid 68 com prioridade 3 finalizado em 2100 segundos
+
+
+ Pid 70 com prioridade 2 finalizado em 2219 segundos
+
+
+ Pid 64 com prioridade 1 finalizado em 2763 segundos
+
+
+ Pid 73 com prioridade 1 finalizado em 2543 segundos
+
+
+ Pid 67 com prioridade 1 finalizado em 2702 segundos
+
+
+ Pid 61 com prioridade 1 finalizado em 2847 segundos
+
+```
 *Teste5*
 ```
     int turns = 2400000;
@@ -422,4 +708,77 @@ Todos os testes criam x processos com prioridades que variam da mais baixa até 
     forkTest(1,turns); // 100 tickets
     forkTest(1,turns); // 100 tickets
     forkTest(5,turns); // 990 tickets
+```
+*Execução Teste 5*
+```
+Este teste criara 16 processos com prioridades baixas calcularao o fatorial de 0 ate 12 por 2400000 vezes respectivamente. Apos finalizar o calculo sera apresentado o PID do processo com o tempo de execucao.
+
+
+Iniciando pid 79 com prioridade 1
+Iniciando pid 80 com prioridade 1
+Iniciando pid 81 com prioridade 1
+Iniciando pid 82 com prioridade 1
+Iniciando pid 83 com prioridade 1
+Iniciando pid 84 com prioridade 1
+Iniciando pid 85 com prioridade 1
+Iniciando pid 86 com prioridade 1
+Iniciando pid 87 com prioridade 1
+Iniciando pid 88 com prioridade 1
+Iniciando pid 89 com prioridade 1
+Iniciando pid 90 com prioridade 1
+Iniciando pid 91 com prioridade 1
+Iniciando pid 92 com prioridade 1
+Iniciando pid 93 com prioridade 1
+Iniciando pid 94 com prioridade 1
+Iniciando pid 95 com prioridade 5
+ Pid 95 com prioridade 5 finalizado em 330 segundos
+
+
+ Pid 80 com prioridade 1 finalizado em 2799 segundos
+
+
+ Pid 81 com prioridade 1 finalizado em 2798 segundos
+
+ Pid 82 com prioridade 1 finalizado em 27
+ Pid 84 com prioridade 1 fina
+85 segundos
+
+
+ Pid 83 com prioridade 1 finalizado em 2788 segundos
+
+lizado em 2771 segundos
+
+
+ Pid 87 com prioridade 1 finalizado em 2750 segundos
+
+
+ Pid 88 com prioridade 1 finalizado em 2749 segundos
+
+
+ Pid 89 com prioridade 1 finalizado em 2727 segundos
+
+
+ Pid 92 com prioridade 1 finalizado em 2709 segundos
+
+
+ Pid 93 com prioridade 1 finalizado em 2694 segundos
+
+
+ Pid 94 com prioridade 1 finalizado em 2704 segundos
+
+
+ Pid 79 com prioridade 1 finalizado em 2819 segundos
+
+
+ Pid 85 com prioridade 1 finalizado em 2783 segundos
+
+
+ Pid 86 com prioridade 1 finalizado em 2783 segundos
+
+
+ Pid 91 com prioridade 1 finalizado em 2726 segundos
+
+
+ Pid 90 com prioridade 1 finalizado em 2737 segundos
+
 ```
