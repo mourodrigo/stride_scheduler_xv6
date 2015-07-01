@@ -13,7 +13,7 @@
 
 <br><br><br><br><br><br><br><br><br>
 ####1. Introdução
-*Este relatório é melhor visualizado no formato Readme.md, desenvolvido pelo Github, disponível juntamente com os arquivos do projeto em [https://github.com/mourodrigo/stride_scheduler_xv6/](https://github.com/mourodrigo/stride_scheduler_xv6/)*
+*Este relatório é melhor visualizado no formato Readme.md, desenvolvido pelo Github, disponível juntamente com os arquivos do projeto em [https://github.com/mourodrigo/stride_scheduler_xv6/](https://github.com/mourodrigo/stride_scheduler_xv6/)*.<br>
 Para a análise do sistema foram utilizados o código disponibilizado (git://pdos.csail.mit.edu/xv6/xv6.git) pelo Massachusetts Institute of Technology (MIT) sobre a própria licença de distribuição além da [documentação](http://pdos.csail.mit.edu/6.828/2014/xv6.html) elaborada pela classe 6.828 do MIT conforme disponibilizado na bibliografia.
 
 ####2. Compreendendo o XV6
