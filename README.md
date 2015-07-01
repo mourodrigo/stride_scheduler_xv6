@@ -338,8 +338,7 @@ Iniciando pid 10 com prioridade 3
 Iniciando pid 11 com prioridade 3
  Pid 10 com prioridade 3 finalizado em 3200 segundos
 
- Pid 8 com p
-rioridade 3 finalizado em 3242 segundos
+ Pid 8 com prioridade 3 finalizado em 3242 segundos
 
 
  Pid 11 com prioridade 3 finalizado em 3189 segundos
@@ -473,8 +472,8 @@ Iniciando pid 54 com prioridade 2
 Iniciando pid 55 com prioridade 1
 Iniciando pid 56 com prioridade 2
 Iniciando pid 57 com prioridade 3
-Iniciando pid 58
-Iniciando pid 59 com prioridade 5 com prioridade 4
+Iniciando pid 58 com prioridade 4
+Iniciando pid 59 com prioridade 5 
  Pid 33 com prioridade 5 finalizado em 3072 segundos
 
 
@@ -493,16 +492,13 @@ Iniciando pid 59 com prioridade 5 com prioridade 4
  Pid 38 com prioridade 5 finalizado em 3098 segundos
 
 
- Pid 52 com prioridade 4 fin
+ Pid 52 com prioridade 4 finalizado em 2880 segundos
  Pid 26 com prioridade 4 finalizado em 4064 segundos
 
-alizado em 2880 segundos
-
-
- Pid 39 com prioridade 4 finalizado e
+ Pid 39 com prioridade 4 finalizado em 3583 segundos
  Pid 37 com prioridade 4 finalizado em 3733 segundos
 
-m 3583 segundos
+
 
  Pid 24 com prioridade 4 finalizado em 4215 segundos
 
@@ -526,21 +522,17 @@ m 3583 segundos
  Pid 27 com prioridade 3 finalizado em 5008 segundos
 
 
- Pid 31
+ Pid 31 com prioridade 3 finalizado em 4891 segundos
  Pid 36 com prioridade 3 finalizado em 4722 segundos
 
- com prioridade 3 finalizado em 4891 segundos
-
-
+ 
  Pid 57 com prioridade 3 finalizado em 3594 segundos
 
 
- Pid 23 com prioridade 3 finalizado em 5166
+ Pid 23 com prioridade 3 finalizado em 5166 segundos
  Pid 49 com prioridade 3 finalizado em 4086 segundos
 
- segundos
-
-
+ 
  Pid 53 com prioridade 3 finalizado em 3797 segundos
 
 
@@ -550,11 +542,8 @@ m 3583 segundos
  Pid 28 com prioridade 2 finalizado em 5635 segundos
 
 
- Pi
+ Pid 54 com prioridade 2 finalizado em 4383 segundos
  Pid 35 com prioridade 2 finalizado em 5421 segundos
-
-d 54 com prioridade 2 finalizado em 4383 segundos
-
 
  Pid 41 com prioridade 2 finalizado em 5161 segundos
 
@@ -562,13 +551,11 @@ d 54 com prioridade 2 finalizado em 4383 segundos
  Pid 48 com prioridade 2 finalizado em 4806 segundos
 
 
- Pid 56 com prioridade 2 finalizado em 4370 s
+ Pid 56 com prioridade 2 finalizado em 4370 segundos
  Pid 30 com prioridade 2 finalizado em 5644 segundos
 
 
  Pid 43 com prioridade 2 finalizado em 5098 segundos
-
-egundos
 
 
  Pid 22 com prioridade 2 finalizado em 5896 segundos
@@ -733,21 +720,15 @@ Iniciando pid 94 com prioridade 1
 Iniciando pid 95 com prioridade 5
  Pid 95 com prioridade 5 finalizado em 330 segundos
 
-
  Pid 80 com prioridade 1 finalizado em 2799 segundos
-
 
  Pid 81 com prioridade 1 finalizado em 2798 segundos
 
- Pid 82 com prioridade 1 finalizado em 27
- Pid 84 com prioridade 1 fina
-85 segundos
+ Pid 82 com prioridade 1 finalizado em 2785 segundos
 
+ Pid 84 com prioridade 1 finalizado em 2771 segundos
 
  Pid 83 com prioridade 1 finalizado em 2788 segundos
-
-lizado em 2771 segundos
-
 
  Pid 87 com prioridade 1 finalizado em 2750 segundos
 
@@ -782,3 +763,21 @@ lizado em 2771 segundos
  Pid 90 com prioridade 1 finalizado em 2737 segundos
 
 ```
+
+#####6. Conclusões dos testes
+
+Conforme observado os processos e o escalonador seguiram a distribuição de tickets, processos com prioridade mais alta (mais tickets) são finalizados por primeiro mesmo tendo sido criados após outros processos. Também pode-se obervar que diversos processos concorrentes com o mesmo número de tickets tiveram tempos de execução semelhantes.
+
+#####7. Observações
+* Todas as alterações podem ser facilmente localizadas nos arquivos de código procurando pelo comentário //#stride
+O projeto e execução foi realizado utilizando simulador qemu, 1 processador e 512 de memória. (qemu-system-i386 -serial mon:stdio -hdb fs.img xv6.img -smp 1 -m 512)
+* Na raiz do projeto há um shell script que pode ser rodado ($sh initxv6.sh), este script realiza a limpeza do projeto compilado, compila o projeto através do makefile e em seguida inicializa a maquina virtual qemu.
+* O projeto com todos os arquivos e montado para a ide x-code pode ser clonado do seu repositório em: [https://github.com/mourodrigo/stride_scheduler_xv6](https://github.com/mourodrigo/stride_scheduler_xv6) ou baixado por completo em [https://github.com/mourodrigo/stride_scheduler_xv6/archive/master.zip](https://github.com/mourodrigo/stride_scheduler_xv6/archive/master.zip)
+ 
+#####8. Conclusão
+A implementação do escalonador de passo largo foi um grande desafio principalmente na sua fase de arquitetura pois o aprofundamento no código já existente é necessário para a correta compreensão do sistema além da necessidade de criar um protótipo de funcionamento do escalonador para implementá-lo.
+Outra grande dificuldade foi a falta de chamadas básicas de um SO comuns hoje em dia (ex: scanf) que limitam a implementação, além das limitações da própria linguagem C somada com as diversas configurações adicionais para a própria portabilidade do XV6 e que até certo ponto e podem trazer dificuldades para programadores habituados a programação em nível mais alto.
+Concluo que após o aprofundamento é possível perceber a complexidade dos sistemas operacionais e o grande número de tratamentos necessários para as mais diversas condições porém que a alteração do escalonador não é complexa se bem observada a arquitetura do projeto.
+
+#####9.Referências:
+Cox, Russ, M. Frans Kaashoek, and Robert Morris. "Xv6, a simple Unix-like teaching operating system." (2011).
