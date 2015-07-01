@@ -9,8 +9,8 @@
 **Resumo.** Este meta-artigo descreve um relatório sobre o conhecimento desenvolvido no sistema operacional XV6, implementação do Unix versão 6 para a plataforma Intel x86, implementado no Massachusetts Institute of Technology (MIT) e implementação de um escalonador de passo largo.
 
 
----------------------------------------
-<br><br><br><br><br><br>
+
+<br><br><br><br><br><br><br><br><br>
 ####1. Introdução
 Para a análise do sistema foram utilizados o código disponibilizado (git://pdos.csail.mit.edu/xv6/xv6.git) pelo Massachusetts Institute of Technology (MIT) sobre a própria licença de distribuição além da [documentação](http://pdos.csail.mit.edu/6.828/2014/xv6.html) elaborada pela classe 6.828 do MIT conforme disponibilizado na bibliografia.
 
