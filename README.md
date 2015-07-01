@@ -4,7 +4,7 @@
 #####Trabalho apresentado ao curso de Ciência da Computação da Universidade Federal da Fronteira Sul (UFFS) como trabalho final da disciplina de Sistemas Operacionais
 <br><br><br><br><br><br>
 #####Acadêmico: Rodrigo Bueno Tomiosso
-<br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
 **Abstract.** This meta-paper describes the knowledge developed in XV6 operating system, version 6 implementation of Unix for Intel x86 platform, implemented at the Massachusetts Institute of Technology (MIT) and a stride scheduler implementation.<br>
 **Resumo.** Este meta-artigo descreve um relatório sobre o conhecimento desenvolvido no sistema operacional XV6, implementação do Unix versão 6 para a plataforma Intel x86, implementado no Massachusetts Institute of Technology (MIT) e implementação de um escalonador de passo largo.
 
