@@ -39,7 +39,7 @@ Syscall	Descrição<br>
 **fstat(fd)**	Retorna informações à respeito do arquivo fd aberto.<br>
 **link(f1, f2)**	Cria um atalho ou nome (f2) para o arquivo f1<br>
 **unlink(arquivo)**	Remove um arquivo<br>
-<br><br><br><br><br><br>
+
 Abaixo podemos visualizar o trecho de código onde as chamadas de sistema são tratadas.<br><br>
 *initcode.S*
 ```
